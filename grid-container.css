@@ -2,7 +2,7 @@ html, body, .grid-container { height: 100%; margin: 0; }
 
 @font-face {
     font-family: 'vcr_osd_monoregular';
-    src: url('vcr.ttf');
+    src: url('vcr_osd_mono_1.001-webfont.woff');
     font-style: normal;
 
 }
