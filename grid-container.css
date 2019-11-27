@@ -1,4 +1,4 @@
-html, body, .grid-container { height: 100%; margin: 0; }
+html, body, .grid-container { height: 100% important!; margin: 0; }
 
 @font-face {
     font-family: 'vcr_osd_monoregular';
