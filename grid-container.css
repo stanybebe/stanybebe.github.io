@@ -1,5 +1,14 @@
 html, body, .grid-container { height: 100%; margin: 0; }
 
+@font-face {
+    font-family: 'vcr_osd_monoregular';
+    src: url("https://stanybebe.github.io/css/fonts/CustomFont.woff2") format('woff2'),
+         url("https://stanybebe.github.io/css/fonts/CustomFont.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 .grid-container * {
  border: 1px solid white;
  position: relative;
