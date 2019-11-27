@@ -12,7 +12,7 @@ img {
 
 .grid-container * {
  border: 1px solid white;
- position: absolute;
+ position: relative;
 }
 
 .grid-container *:after {
