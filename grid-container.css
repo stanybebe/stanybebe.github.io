@@ -9,9 +9,10 @@ html, body, .grid-container { height: 100%; margin: 0; }
 img {
     height: 100% !important;
 }
+
 .grid-container * {
  border: 1px solid white;
- position: relative;
+ position: absolute;
 }
 
 .grid-container *:after {
