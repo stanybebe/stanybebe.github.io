@@ -4,10 +4,13 @@ html, body, .grid-container { height: 100% important!; margin: 0; }
     font-family: 'vcr_osd_monoregular';
     src: url('vcr_osd_mono_1.001-webfont.woff');
     font-style: normal;
-  
+
 
 }
 body
+a {
+  color: "#F9C8B6";
+}
 img {
     height: 100% !important;
 }
