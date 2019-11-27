@@ -1,0 +1,50 @@
+html, body, .grid-container { height: 100%; margin: 0; }
+
+.grid-container * {
+ border: 1px solid white;
+ position: relative;
+}
+
+.grid-container *:after {
+ content:attr(class);
+ position: absolute;
+ top: 0;
+ left: 0;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: "\31  \32  \33  \34  \35 " "\36  \37  \38  \39  \31 0" "\31 1 \31 2 \31 3 \31 4 \31 5";
+}
+
+.\31  { grid-area: \31 ; }
+
+.\32  { grid-area: \32 ; }
+
+.\33  { grid-area: \33 ; }
+
+.\34  { grid-area: \34 ; }
+
+.\35  { grid-area: \35 ; }
+
+.\36  { grid-area: \36 ; }
+
+.\37  { grid-area: \37 ; }
+
+.\38  { grid-area: \38 ; }
+
+.\39  { grid-area: \39 ; }
+
+.\31 0 { grid-area: \31 0; }
+
+.\31 1 { grid-area: \31 1; }
+
+.\31 2 { grid-area: \31 2; }
+
+.\31 3 { grid-area: \31 3; }
+
+.\31 4 { grid-area: \31 4; }
+
+.\31 5 { grid-area: \31 5; }
