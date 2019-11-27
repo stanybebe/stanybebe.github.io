@@ -6,7 +6,9 @@ html, body, .grid-container { height: 100%; margin: 0; }
     font-style: normal;
 
 }
-
+img {
+    height: 100% !important;
+}
 .grid-container * {
  border: 1px solid white;
  position: relative;
