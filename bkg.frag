@@ -35,9 +35,9 @@ void main()
     float n2= noise(.5*uv)*cos(n*u_time*.0003)*2.;
 	r = .20 * r.xy / u_resolution.xy;
 
-    vec3 col1 = vec3 (0.0,0.9,.9);
-    vec3 col2 = vec3 (0.9,0.9,.9);
-     vec3 col3 = vec3 (0.2,0.0,.0);
+    vec3 col1 = vec3 (.97647,0.78431,0.71373);
+    vec3 col2 = vec3 (0.06275,  0.14902 , 0.95686);
+     vec3 col3 = vec3 (.97647,0.78431,0.71373);
     vec3 pixi;
 
     float width = cos(cos(.03 * u_time)*0.5)*n;
