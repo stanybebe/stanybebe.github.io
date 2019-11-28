@@ -59,5 +59,5 @@ void main()
 
     	}
 
-  gl_FragColor = vec4(tan((pixi-n)-n2+u_time)/-pixi*n,1.0);
+  gl_FragColor = vec4(sin((pixi-n)-n2+u_time)/-pixi*n,1.0);
 }
