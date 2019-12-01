@@ -18,5 +18,5 @@ function draw() {
   redGreen.setUniform("u_resolution", [width, height]);
   redGreen.setUniform("u_time", millis() / 1000.0);
   rect(0,0,width, height);
-  console.log('2');
+
 }
