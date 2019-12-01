@@ -8,7 +8,7 @@ function preload() {
 
 function setup() {
   createCanvas(width, 230, WEBGL);
- var sketchCanvas = createCanvas(width,450);
+ var sketchCanvas = createCanvas(width,230);
  sketchCanvas.parent("myCanvas");
 
 }
