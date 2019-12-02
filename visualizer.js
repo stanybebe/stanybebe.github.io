@@ -10,7 +10,8 @@ function setup() {
 
 function draw() {
 background(200,0,255);
-rotateX(frameCount*.01);
+rotateX(frameCount*.1);
+rotateY(frameCount*.1);
 timer--;
 if( note == 48) {
   if(timer>0){
