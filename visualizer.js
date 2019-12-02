@@ -33,11 +33,11 @@ if( note == 49) {
     push();
     rotateZ(frameCount*.1);
     rotateY(frameCount*.1);
-let c = color(254,116,47); // Define color 'c'
-fill(c); // Use color variable 'c' as fill color
+let ci = color(104,56,183); // Define color 'c'
+fill(ci); // Use color variable 'c' as fill color
 noStroke(); // Don't draw a stroke around shapes
-scale(10);
-torus(100);
+
+torus(100,10);
 pop();
 }else{timer=60;
 note=0;
