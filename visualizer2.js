@@ -10,6 +10,11 @@ var timer=20;
 var sine;
 
 function preload() {
+soundFormats('mp3', 'ogg');
+mySound = loadSound('assets/1.mp3');
+mySoundb = loadSound('assets/2.mp3');
+mySoundc = loadSound('assets/3.mp3');
+mySoundd = loadSound('assets/4.mp3');
 orbo= loadModel('assets/orbo.obj');
 blkh = loadImage('assets/black heart.png');
 orange = loadImage('assets/orange wheel.png');
@@ -41,7 +46,10 @@ timer--;
 
 if(keyIsPressed === true){
 if(key === 'a') {
+  mySound.setVolume(0.1);
+  mySound.play();
   if(timer>0){
+
 push();
 rotateX(frameCount*.1);
 rotateY(frameCount*.1);
@@ -59,6 +67,8 @@ return false;
 
 
 if( key ==='s') {
+  mySoundb.setVolume(0.1);
+  mySoundb.play();
   if(timer>0){
     console.log('hey');
     push();
@@ -78,6 +88,8 @@ return false
 }
 
 if( key ==='d') {
+  mySoundc.setVolume(0.1);
+  mySoundc.play();
   if(timer>0){
     push();
 rotateZ(frameCount*.1);
@@ -93,6 +105,8 @@ return false;
 }
 
 if( key ==='f') {
+  mySoundd.setVolume(0.1);
+  mySoundd.play();
   if(timer>0){
     push();
 for (var i = 0; i < 200; i=i+30) {
