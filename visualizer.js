@@ -8,6 +8,7 @@ var wheel;
 
 var timer=20;
 var sine;
+
 function preload() {
 orbo= loadModel('assets/orbo.obj');
 blkh = loadImage('assets/black heart.png');
@@ -22,9 +23,15 @@ wheel = loadImage('assets/wheel.png');
 
 function setup() {
  createCanvas(700, 700,WEBGL);
+ player = MIDI.Player;
+
+ player.loadFile('test.mid', player.start);
+ player.playing =true;
 }
 
 function draw() {
+
+
 background(254,116,47);
 sine = sin(frameCount*.003)*200;
 
@@ -32,7 +39,7 @@ timer--;
 
 
 
-if( note == 48) {
+if( note == 42) {
   if(timer>0){
 push();
 rotateX(frameCount*.1);
@@ -49,7 +56,7 @@ note=0;
 }
 }
 
-if( note == 49) {
+if( note == 36) {
   if(timer>0){
     push();
     rotateZ(sine);
@@ -67,7 +74,7 @@ note=0;
 
 }
 
-if( note == 50) {
+if( note == 38) {
   if(timer>0){
     push();
 rotateZ(frameCount*.1);
@@ -82,7 +89,7 @@ note=0;
 
 }
 
-if( note == 51) {
+if( note == 30) {
   if(timer>0){
     push();
 for (var i = 0; i < 200; i=i+30) {
