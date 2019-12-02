@@ -16,12 +16,10 @@ mySoundb = loadSound('assets/2.mp3');
 mySoundc = loadSound('assets/3.mp3');
 mySoundd = loadSound('assets/4.mp3');
 orbo= loadModel('assets/orbo.obj');
-blkh = loadImage('assets/black heart.png');
-orange = loadImage('assets/orange wheel.png');
-leaf = loadImage('assets/leaf.png');
-dbox = loadImage('assets/double box.png');
-cloud = loadImage('assets/cloud.png');
-wheel = loadImage('assets/wheel.png');
+
+orange = loadImage('assets/Orange wheel.png');
+leaf = loadImage('assets/Leaf.png');
+wheel = loadImage('assets/Wheel.png');
 
 
 }
