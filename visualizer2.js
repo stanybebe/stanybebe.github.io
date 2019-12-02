@@ -32,10 +32,6 @@ function setup() {
 }
 
 function draw() {
- mySound.playMode('restart');
-  mySoundb.playMode('restart');
-   mySoundc.playMode('restart');
-    mySoundd.playMode('restart');
 
 background(254,116,47);
 sine = sin(frameCount*.003)*200;
