@@ -45,10 +45,10 @@ timer--;
 
 if(keyIsPressed === true){
 if(key === 'a') {
-  mySound.setVolume(0.1);
-  mySound.play();
-  if(timer>0){
 
+  if(timer>0){
+    mySound.setVolume(0.1);
+    mySound.play();
 push();
 rotateX(frameCount*.1);
 rotateY(frameCount*.1);
@@ -67,9 +67,10 @@ return false;
 
 
 if( key ==='s') {
-  mySoundb.setVolume(0.1);
-  mySoundb.play();
+
   if(timer>0){
+    mySoundb.setVolume(0.1);
+    mySoundb.play();
     console.log('hey');
     push();
     rotateZ(sine);
@@ -89,9 +90,10 @@ mySoundb.stop()
 }
 
 if( key ==='d') {
-  mySoundc.setVolume(0.1);
-  mySoundc.play();
+
   if(timer>0){
+    mySoundc.setVolume(0.1);
+    mySoundc.play();
     push();
 rotateZ(frameCount*.1);
 texture(wheel);
@@ -107,9 +109,10 @@ return false;
 
 
 if( key ==='f') {
-  mySoundd.setVolume(0.1);
-  mySoundd.play();
+
   if(timer>0){
+    mySoundd.setVolume(0.1);
+    mySoundd.play();
     push();
 for (var i = 0; i < 200; i=i+30) {
   fill(0,0,0,0);
