@@ -14,6 +14,7 @@ background(254,116,47);
 sine = sin(frameCount*.003)*200;
 
 timer--;
+
 if( note == 48) {
   if(timer>0){
 push();
