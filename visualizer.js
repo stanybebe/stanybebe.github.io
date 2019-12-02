@@ -1,8 +1,23 @@
 let orbo;
+let blkh;
+let orange;
+let leaf;
+let dbox;
+let cloud;
+let wheel;
+
 var timer=60;
 var sine;
 function preload() {
 orbo= loadModel('assets/orbo.obj');
+blkh = loadImage('assets/black heart.png');
+orange = loadImage('assets/orange wheel.png');
+leaf = loadImage('assets/leaf.png');
+dbox = loadImage('assets/double box.png');
+cloud = loadImage('assets/cloud.png');
+wheel = loadImage('assets/wheel.png');
+
+
 }
 
 function setup() {
