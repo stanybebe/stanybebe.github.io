@@ -8,11 +8,11 @@ function setup() {
 }
 
 function draw() {
-
+background(200,0,255);
+rotateX(frameRate*.001);
 if( note == 48) {
 box(100);
-
-
+note=0;
 }
 
 }
