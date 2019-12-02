@@ -1,5 +1,6 @@
+let orbo;
 function preload() {
-  octahedron = loadModel('.obj');
+orbo= loadModel('orbo.obj');
 }
 
 function setup() {
@@ -9,7 +10,7 @@ function setup() {
 function draw() {
 
 if(note.number == 48) {
-
+model(orbo);
 
 
 }
