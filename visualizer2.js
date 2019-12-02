@@ -28,8 +28,7 @@ function setup() {
  createCanvas(700, 700,WEBGL);
 
 
- player.loadFile('test.mid', player.start);
- player.playing =true;
+
 }
 
 function draw() {
