@@ -9,7 +9,7 @@ function setup() {
 
 function draw() {
 
-if(note.number == 48) {
+if( note == 48) {
 box(100);
 
 
