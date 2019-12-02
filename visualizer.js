@@ -11,7 +11,7 @@ function draw() {
 background(200,0,255);
 rotateX(frameCount*.01);
 if( note == 48) {
-scale(105);
+scale(100);
 model(orbo);
 note=0;
 }
