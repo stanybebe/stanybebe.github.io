@@ -68,7 +68,7 @@ note=0;
 if( note == 50) {
   if(timer>0){
     push();
-
+image(wheel,width/2,height/2);
 
 pop();
 }else{timer=60;
