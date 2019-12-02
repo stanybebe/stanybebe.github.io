@@ -1,5 +1,6 @@
 let orbo;
 var timer=60;
+var sine;
 function preload() {
 orbo= loadModel('assets/orbo.obj');
 }
@@ -10,6 +11,7 @@ function setup() {
 
 function draw() {
 background(254,116,47);
+sine = sin(frameCount*.003)*200;
 
 timer--;
 if( note == 48) {
@@ -29,16 +31,29 @@ note=0;
 }
 }
 
-elseif( note == 49) {
+if( note == 49) {
   if(timer>0){
     push();
-    rotateZ(frameCount*.1);
-    rotateY(frameCount*.1);
+    rotateZ(sine);
+    rotateY(sine);
 let ci = color(104,56,183); // Define color 'c'
 fill(ci); // Use color variable 'c' as fill color
 noStroke(); // Don't draw a stroke around shapes
 
-torus(100,10);
+torus(sine,10);
+pop();
+}else{timer=60;
+note=0;
+
+}
+
+}
+
+if( note == 50) {
+  if(timer>0){
+    push();
+
+
 pop();
 }else{timer=60;
 note=0;
