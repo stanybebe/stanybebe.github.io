@@ -58,10 +58,9 @@ model(orbo);
 pop();
 }else{timer=20;
 return false;
+  mySound.stop()
 
 }
-}else {
-  mySound.stop()
 }
 
 
@@ -82,10 +81,9 @@ pop();
 }else{timer=60;
 ;
 return false
+mySoundb.stop()
 }
 
-}else {
-  mySoundb.stop()
 }
 
 if( key ==='d') {
@@ -100,12 +98,11 @@ plane(sine);
 pop();
 }else{timer=20;
 return false;
-
-}
-
-}else {
   mySoundc.stop()
 }
+
+}
+
 
 if( key ==='f') {
   mySoundd.setVolume(0.1);
@@ -127,16 +124,10 @@ for (var i = 0; i < 200; i=i+30) {
 pop();
 }else{timer=20;
 return false;
+mySound.stop()
 
 }
 
-}else {
-  mySoundd.stop()
 }
-
-
-
 }
-
-
 }
