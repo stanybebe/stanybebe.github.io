@@ -60,6 +60,8 @@ pop();
 return false;
 
 }
+}else {
+  mySound.stop();
 }
 
 
@@ -82,6 +84,8 @@ pop();
 return false
 }
 
+}else {
+  mySoundb.stop();
 }
 
 if( key ==='d') {
@@ -99,6 +103,9 @@ return false;
 
 }
 
+}
+else {
+  mySoundc.stop();
 }
 
 if( key ==='f') {
@@ -124,6 +131,8 @@ return false;
 
 }
 
+}else {
+  mySoundd.stop();
 }
 
 
