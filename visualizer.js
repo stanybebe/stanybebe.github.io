@@ -6,7 +6,7 @@ let dbox;
 let cloud;
 var wheel;
 
-var timer=20;
+var timer=60;
 var sine;
 
 function preload() {
@@ -50,7 +50,7 @@ noStroke(); // Don't draw a stroke around shapes
 scale(10);
 model(orbo);
 pop();
-}else{timer=20;
+}else{timer=60;
 note=0;
 
 }
@@ -67,7 +67,7 @@ noStroke(); // Don't draw a stroke around shapes
 
 torus(sine,10);
 pop();
-}else{timer=20;
+}else{timer=60;
 note=0;
 
 }
@@ -82,7 +82,7 @@ texture(wheel);
 plane(sine);
 
 pop();
-}else{timer=20;
+}else{timer=60;
 note=0;
 
 }
@@ -104,7 +104,7 @@ for (var i = 0; i < 200; i=i+30) {
 
 
 pop();
-}else{timer=20;
+}else{timer=60;
 note=0;
 
 }
@@ -126,12 +126,14 @@ if( note == 44) {
 
 
 pop();
-}else{timer=20;
+}else{timer=60;
 note=0;
 
 }
 
 }
 
+
+}
 
 }
