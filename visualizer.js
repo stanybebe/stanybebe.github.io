@@ -1,6 +1,6 @@
 let orbo;
 function preload() {
-orbo= loadModel('https://github.com/stanybebe/stanybebe.github.io/blob/master/orbo.obj');
+orbo= loadModel('file:///Users/mac/Documents/GitHub/stanybebe.github.io/orbo.obj');
 }
 
 function setup() {
