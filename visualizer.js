@@ -1,6 +1,6 @@
 let orbo;
 function preload() {
-orbo= loadModel('assets/orbo.obj');
+orbo= loadModel('https://github.com/stanybebe/stanybebe.github.io/blob/master/assets/orbo.obj');
 }
 
 function setup() {
