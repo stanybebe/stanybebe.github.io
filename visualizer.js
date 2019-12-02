@@ -4,9 +4,9 @@ let orange;
 let leaf;
 let dbox;
 let cloud;
-let wheel;
+var wheel;
 
-var timer=60;
+var timer=20;
 var sine;
 function preload() {
 orbo= loadModel('assets/orbo.obj');
@@ -30,6 +30,8 @@ sine = sin(frameCount*.003)*200;
 
 timer--;
 
+
+
 if( note == 48) {
   if(timer>0){
 push();
@@ -41,7 +43,7 @@ noStroke(); // Don't draw a stroke around shapes
 scale(10);
 model(orbo);
 pop();
-}else{timer=60;
+}else{timer=20;
 note=0;
 
 }
@@ -58,7 +60,7 @@ noStroke(); // Don't draw a stroke around shapes
 
 torus(sine,10);
 pop();
-}else{timer=60;
+}else{timer=20;
 note=0;
 
 }
@@ -68,16 +70,61 @@ note=0;
 if( note == 50) {
   if(timer>0){
     push();
-image(wheel,width/2,height/2);
+rotateZ(frameCount*.1);
+texture(wheel);
+plane(sine);
 
 pop();
-}else{timer=60;
+}else{timer=20;
 note=0;
 
 }
 
 }
 
+if( note == 51) {
+  if(timer>0){
+    push();
+for (var i = 0; i < 200; i=i+30) {
+  texture(leaf);
+
+  translate(i,i);
+  rotateZ(frameCount*.05);
+  rotateY(frameCount*.05);
+  plane(sine-i);
+
+}
+
+
+pop();
+}else{timer=20;
+note=0;
+
+}
+
+}
+
+if( note == 44) {
+  if(timer>0){
+    push();
+
+
+  texture(blkh);
+
+
+
+  plane(sine);
+
+
+
+
+pop();
+}else{timer=20;
+note=0;
+
+}
+
+}
 
 
 }
