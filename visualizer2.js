@@ -36,11 +36,10 @@ background(254,116,47);
 sine = sin(frameCount*.003)*200;
 
 timer--;
-}
-function keyTyped(){
 
 
 
+if(keyIsPressed === true){
 if(key === 'a') {
   if(timer>0){
 push();
@@ -58,6 +57,7 @@ return false;
 }
 }
 
+
 if( key ==='s') {
   if(timer>0){
     console.log('hey');
@@ -72,9 +72,9 @@ torus(sine,10);
 pop();
 }else{timer=60;
 ;
-
-}
 return false
+}
+
 }
 
 if( key ==='d') {
@@ -96,12 +96,13 @@ if( key ==='f') {
   if(timer>0){
     push();
 for (var i = 0; i < 200; i=i+30) {
+  fill(0,0,0,0);
   texture(leaf);
 
   translate(i,i);
   rotateZ(frameCount*.05);
   rotateY(frameCount*.05);
-  plane(sine-i);
+  plane(i);
 
 }
 
@@ -114,25 +115,7 @@ return false;
 
 }
 
-if( key ==='g') {
-  if(timer>0){
-    push();
 
-
-  texture(blkh);
-
-
-
-  plane(sine);
-
-
-
-
-pop();
-}else{timer=20;
-return false;
-
-}
 
 }
 
