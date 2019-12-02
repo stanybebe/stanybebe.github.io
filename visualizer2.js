@@ -82,8 +82,8 @@ noStroke(); // Don't draw a stroke around shapes
 torus(sine,10);
 pop();
 }else{timer=60;
-;
-return false
+
+return false;
 mySoundb.stop()
 }
 
