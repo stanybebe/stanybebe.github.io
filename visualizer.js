@@ -27,8 +27,9 @@ pop();
 note=0;
 
 }
+}
 
-if( note == 49) {
+elseif( note == 49) {
   if(timer>0){
     push();
     rotateZ(frameCount*.1);
@@ -47,5 +48,5 @@ note=0;
 }
 
 
-}
+
 }
