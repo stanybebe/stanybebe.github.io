@@ -46,6 +46,7 @@ timer--;
 if(keyIsPressed === true){
 if(key === 'a') {
   mySound.setVolume(0.1);
+  mySound.isPlaying() =true;
   mySound.play();
   if(timer>0){
 
@@ -60,6 +61,7 @@ model(orbo);
 pop();
 }else{timer=20;
 return false;
+mySound.isPlaying() =false;
   mySound.stop()
 
 }
