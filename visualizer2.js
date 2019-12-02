@@ -26,7 +26,7 @@ wheel = loadImage('assets/Wheel.png');
 
 function setup() {
  createCanvas(700, 700,WEBGL);
- player = MIDI.Player;
+
 
  player.loadFile('test.mid', player.start);
  player.playing =true;
