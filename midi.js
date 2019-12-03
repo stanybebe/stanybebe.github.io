@@ -1,5 +1,5 @@
 let note, vel, on;
-
+ function connect(){
 
 if (navigator.requestMIDIAccess) {
     console.log('This browser supports WebMIDI!');
@@ -9,7 +9,7 @@ if (navigator.requestMIDIAccess) {
 
 navigator.requestMIDIAccess()
     .then(onMIDISuccess, onMIDIFailure);
-
+}
 function onMIDISuccess(midiAccess) {
     console.log(midiAccess);
 
