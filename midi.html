@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="grid-container.css">
     <style>
-    body{
+    p {
+      font-family: vcr_osd_monoregular;
+    }
+    .align{
+  background-color:rgb(254,116,47);
+
   margin: 0;
 
   display: flex;
@@ -13,6 +19,7 @@
   align-items: center;
 }
     </style>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.sound.min.js"></script>
@@ -20,9 +27,16 @@
     <meta charset="utf-8" />
 
   </head>
-  <body>
-    <script src="visualizer.js"></script>
-    <script src="midi.js"></script>
+  <body bgcolor="black">
+      <body text="#F9C8B6">
+      <script src="midi.js"></script>
+     <div class="align">
 
+
+       <script src="visualizer.js"></script>
+
+    </div>
+    <p><a style="font-family:vcr_osd_monoregular;" href="index">     Home</a></p>
+    <p>visualizes midi data CHROME ONLY =( </p>
   </body>
 </html>
