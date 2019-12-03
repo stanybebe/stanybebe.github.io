@@ -22,8 +22,11 @@ bnote= loadModel('assets/b.obj');
 }
 
 function setup() {
- createCanvas(700, 700,WEBGL);
-
+ var cvn = createCanvas(700, 700,WEBGL);
+ var x = (windowWidth - width) / 2;
+  var y = (windowHeight - height) / 2;
+cnv.position(x, y);
+ smooth();
 }
 
 function draw() {
@@ -33,12 +36,16 @@ background(0);
 sine = sin(frameCount*.003)*200;
 
 timer--;
+fill(255);
+noStroke();
+sphere(30);
 
 
 
 if( note == 0 || note == 12 || note == 24 || note == 36 || note==48 || note == 60 || note == 72 || note == 84 || note == 96 || note == 108 || note == 120){
   if(timer>0){
 push();
+
 rotateX(90);
 let c = color(254, 111, 76); // Define color 'c'
 fill(c); // Use color variable 'c' as fill color
