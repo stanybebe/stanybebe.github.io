@@ -5,11 +5,11 @@ if (navigator.requestMIDIAccess) {
     console.log('This browser supports WebMIDI!');
 } else {
     console.log('WebMIDI is not supported in this browser.');
-
+}
 
 navigator.requestMIDIAccess()
     .then(onMIDISuccess, onMIDIFailure);
-}
+
 function onMIDISuccess(midiAccess) {
     console.log(midiAccess);
 
