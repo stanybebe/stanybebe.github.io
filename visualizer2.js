@@ -5,7 +5,7 @@ let leaf;
 let dbox;
 let cloud;
 var wheel;
-var px,py;
+
 
 var timer=20;
 var sine;
@@ -36,7 +36,6 @@ cnv.position(x, y);
 }
 
 function draw() {
-particle();
 background(254,116,47);
 sine = sin(frameCount*.003)*200;
 
