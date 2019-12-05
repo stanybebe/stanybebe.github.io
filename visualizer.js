@@ -2,6 +2,8 @@
 
 var timer=60;
 var sine;
+var px=0;
+var py=0;
 
 function preload() {
 cnote= loadModel('assets/c.obj');
@@ -35,7 +37,7 @@ function draw() {
 
 background(0);
 
-rotateZ(frameCount*.03);
+//rotateZ(frameCount*.03);
 sine = sin(frameCount*.003)*200;
 
 timer--;
@@ -239,10 +241,35 @@ note=-1;
 
 }
 }
+if( note >=0){
+var r= floor(random(0,4));
+switch (r) {
+  case 1:
+    px=px-2;
+    break;
+  case 2:
+   px=px-2;
+   break;
+  case 3:
+   py=py+2;
+   break;
+  case 4:
+   py=py-2;
+   break;
+}
 
+for (var i = 0; i < width; i=i+10) {
+  translate(i,0,0);
+  rotate(sine);
+  fill(255);
+  noStroke();
+  ellipse(px*i,py*i,10*random(0,1));
+}
 
-
-
+}else {
+  px=0;
+  py=0;
+}
 
 
 
