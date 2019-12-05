@@ -6,6 +6,7 @@ var px=0;
 var py=0;
 
 function preload() {
+   chrm = loadShader('bkg.vert', 'chrm.frag');
 cnote= loadModel('assets/c.obj');
 csharpnote= loadModel('assets/csharp.obj');
 dnote= loadModel('assets/d.obj');
@@ -33,11 +34,14 @@ function setup() {
 }
 
 function draw() {
-  var range = map(vel,0,127,0,1);
+
+  var range = map(vel,0,127,0,2);
 
 background(0);
 
-//rotateZ(frameCount*.03);
+rotateZ(frameCount*.03);
+rotateX(frameCount*.03);
+rotateY(frameCount*.03);
 sine = sin(frameCount*.003)*200;
 
 timer--;
@@ -55,7 +59,7 @@ rotateX(90);
 let c = color(254, 111, 76); // Define color 'c'
 fill(c); // Use color variable 'c' as fill color
 noStroke(); // Don't draw a stroke around shapes
-scale(140);
+scale(140*range);
 model(cnote);
 pop();
 }else{timer=60;
@@ -71,7 +75,7 @@ rotateX(90);
 let c = color(255,76,108); // Define color 'c'
 fill(c); // Use color variable 'c' as fill color
 noStroke(); // Don't draw a stroke around shapes
-scale(140);
+scale(140*range);
 model(csharpnote);
 pop();
 }else{timer=60;
@@ -88,7 +92,7 @@ rotateX(90);
 let c = color(255, 161, 177); // Define color 'c'
 fill(c); // Use color variable 'c' as fill color
 noStroke(); // Don't draw a stroke around shapes
-scale(140);
+scale(140*range);
 model(dnote);
 pop();
 }else{timer=60;
@@ -104,7 +108,7 @@ rotateX(90);
 let c = color(255, 179, 161); // Define color 'c'
 fill(c); // Use color variable 'c' as fill color
 noStroke(); // Don't draw a stroke around shapes
-scale(140);
+scale(140*range);
 model(dsharpnote);
 pop();
 }else{timer=60;
@@ -120,7 +124,7 @@ rotateX(90);
 let c = color(16, 209, 34); // Define color 'c'
 fill(c); // Use color variable 'c' as fill color
 noStroke(); // Don't draw a stroke around shapes
-scale(140);
+scale(140*range);
 model(enote);
 pop();
 }else{timer=60;
@@ -136,7 +140,7 @@ rotateX(90);
 let c = color(85, 208, 143); // Define color 'c'
 fill(c); // Use color variable 'c' as fill color
 noStroke(); // Don't draw a stroke around shapes
-scale(140);
+scale(140*range);
 model(fnote);
 pop();
 }else{timer=60;
@@ -152,7 +156,7 @@ rotateX(90);
 let c = color(51, 255, 147); // Define color 'c'
 fill(c); // Use color variable 'c' as fill color
 noStroke(); // Don't draw a stroke around shapes
-scale(140);
+scale(140*range);
 model(fsharpnote);
 pop();
 }else{timer=60;
@@ -168,7 +172,7 @@ rotateX(90);
 let c = color(102, 204, 150); // Define color 'c'
 fill(c); // Use color variable 'c' as fill color
 noStroke(); // Don't draw a stroke around shapes
-scale(140);
+scale(140*range);
 model(gnote);
 pop();
 }else{timer=60;
@@ -184,7 +188,7 @@ rotateX(90);
 let c = color(0, 105, 209); // Define color 'c'
 fill(c); // Use color variable 'c' as fill color
 noStroke(); // Don't draw a stroke around shapes
-scale(140);
+scale(140*range);
 model(gsharpnote);
 pop();
 }else{timer=60;
@@ -200,7 +204,7 @@ rotateX(90);
 let c = color(69, 139, 209); // Define color 'c'
 fill(c); // Use color variable 'c' as fill color
 noStroke(); // Don't draw a stroke around shapes
-scale(140);
+scale(140*range);
 model(anote);
 pop();
 }else{timer=60;
@@ -216,7 +220,7 @@ rotateX(90);
 let c = color(76, 165, 178); // Define color 'c'
 fill(c); // Use color variable 'c' as fill color
 noStroke(); // Don't draw a stroke around shapes
-scale(140);
+scale(140*range);
 model(asharpnote);
 pop();
 }else{timer=60;
@@ -233,7 +237,7 @@ rotateX(90);
 let c = color(16, 35, 177); // Define color 'c'
 fill(c); // Use color variable 'c' as fill color
 noStroke(); // Don't draw a stroke around shapes
-scale(140);
+scale(140*range);
 model(bnote);
 pop();
 }else{timer=60;
@@ -263,12 +267,16 @@ for (var i = 0; i < width; i=i+10) {
   rotate(sine);
   fill(255);
   noStroke();
-  ellipse(px*i,py*i,10*random(0,1));
+  push();
+  translate(px*i,py*i,random(-100,100)+i);
+  sphere(10*random(0,1)*range);
+  pop();
 }
 
 }else {
   px=0;
   py=0;
+
 }
 
 
