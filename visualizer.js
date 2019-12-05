@@ -22,10 +22,11 @@ bnote= loadModel('assets/b.obj');
 }
 
 function setup() {
- var cnv = createCanvas(700, 700,WEBGL);
- var x = (windowWidth - width) / 2;
- var y = (windowHeight - height) / 2;
+  var cnv =createCanvas(700, 700,WEBGL);
+  var x = (windowWidth - width) / 2;
+   var y = (windowHeight - height) / 2;
  cnv.position(x, y);
+
  smooth();
 }
 
@@ -33,13 +34,14 @@ function draw() {
 
 
 background(0);
-rotateX(frameCount*.03);
+
+rotateZ(frameCount*.03);
 sine = sin(frameCount*.003)*200;
 
 timer--;
 fill(255);
 noStroke();
-sphere(30);
+sphere(15);
 
 
 
