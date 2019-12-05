@@ -33,7 +33,7 @@ function draw() {
 
 
 background(0);
-
+rotateX(frameCount*.03);
 sine = sin(frameCount*.003)*200;
 
 timer--;
