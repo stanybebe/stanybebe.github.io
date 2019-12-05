@@ -1,49 +1,40 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="grid-container.css">
-  <style>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="grid-container.css">
+    <style>
     p {
       font-family: vcr_osd_monoregular;
     }
+    .align{
+  background-color:rgb(254,116,47);
 
-    .align {
-      background-color: rgb(254, 116, 47);
+  margin: 0;
 
-      margin: 0;
+  display: flex;
 
-      display: flex;
-
-      justify-content: center;
+  justify-content: center;
 
 
-      align-items: center;
-    }
-  </style>
+  align-items: center;
+}
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.sound.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.sound.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/webmidi"></script>
+    <meta charset="utf-8" />
 
-  <meta charset="utf-8" />
+  </head>
+  <body bgcolor="black">
+      <body text="#F9C8B6">
+     <div class="align">
 
-</head>
-
-<body bgcolor="black">
-
-  <body text="#F9C8B6">
-
-    <div class="align">
-
-      <script src="midi.js"></script>
-      <script src="visualizer.js"></script>
-
+    <script src="midi.js"></script>
+    <script src="visualizer.js"></script>
     </div>
-    <p><a style="font-family:vcr_osd_monoregular;" href="index"> Home</a></p>
-    <p>visualizes midi data CHROME ONLY =( </p>
+    <p><a style="font-family:vcr_osd_monoregular;" href="index">     Home</a></p>
+    <p>keys ASDF trigger sound sculptures </p>
   </body>
-
 </html>
