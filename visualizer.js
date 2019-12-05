@@ -25,10 +25,10 @@ bnote= loadModel('assets/b.obj');
 }
 
 function setup() {
-  var cnv =createCanvas(700, 700,WEBGL);
-  var x = (windowWidth - width) / 2;
-  var y = (windowHeight - height) / 2;
- cnv.position(x, y);
+  var cnva = createCanvas(1000, 1000,WEBGL);
+  var wx = (windowWidth - width) / 2;
+  var wy = (windowHeight - height) / 2;
+ cnva.position(wx, wy);
 
  smooth();
 }
@@ -47,7 +47,7 @@ sine = sin(frameCount*.003)*200;
 timer--;
 fill(255);
 noStroke();
-sphere(15);
+sphere(15*range);
 
 
 
