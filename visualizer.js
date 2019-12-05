@@ -35,7 +35,7 @@ function setup() {
 
 function draw() {
 
-  var range = map(vel,0,127,0,2);
+  var range = map(vel,0,127,0,3);
 
 background(0);
 
