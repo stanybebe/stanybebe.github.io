@@ -4,17 +4,19 @@
   font-style: normal;
 }
 
+body {
+  font-family: 'vcr_osd_monoregular';
+}
 
 .fluut {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .copy {
-    padding-left: 20px;
-    padding-right: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
-
 
 /* html, body, .grid-container {
   height: 100% important !;
