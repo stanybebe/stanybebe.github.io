@@ -1,16 +1,37 @@
-html, body, .grid-container { height: 100% important!; margin: 0; }
+html, body, .grid-container {
+  height: 100% important !;
+  margin: 0;
+}
 
 @font-face {
-    font-family: 'vcr_osd_monoregular';
-    src: url('vcr_osd_mono_1.001-webfont.woff');
-    font-style: normal;
-
-
+  font-family: 'vcr_osd_monoregular';
+  src: url('vcr_osd_mono_1.001-webfont.woff');
+  font-style: normal;
 }
-body
-a {
+
+body a {
   color: #F9C8B6;
 }
+
 img {
-    height: 100% !important;
+  height: 100% !important;
+}
+
+p {
+  font-family: vcr_osd_monoregular;
+}
+
+a {
+  font-family: vcr_osd_monoregular;
+}
+
+div {
+  padding-right: 80px;
+  padding-left: 80px;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
