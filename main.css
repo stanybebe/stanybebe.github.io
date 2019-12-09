@@ -7,10 +7,18 @@
 body {
   font-family: 'vcr_osd_monoregular';
 }
+a {
+    color: #F9C8B6;
+
+}
 
 .fluut {
   display: flex;
   justify-content: center;
+}
+
+a:visited{
+  color: #F9C8B6;
 }
 
 .copy {
