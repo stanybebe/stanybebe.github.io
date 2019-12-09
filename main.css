@@ -10,7 +10,10 @@
     justify-content: center;
 }
 
-
+.copy {
+    padding-left: 20px;
+    padding-right: 20px;
+}
 
 
 /* html, body, .grid-container {
