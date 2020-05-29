@@ -37,7 +37,6 @@ void main()
     if(cos(cos(.05* u_time)*n2) < mody){
         pixi = mix(col1,col3,.3);
     	}
-      
     else {
         pixi =col2;
         }
