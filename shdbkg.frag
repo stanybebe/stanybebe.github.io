@@ -37,6 +37,7 @@ void main()
     if(cos(cos(.05* u_time)*n2) < mody){
         pixi = mix(col1,col3,.3);
     	}
+      
     else {
         pixi =col2;
         }
@@ -44,8 +45,6 @@ void main()
         pixi = col3;
 
     	}
-
-
 
  gl_FragColor = vec4(pixi,1.0);
 }
