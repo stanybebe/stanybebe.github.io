@@ -3,7 +3,7 @@ var width = myCanvas.clientWidth;
 function preload() {
   // note that we are using two instances
   // of the same vertex and fragment shaders
-  redGreen = loadShader('bkg.vert','bkg.frag');
+  redGreen = loadShader('bkg.vert','shdbkg.frag');
 }
 
 function setup() {
