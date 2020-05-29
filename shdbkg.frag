@@ -35,7 +35,7 @@ void main()
     float width2 = sin(fract(.03 * u_time)*n2);
     float mody = mod(width-width2+n2,fract(floor(r.y+u_time*.04)*6.));
     if(cos(cos(.05* u_time)*n2) < mody){
-        pixi = mix(col1,col3,.3);
+        pixi = col3;
     	}
     else {
         pixi =col2;
