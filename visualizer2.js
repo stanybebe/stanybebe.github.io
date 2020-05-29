@@ -49,6 +49,7 @@ if(key === 'a') {
   if(timer>0){
     mySound.setVolume(0.1);
     mySound.play();
+    mySound.stop();
 push();
 rotateX(frameCount*.1);
 rotateY(frameCount*.1);
@@ -71,6 +72,7 @@ if( key ==='s') {
   if(timer>0){
     mySoundb.setVolume(0.1);
     mySoundb.play();
+    mySoundb.stop();
     console.log('hey');
     push();
     rotateZ(sine);
@@ -94,6 +96,7 @@ if( key ==='d') {
   if(timer>0){
     mySoundc.setVolume(0.1);
     mySoundc.play();
+    mySoundc.stop();
     push();
 rotateZ(frameCount*.1);
 texture(wheel);
@@ -113,6 +116,7 @@ if( key ==='f') {
   if(timer>0){
     mySoundd.setVolume(0.1);
     mySoundd.play();
+    mySoundd.stop();
     push();
 for (var i = 0; i < 200; i=i+30) {
   fill(0,0,0,0);
