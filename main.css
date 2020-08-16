@@ -7,19 +7,14 @@
 body {
   font-family: 'vcr_osd_monoregular';
 }
-a {
-    color: #F9C8B6;
 
-}
 
 .fluut {
   display: flex;
   justify-content: center;
 }
 
-a:visited{
-  color: #F9C8B6;
-}
+
 
 .copy {
   padding-left: 20px;
@@ -41,7 +36,7 @@ li {
 
 li a {
   display: block;
-
+  color: #F9C8B6;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
