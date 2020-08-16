@@ -34,7 +34,7 @@ void main()
     float width = cos(cos(.03 * u_time)*0.05)*n;
     float width2 = sin(fract(.03 * u_time)*n2);
     float mody = mod(width-width2+n2,fract(floor(r.y+u_time*.04)*6.));
-    if(cos(cos(.05* u_time)*n2) < mody){
+    if(cos(cos(.03* u_time)*n2) < mody){
         pixi = col3;
     	}
     else {
