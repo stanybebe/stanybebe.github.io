@@ -45,9 +45,9 @@
 
 /* The dots/bullets/indicators */
 .dot {
-  cursor: pointer;
+  cursor: square;
   height: 10px;
-  width: 15px;
+  width: 10px;
   margin: 0 2px;
   background-color: #F9C8B6;
   border-radius: 50%;
