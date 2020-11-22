@@ -34,6 +34,7 @@ ul {
   padding: 0;
   overflow: hidden;
   background-color: #1026F4;
+  display:flex;
 }
 
 li {
