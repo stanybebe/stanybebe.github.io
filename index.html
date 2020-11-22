@@ -1,49 +1,171 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
-<title>Tristan Whitehill Art</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="grid-container.css">
-<link rel="stylesheet" href="main.css">
+  <title>Tristan Whitehill Art</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="grid-container.css">
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="slides.css">
 
-<script type="text/javascript" src="https://rawgit.com/patriciogonzalezvivo/glslCanvas/master/dist/GlslCanvas.js"></script>
+  <script type="text/javascript" src="https://rawgit.com/patriciogonzalezvivo/glslCanvas/master/dist/GlslCanvas.js"></script>
 
-<script src="p5.js"></script>
+  <script src="p5.js"></script>
 
 
-<style media="screen">
-  h1{padding-left: 80px; padding-right :80px;}
-  p{padding-left: 80px; padding-right :80px;}
-</style>
+  <style media="screen">
+    h1 {
+      padding-left: 80px;
+      padding-right: 80px;
+    }
+
+    p {
+      padding-left: 80px;
+      padding-right: 80px;
+    }
+  </style>
 </head>
 
 <body bgcolor="#1026F4">
-<body text="#F9C8B6">
 
-<div id="myCanvas" style="width: 100% !important; height: 230px !important;">
-<script src="shader.js"></script>
-</div>
+  <body text="#F9C8B6">
 
-<!-- <canvas class="glslCanvas" data-fragment-url="bkg.frag" width= "1330" height="200"></canvas> -->
+    <div id="myCanvas" style="width: 100% !important; height: 230px !important;">
+      <script src="shader.js"></script>
+    </div>
 
-<h1 style="font-family:vcr_osd_monoregular;" > Tristan Whitehill Art</h1>
+    <!-- <canvas class="glslCanvas" data-fragment-url="bkg.frag" width= "1330" height="200"></canvas> -->
 
-<ul>
-<li><a style="font-family:vcr_osd_monoregular;"  href="about.html">     About </a></li>
-<li><a style="font-family:vcr_osd_monoregular;"  href="animation">     Animation</a></li>
-<li><a style="font-family:vcr_osd_monoregular;"  href="music">     Music</a></li>
-<li><a style="font-family:vcr_osd_monoregular;"  href="hyasynth.html">Hyasynth</a></li>
-<li><a style="font-family:vcr_osd_monoregular;"  href="https://github.com/stanybebe">GITHUB</a></li>
-<!-- <li><a style="font-family:vcr_osd_monoregular;"  href="interactive1"> Interactive #1</a></li> -->
-<li><a style="font-family:vcr_osd_monoregular;"  href="https://www.tristanwhitehill.com/midi"> Midi Visualizer</a></li>
-<li><a style="font-family:vcr_osd_monoregular;"  href="https://www.instagram.com/tristan_whitehill_euglossine/">Instagram</a></li>
-<li><a style="font-family:vcr_osd_monoregular;"  href="https://soundcloud.com/euglossine">Soundcloud</a></li>
-<li><a style="font-family:vcr_osd_monoregular;"  href="https://giphy.com/stanybebe">Giphy</a></li>
-</ul>
+    <h1 style="font-family:vcr_osd_monoregular;"> Tristan Whitehill Art</h1>
 
+    <ul>
+      <li><a style="font-family:vcr_osd_monoregular;" href="about.html"> About </a></li>
+      <li><a style="font-family:vcr_osd_monoregular;" href="animation"> Animation</a></li>
+      <li><a style="font-family:vcr_osd_monoregular;" href="music"> Music</a></li>
+      <li><a style="font-family:vcr_osd_monoregular;" href="hyasynth.html">Hyasynth</a></li>
+      <li><a style="font-family:vcr_osd_monoregular;" href="https://github.com/stanybebe">GITHUB</a></li>
+      <!-- <li><a style="font-family:vcr_osd_monoregular;"  href="interactive1"> Interactive #1</a></li> -->
+      <li><a style="font-family:vcr_osd_monoregular;" href="https://www.tristanwhitehill.com/midi"> Midi Visualizer</a></li>
+      <li><a style="font-family:vcr_osd_monoregular;" href="https://www.instagram.com/tristan_whitehill_euglossine/">Instagram</a></li>
+      <li><a style="font-family:vcr_osd_monoregular;" href="https://soundcloud.com/euglossine">Soundcloud</a></li>
+      <li><a style="font-family:vcr_osd_monoregular;" href="https://giphy.com/stanybebe">Giphy</a></li>
+    </ul>
 
-<div class="grid-container">
+    <!-- Slideshow container -->
+    <div class="slideshow-container">
+
+      <!-- Full-width images with number and caption text -->
+      <div class="mySlides fade">
+
+        <img src="imgs/hako.jpg" style="width:100%">
+
+      </div>
+
+      <div class="mySlides fade">
+
+        <img src="imgs/artzo.png" style="width:100%">
+
+      </div>
+
+      <div class="mySlides fade">
+
+        <img src="imgs/drag.png" style="width:100%">
+
+      </div>
+
+      <div class="mySlides fade">
+
+        <img src="imgs/orbs.jpg" style="width:100%">
+
+      </div>
+
+      <div class="mySlides fade">
+
+        <img src="imgs/go.png" style="width:100%">
+
+      </div>
+
+      <div class="mySlides fade">
+
+        <img src="imgs/gho.png" style="width:100%">
+
+      </div>
+
+      <div class="mySlides fade">
+
+        <img src="imgs/drem.png" style="width:100%">
+
+      </div>
+
+      <div class="mySlides fade">
+
+        <img src="imgs/poz.png" style="width:100%">
+
+      </div>
+
+      <div class="mySlides fade">
+
+        <img src="imgs/old.png" style="width:100%">
+
+      </div>
+
+      <div class="mySlides fade">
+
+        <img src="imgs/lo.png" style="width:100%">
+
+      </div>
+
+      <div class="mySlides fade">
+
+        <img src="imgs/com.png" style="width:100%">
+
+      </div>
+
+      <div class="mySlides fade">
+
+        <img src="imgs/dol.png" style="width:100%">
+
+      </div>
+
+      <div class="mySlides fade">
+
+        <img src="imgs/har.png" style="width:100%">
+
+      </div>
+
+      <div class="mySlides fade">
+
+        <img src="imgs/star.png" style="width:100%">
+
+      </div>
+      <!-- Next and previous buttons -->
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <br>
+
+    <!-- The dots/circles -->
+    <div style="text-align:center">
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+      <span class="dot" onclick="currentSlide(4)"></span>
+      <span class="dot" onclick="currentSlide(5)"></span>
+      <span class="dot" onclick="currentSlide(6)"></span>
+      <span class="dot" onclick="currentSlide(7)"></span>
+      <span class="dot" onclick="currentSlide(8)"></span>
+      <span class="dot" onclick="currentSlide(9)"></span>
+      <span class="dot" onclick="currentSlide(10)"></span>
+      <span class="dot" onclick="currentSlide(11)"></span>
+      <span class="dot" onclick="currentSlide(12)"></span>
+      <span class="dot" onclick="currentSlide(13)"></span>
+      <span class="dot" onclick="currentSlide(14)"></span>
+      <span class="dot" onclick="currentSlide(15)"></span>
+
+    </div>
+
+    <!-- <div class="grid-container">
   <div class=""> <img src="imgs/hako.jpg" alt="Smiley face" height="100%"  width="100%"> </div>
   <div class=" "><img src="imgs/artzo.png" alt="Smiley face" height="100%" width="100%"> </div>
   <div class=""><img src="imgs/drag.png" alt="Smiley face" height="100%" width="100%"> </div>
@@ -59,7 +181,8 @@
   <div class=""><img src="imgs/dol.jpg" alt="Smiley face" height="100%" width="100%"> </div>
   <div class=""><img src="imgs/har.png" alt="Smiley face" height="100%" width="100%"> </div>
   <div class=""><img src="imgs/star.png" alt="Smiley face" height="100%" width="100%"> </div>
+ -->
 
+  </body>
 
-</body>
 </html>
