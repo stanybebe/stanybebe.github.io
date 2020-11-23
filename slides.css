@@ -21,7 +21,7 @@
   width: auto;
   margin-top: -22px;
   padding: 16px;
-  color: white;
+  color:#F9C8B6;
   font-weight: bold;
   font-size: 18px;
   transition: 0.6s ease;
@@ -51,13 +51,15 @@
   width: 10px;
   margin: 0 2px;
   background-color: #F9C8B6;
-  border-radius: 50%;
+  /* border-radius: 50%; */
   display: inline-block;
   transition: background-color 0.6s ease;
 }
 
 .active, .dot:hover {
   background-color: #ffffff;
+  width: 15px;
+  transition: background-color 0.2s ease;
 }
 
 /* Fading animation */
