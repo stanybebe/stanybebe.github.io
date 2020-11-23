@@ -46,7 +46,7 @@
 
 /* The dots/bullets/indicators */
 .dot {
-  cursor:cell;
+  cursor:	&#9650;
   height: 10px;
   width: 10px;
   margin: 0 2px;
