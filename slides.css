@@ -59,7 +59,8 @@
 .active, .dot:hover {
   background-color: #ffffff;
   width: 15px;
-  transition: background-color 0.2s ease;
+  height: 15px;
+  transition: background-color 0.4s ease;
 }
 
 /* Fading animation */
