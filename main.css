@@ -88,5 +88,5 @@ li a:hover {
   clear: both;
 }
 @media only screen and (max-width: 768px) {
-    .column{ width: 100%!important;}
+    div{ width: 100%}
 }
