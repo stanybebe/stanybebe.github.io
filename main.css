@@ -15,11 +15,6 @@ a:visited{
   color: #F9C8B6;
 }
 
-.fluut {
-
-  display: flex;
-  justify-content: center;
-}
 
 
 
@@ -75,9 +70,11 @@ li a:hover {
 
 /* Create two equal columns that floats next to each other */
 .column {
+  display: flex;
+  justify-content: center;
   float: left;
   width: 50%;
-  padding: 10px;
+  padding: 5px;
 
 }
 
