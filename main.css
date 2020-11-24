@@ -89,6 +89,16 @@ li a:hover {
   width: 40%;
 }
 
+.ani1{
+ fill:#F9C8B6;
+ width:100px;
+ display: block;
+ margin-left: auto;
+ margin-right: 0px;
+ animation: rotating 2s linear infinite;
+
+}
+
 @media screen and (max-width: 600px) {
 
     .column{width: 100%;}
