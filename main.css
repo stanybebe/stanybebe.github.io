@@ -72,7 +72,7 @@ li a:hover {
 .column {
   float:left;
   width: 50%;
-  padding: 5px;
+
 
 }
 
@@ -84,7 +84,7 @@ li a:hover {
 }
 .center {
   display: block;
-  margin-left: auto;
+  margin-left: 0;
   margin-right: auto;
   width: 40%;
 }
