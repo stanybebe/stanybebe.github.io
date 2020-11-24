@@ -90,4 +90,5 @@ li a:hover {
 @media only screen and (max-width: 768px) {
     div{width:100%;}
     img{width:100%;}
+    .fluut{width:100%;}
 }
