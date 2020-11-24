@@ -15,7 +15,10 @@ a:visited{
   color: #F9C8B6;
 }
 
-
+.para{
+ padding-left: auto;
+ padding-right: auto;
+}
 
 
 .copy {
