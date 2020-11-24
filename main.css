@@ -71,7 +71,6 @@ li a:hover {
 /* Create two equal columns that floats next to each other */
 .column {
 
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -87,5 +86,5 @@ li a:hover {
   clear: both;
 }
 @media only screen and (max-width: 768px) {
-    .column{width:100%;}
+    img{width: 100%;}
 }
