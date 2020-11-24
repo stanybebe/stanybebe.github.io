@@ -83,9 +83,10 @@ li a:hover {
   clear: both;
 }
 .center {
-  margin: auto;
-  width: 50%;
-  padding: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
 }
 
 @media only screen and (max-width: 768px) {
