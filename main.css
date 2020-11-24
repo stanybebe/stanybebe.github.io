@@ -88,6 +88,6 @@ li a:hover {
   clear: both;
 }
 @media only screen and (max-width: 768px) {
-    img{
+    .column{
       width: 100%;}
 }
