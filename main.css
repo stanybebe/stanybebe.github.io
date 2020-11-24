@@ -72,6 +72,7 @@ li a:hover {
 .column {
 
   float: left;
+  justify-content: center;
   width: 50%;
   padding: 5px;
 
