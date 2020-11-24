@@ -84,7 +84,5 @@ li a:hover {
   clear: both;
 }
 @media only screen and (max-width: 768px) {
-    div{width:100%;}
-    img{width:100%;}
-    .fluut{width:100%;}
+    .column{width:100%;}
 }
