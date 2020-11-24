@@ -91,16 +91,10 @@ li a:hover {
 
 #ani1{
  fill:#F9C8B6;
- width:100px;
- display: block;
- margin-left: auto;
- margin-right: 0px;
  animation: rotating 2s linear infinite;
 
 }
-@@keyframes rotating { 100% {transform: :rotate(360deg);}
-
-}
+@keyframes rotating { 100% {transform: :rotate(360deg);}}
 
 @media screen and (max-width: 600px) {
 
