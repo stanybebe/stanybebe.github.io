@@ -3,15 +3,15 @@ showSlides1(slideIndex);
 
 // Next/previous controls
 function plusSlides1(n) {
-  showSlides(slideIndex += n);
+  showSlides1(slideIndex += n);
 }
 
 // Thumbnail image controls
 function currentSlide1(n) {
-  showSlides(slideIndex = n);
+  showSlides1(slideIndex = n);
 }
 
-function showSlides(n) {
+function showSlides1(n) {
   var i;
   var slides = document.getElementsByClassName("mySlides1");
   var dots = document.getElementsByClassName("dot1");
