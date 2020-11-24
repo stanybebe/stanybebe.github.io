@@ -82,11 +82,8 @@ li a:hover {
   display: table;
   clear: both;
 }
-.flexs{
-display: flex;
-align-items: center;
-justify-content: center;
-}
+
+
 @media only screen and (max-width: 768px) {
     img{width: 100%;}
 }
