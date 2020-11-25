@@ -101,4 +101,5 @@ li a:hover {
 @media screen and (max-width: 900px) {
 
     .column{width: 100%;}
+    iframe{width: 100%;height: 100%; }
 }
