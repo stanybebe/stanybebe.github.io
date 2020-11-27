@@ -19,8 +19,8 @@ function showSlides2(n) {
   if (n < 1) {slideIndexc = slides.length}
   for (i = 0; i < slides.length; i++) {
       slides[i].style.display = "none";
-      var iframe = document.getElementById('index'+ i);
-      iframe.src = iframe.src;
+      // var iframe = document.getElementById('index'+ i);
+      // iframe.src = iframe.src;
   }
   for (i = 0; i < dots.length; i++) {
       dots[i].className = dots[i].className.replace(" active", "");
