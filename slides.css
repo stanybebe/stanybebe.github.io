@@ -17,6 +17,10 @@
   display: none;
 }
 
+.mySlides2 {
+  display: none;
+}
+
 /* Next & previous buttons */
 .prev, .next {
   cursor: cell;
@@ -71,13 +75,35 @@
   transition: background-color 0.6s ease;
 }
 
+.dot2 {
+  cursor:	&#9650;
+  height: 10px;
+  width: 10px;
+  margin: 0 2px;
+  background-color: #F9C8B6;
+  /* border-radius: 50%; */
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
 .active, .dot1:hover {
   background-color: #ffffff;
   width: 15px;
   height: 15px;
   transition: background-color 0.4s ease;
 }
-
+.active, .dot2:hover {
+  background-color: #ffffff;
+  width: 15px;
+  height: 15px;
+  transition: background-color 0.4s ease;
+}
+.active, .dot:hover {
+  background-color: #ffffff;
+  width: 15px;
+  height: 15px;
+  transition: background-color 0.4s ease;
+}
 /* Fading animation */
 .fade {
   -webkit-animation-name: fade;
