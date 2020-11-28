@@ -4,6 +4,12 @@ showSlides2(slideIndexc);
 // Next/previous controls
 function plusSlides2(n) {
   showSlides2(slideIndexc += n);
+  var slides2 = document.getElementsByClassName("mySlides2");
+  for (i = 0; i < slides2.length; i++) {
+  var iframes = document.getElementsByTagName('iframe')[i].contentDocument;
+  iframes.location.reload(true);
+  }
+
 }
 
 // Thumbnail image controls
@@ -20,9 +26,7 @@ function showSlides2(n) {
   for (i = 0; i < slides.length; i++) {
       slides[i].style.display = "none";
 
-    var iframes = document.getElementsByTagName('iframe')[i].contentDocument;
-    iframes.location.reload(true);
-      // iframe.src = iframe.src;
+
   }
   for (i = 0; i < dots.length; i++) {
       dots[i].className = dots[i].className.replace(" active", "");
