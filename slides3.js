@@ -19,7 +19,9 @@ function showSlides2(n) {
   if (n < 1) {slideIndexc = slides.length}
   for (i = 0; i < slides.length; i++) {
       slides[i].style.display = "none";
-     document.getElementById('index'+ i).contentDocument.location.reload(true);
+
+    var iframes = document.getElementById('index'+ i).contentDocument;
+    iframes.location.reload(true);
       // iframe.src = iframe.src;
   }
   for (i = 0; i < dots.length; i++) {
