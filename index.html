@@ -11,7 +11,8 @@
   <link rel="script" href="slides.js">
 
   <script type="text/javascript" src="https://rawgit.com/patriciogonzalezvivo/glslCanvas/master/dist/GlslCanvas.js"></script>
-
+  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
   <script src="p5.js"></script>
 
 
@@ -21,9 +22,7 @@
       padding-right: 80px;
     }
 
-    p {
-
-    }
+    p {}
   </style>
 </head>
 
@@ -64,12 +63,11 @@
           <p >In addition, Whitehill has hosted workshops on Processing and Pure Data.&nbsp; His long running musical pseudonym <em>Euglossine&nbsp;</em>has been featured in The Wire, Pitchfork, and Noisey. He has collaborated on work that has been
             featured by Mozilla, Girls Rock Camp, Adult Swim and Hawaiian Airlines.</p>
 
-          <a href="https://www.thewire.co.uk/issues/423">
-            <p >The Wire Review</p>
+          <a href=" https://www.thewire.co.uk/issues/423"> <p>The Wire Review</p>
           </a>
 
           <a href="https://pitchfork.com/reviews/tracks/euglossines-sword-of-damocles/">
-            <p >Pitchfork Debut</p>
+            <p>Pitchfork Debut</p>
           </a>
 
           <a href="https://www.vice.com/en_us/article/7xnknb/euglossine-coriolis-interview-stream">
@@ -85,351 +83,123 @@
         </div>
       </div>
 
-    <div class="column" style="background-color:#2b2b2b;" >
+      <div class="column" style="background-color:#2b2b2b;">
         <img src="imgs/stany.jpg" class="center" style="width:50%;  box-shadow: 10px 10px #F9C8B6 ;">
-        <p style="text-align:center;">photo by <a  href="https://www.instagram.com/maxine.worthy/">maxine worthy</a></p>
+        <p style="text-align:center;">photo by <a href="https://www.instagram.com/maxine.worthy/">maxine worthy</a></p>
+      </div>
     </div>
-    </div>
 
 
+    <script>
+      var elem = document.querySelector('.main-carousel');
+      var flkty = new Flickity(elem, {
+        // options
+        cellAlign: 'left',
+        contain: true
+      });
 
+      // element argument can be a selector string
+      //   for an individual element
+      var flkty = new Flickity('.main-carousel', {
+        // options
+      });
+    </script>
+    <div class="main-carousel" data-flickity='{"wrapAround": true , "cellAlign": "center", "contain": true }'>
 
-    <!-- Slideshow container -->
-    <div class="slideshow-container">
-      <br>
-      <br>
       <h2 class="copy">STILLS</h2>
 
-      <!-- Full-width images with number and caption text -->
-      <div class="mySlides fade">
 
-        <img src="imgs/hako.jpg" style="width:100%">
 
-      </div>
+      <img class="carousel-cell" src="imgs/hako.jpg" style="width:100%">
 
-      <div class="mySlides fade">
+      <img class="carousel-cell" src="imgs/artzo.png" style="width:100%">
 
-        <img src="imgs/artzo.png" style="width:100%">
+      <img class="carousel-cell" src="imgs/drag.png" style="width:100%">
 
-      </div>
+      <img class="carousel-cell" src="imgs/orbs.jpg" style="width:100%">
 
-      <div class="mySlides fade">
+      <img class="carousel-cell" src="imgs/go.png" style="width:100%">
 
-        <img src="imgs/drag.png" style="width:100%">
+      <img class="carousel-cell" src="imgs/gho.png" style="width:100%">
 
-      </div>
+      <img class="carousel-cell" src="imgs/drem.png" style="width:100%">
 
-      <div class="mySlides fade">
+      <img class="carousel-cell" src="imgs/poz.png" style="width:100%">
 
-        <img src="imgs/orbs.jpg" style="width:100%">
+      <img class="carousel-cell" src="imgs/old.png" style="width:100%">
 
-      </div>
+      <img class="carousel-cell" src="imgs/lo.png" style="width:100%">
 
-      <div class="mySlides fade">
+      <img class="carousel-cell" src="imgs/com.png" style="width:100%">
 
-        <img src="imgs/go.png" style="width:100%">
+      <img class="carousel-cell" src="imgs/dol.jpg" style="width:100%">
 
-      </div>
+      <img class="carousel-cell" src="imgs/har.png" style="width:100%">
 
-      <div class="mySlides fade">
+      <img class="carousel-cell" src="imgs/star.png" style="width:100%">
 
-        <img src="imgs/gho.png" style="width:100%">
-
-      </div>
-
-      <div class="mySlides fade">
-
-        <img src="imgs/drem.png" style="width:100%">
-
-      </div>
-
-      <div class="mySlides fade">
-
-        <img src="imgs/poz.png" style="width:100%">
-
-      </div>
-
-      <div class="mySlides fade">
-
-        <img src="imgs/old.png" style="width:100%">
-
-      </div>
-
-      <div class="mySlides fade">
-
-        <img src="imgs/lo.png" style="width:100%">
-
-      </div>
-
-      <div class="mySlides fade">
-
-        <img src="imgs/com.png" style="width:100%">
-
-      </div>
-
-      <div class="mySlides fade">
-
-        <img src="imgs/dol.jpg" style="width:100%">
-
-      </div>
-
-      <div class="mySlides fade">
-
-        <img src="imgs/har.png" style="width:100%">
-
-      </div>
-
-      <div class="mySlides fade">
-
-        <img src="imgs/star.png" style="width:100%">
-
-      </div>
-
-      <!-- Next and previous buttons -->
-      <a class="prev" onclick="plusSlides(-1)"> &#10550; </a>
-      <a class="next" onclick="plusSlides(1)"> &#10551; </a>
     </div>
-    <br>
 
-    <!-- The dots/circles -->
-    <div style="text-align:center">
-      <span class="dot" onclick="currentSlide(1)"></span>
-      <span class="dot" onclick="currentSlide(2)"></span>
-      <span class="dot" onclick="currentSlide(3)"></span>
-      <span class="dot" onclick="currentSlide(4)"></span>
-      <span class="dot" onclick="currentSlide(5)"></span>
-      <span class="dot" onclick="currentSlide(6)"></span>
-      <span class="dot" onclick="currentSlide(7)"></span>
-      <span class="dot" onclick="currentSlide(8)"></span>
-      <span class="dot" onclick="currentSlide(9)"></span>
-      <span class="dot" onclick="currentSlide(10)"></span>
-      <span class="dot" onclick="currentSlide(11)"></span>
-      <span class="dot" onclick="currentSlide(12)"></span>
-      <span class="dot" onclick="currentSlide(13)"></span>
-      <span class="dot" onclick="currentSlide(14)"></span>
-      <span class="dot" onclick="currentSlide(15)"></span>
-     <br>
-     <br>
+
+    <div class="main-carousel" data-flickity='{"wrapAround": true , "cellAlign": "center", "contain": true }'>
+
+      <h2 class="copy">ANIMATION</h2>
+
+
+      <p class="carousel-cell" class="para"><iframe frameborder="0" height="315" src="https://www.youtube.com/embed/w1-oexM_KzI" width="100%"></iframe></p>
+
+      <p class="carousel-cell" class="para"><iframe frameborder="0" height="315" src="https://www.youtube.com/embed/XXf-Z62Qt7U" width="100%"></iframe></p>
+
+      <p class="carousel-cell" class="para"><iframe frameborder="0" height="315" src="https://www.youtube.com/embed/j29ebxK27qQ" width="100%"></iframe></p>
+
+      <p class="carousel-cell" class="para"><iframe frameborder="0" height="315" src="https://www.youtube.com/embed/oVekfOok2ns" width="100%"></iframe></p>
+
+      <p class="carousel-cell" class="para"><iframe frameborder="0" height="315" src="https://www.youtube.com/embed/_ICq11qCQvA" width="100%"></iframe></p>
+
+      <p class="carousel-cell" class="para"><iframe frameborder="0" height="315" src="https://www.youtube.com/embed/btZaxPoai24" width="100%"></iframe></p>
     </div>
-    <script src="slides.js"></script>
 
-<div style="width:100%; background-color:#2b2b2b;">
 
-        <!-- Slideshow container -->
-        <div class="slideshow-container" style="background-color:#2b2b2b;" >
-          <br>
-          <br>
-          <h2 class="copy">ANIMATION</h2>
+    <div class="main-carousel" data-flickity='{"wrapAround": true , "cellAlign": "right", "contain": true }'>
+      <h2 class="copy">MUSIC</h2>
 
-          <div style="text-align:center;">
 
-          <!-- Full-width images with number and caption text -->
-          <div class="mySlides1 fade">
+      <p><iframe class="carousel-cell" id="index1" style="border: 0; width: 350px; height: 470px;" src="https://bandcamp.com/EmbeddedPlayer/album=40341488/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless><a
+            href="https://genot.bandcamp.com/album/blue-marble-agony">Blue Marble Agony by Euglossine</a></iframe></p>
 
-            <div style="text-align:center;">
-            <p class="para"><iframe frameborder="0" height="315" src="https://www.youtube.com/embed/w1-oexM_KzI" width="100%"></iframe></p>
-          </div>
+      <p><iframe class="carousel-cell" id="index2" style="border: 0; width: 350px; height: 470px;" src="https://bandcamp.com/EmbeddedPlayer/album=3962204608/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless><a
+            href="http://orangemilkrecords.bandcamp.com/album/psaronius">Psaronius by Euglossine</a></iframe></p>
 
-          </div>
+      <p><iframe class="carousel-cell" id="index3 " style="border: 0; width: 350px; height: 470px;" src="https://bandcamp.com/EmbeddedPlayer/album=1671434717/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless><a
+            href="http://hausumountain.bandcamp.com/album/coriolis">Coriolis by Euglossine</a></iframe></p>
 
-          <div class="mySlides1 fade">
+      <p><iframe class="carousel-cell" id="index4" style="border: 0; width: 350px; height: 470px;" src="https://bandcamp.com/EmbeddedPlayer/album=3101141060/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless><a
+            href="http://kman925.bandcamp.com/album/euglossine-aquatic-station-teal">Euglossine: Aquatic Station Teal by Euglossine</a></iframe></p>
 
-            <div style="text-align:center;">
-            <p class="para"><iframe frameborder="0" height="315" src="https://www.youtube.com/embed/XXf-Z62Qt7U" width="100%"></iframe></p>
-          </div>
+      <p><iframe class="carousel-cell" id="index5" style="border: 0; width: 350px; height: 470px;" src="https://bandcamp.com/EmbeddedPlayer/album=4107029886/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless><a
+            href="http://euglossine.bandcamp.com/album/librarian-ep">Librarian EP by Euglossine</a></iframe></p>
 
-          </div>
+      <p><iframe class="carousel-cell" id="index6" style="border: 0; width: 350px; height: 470px;" src="https://bandcamp.com/EmbeddedPlayer/album=2086230475/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless><a
+            href="http://orangemilkrecords.bandcamp.com/album/sharp-time">Sharp Time by Euglossine</a></iframe></p>
 
-          <div class="mySlides1 fade">
+      <p><iframe class="carousel-cell" id="index7" style="border: 0; width: 350px; height: 470px;" src="https://bandcamp.com/EmbeddedPlayer/album=3674337622/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless><a
+            href="http://orangemilkrecords.bandcamp.com/album/canopy-stories">Canopy Stories by Euglossine</a></iframe></p>
 
-            <div style="text-align:center;">
-            <p class="para"><iframe frameborder="0" height="315" src="https://www.youtube.com/embed/j29ebxK27qQ" width="100%"></iframe></p>
-          </div>
+      <p><iframe class="carousel-cell" id="index8" style="border: 0; width: 350px; height: 470px;" src="https://bandcamp.com/EmbeddedPlayer/album=381616497/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless><a
+            href="http://euglossine.bandcamp.com/album/puzzle-gallery">Puzzle Gallery by Euglossine</a></iframe></p>
 
-          </div>
+      <p><iframe class="carousel-cell" id="index9" style="border: 0; width: 350px; height: 470px;" src="https://bandcamp.com/EmbeddedPlayer/album=2069675888/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless><a
+            href="http://euglossine.bandcamp.com/album/emotions-potion">Emotion&#39;s Potion by Euglossine</a></iframe></p>
 
-          <div class="mySlides1 fade">
+      <p><iframe class="carousel-cell" id="index10" style="border: 0; width: 350px; height: 470px;" src="https://bandcamp.com/EmbeddedPlayer/album=2059335499/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless><a
+            href="http://euglossine.bandcamp.com/album/complex-playground">Complex Playground by Euglossine</a></iframe></p>
 
-            <div style="text-align:center;">
-            <p class="para"><iframe frameborder="0" height="315" src="https://www.youtube.com/embed/oVekfOok2ns" width="100%"></iframe></p>
-          </div>
+      <p><iframe class="carousel-cell" id="index11" style="border: 0; width: 350px; height: 470px;" src="https://bandcamp.com/EmbeddedPlayer/album=3536492710/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless><a
+            href="http://euglossine.bandcamp.com/album/lustrous">Lustrous by Euglossine</a></iframe></p>
 
-          </div>
 
-          <div class="mySlides1 fade">
+    </div>
 
-            <div style="text-align:center;">
-              <p class="para"><iframe frameborder="0" height="315" src="https://www.youtube.com/embed/_ICq11qCQvA" width="100%"></iframe></p>
-          </div>
-
-          </div>
-
-          <div class="mySlides1 fade">
-
-            <div style="text-align:center;">
-                <p class="para"><iframe frameborder="0" height="315" src="https://www.youtube.com/embed/btZaxPoai24" width="100%"></iframe></p>
-          </div>
-
-          </div>
-          </div>
-
-
-
-
-
-
-          <!-- Next and previous buttons -->
-          <a class="prev" onclick="plusSlides1(-1)"> &#10550; </a>
-          <a class="next" onclick="plusSlides1(1)"> &#10551; </a>
-        </div>
-        <br>
-
-        <!-- The dots/circles -->
-        <div style="text-align:center">
-          <span class="dot1" onclick="currentSlide1(1)"></span>
-          <span class="dot1" onclick="currentSlide1(2)"></span>
-          <span class="dot1" onclick="currentSlide1(3)"></span>
-          <span class="dot1" onclick="currentSlide1(4)"></span>
-          <span class="dot1" onclick="currentSlide1(5)"></span>
-          <span class="dot1" onclick="currentSlide1(6)"></span>
-          <!-- <span class="dot1" onclick="currentSlide(7)"></span>
-          <span class="dot1" onclick="currentSlide(8)"></span>
-          <span class="dot1" onclick="currentSlide(9)"></span>
-          <span class="dot1" onclick="currentSlide(10)"></span>
-          <span class="dot1" onclick="currentSlide(11)"></span>
-          <span class="dot1" onclick="currentSlide(12)"></span>
-          <span class="dot1" onclick="currentSlide(13)"></span>
-          <span class="dot1" onclick="currentSlide(14)"></span>
-          <span class="dot1" onclick="currentSlide(15)"></span> -->
-
-        </div>
-        <br>
-        <br>
-      </div>
-        <script src="slides2.js"></script>
-
-        <div style="width:100%; background-color:#2b2b2b;">
-
-                <!-- Slideshow container -->
-                <div class="slideshow-container" style="background-color:#2b2b2b;" >
-                  <br>
-                  <br>
-                  <h2 class="copy">MUSIC</h2>
-
-
-
-                  <!-- Full-width images with number and caption text -->
-                  <div class="mySlides2 fade">
-
-                    <div style="text-align:center;">
-
-                   <p><iframe  id="index1" style="border: 0; width: 350px; height: 470px;" src="https://bandcamp.com/EmbeddedPlayer/album=40341488/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless><a href="https://genot.bandcamp.com/album/blue-marble-agony">Blue Marble Agony by Euglossine</a></iframe></p>
-                  </div>
-                    </div>
-
-                  <div class="mySlides2 fade">
-
-                    <div style="text-align:center;">
-                    <p><iframe id="index2"  style="border: 0; width: 350px; height: 470px;" src="https://bandcamp.com/EmbeddedPlayer/album=3962204608/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless><a href="http://orangemilkrecords.bandcamp.com/album/psaronius">Psaronius by Euglossine</a></iframe></p>
-                  </div>
-                    </div>
-
-                  <div class="mySlides2 fade">
-
-                    <div style="text-align:center;">
-                      <p><iframe id="index3 "style="border: 0; width: 350px; height: 470px;" src="https://bandcamp.com/EmbeddedPlayer/album=1671434717/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless><a href="http://hausumountain.bandcamp.com/album/coriolis">Coriolis by Euglossine</a></iframe></p>
-                  </div>
-
-                  </div>
-
-                  <div class="mySlides2 fade">
-
-                    <div style="text-align:center;">
-
-                        <p><iframe id="index4" style="border: 0; width: 350px; height: 470px;" src="https://bandcamp.com/EmbeddedPlayer/album=3101141060/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless><a href="http://kman925.bandcamp.com/album/euglossine-aquatic-station-teal">Euglossine: Aquatic Station Teal by Euglossine</a></iframe></p>
-                  </div>
-
-                  </div>
-
-                  <div class="mySlides2 fade">
-
-                    <div style="text-align:center;">
-                    <p><iframe id="index5" style="border: 0; width: 350px; height: 470px;" src="https://bandcamp.com/EmbeddedPlayer/album=4107029886/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless><a href="http://euglossine.bandcamp.com/album/librarian-ep">Librarian EP by Euglossine</a></iframe></p>
-                  </div>
-
-                  </div>
-
-                  <div class="mySlides2 fade">
-
-                    <div style="text-align:center;">
-                            <p><iframe id="index6" style="border: 0; width: 350px; height: 470px;" src="https://bandcamp.com/EmbeddedPlayer/album=2086230475/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless><a href="http://orangemilkrecords.bandcamp.com/album/sharp-time">Sharp Time by Euglossine</a></iframe></p>
-
-                  </div>
-                  </div>
-                  <div class="mySlides2 fade">
-
-                    <div style="text-align:center;">
-                      <p><iframe id="index7" style="border: 0; width: 350px; height: 470px;" src="https://bandcamp.com/EmbeddedPlayer/album=3674337622/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless><a href="http://orangemilkrecords.bandcamp.com/album/canopy-stories">Canopy Stories by Euglossine</a></iframe></p>
-
-                  </div>
-                  </div>
-                  <div class="mySlides2 fade">
-
-                    <div style="text-align:center;">
-                      <p><iframe id="index8"style="border: 0; width: 350px; height: 470px;" src="https://bandcamp.com/EmbeddedPlayer/album=381616497/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless><a href="http://euglossine.bandcamp.com/album/puzzle-gallery">Puzzle Gallery by Euglossine</a></iframe></p>
-
-                  </div>
-                  </div>
-                  <div class="mySlides2 fade">
-
-                    <div style="text-align:center;">
-                      <p><iframe id="index9" style="border: 0; width: 350px; height: 470px;" src="https://bandcamp.com/EmbeddedPlayer/album=2069675888/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless><a href="http://euglossine.bandcamp.com/album/emotions-potion">Emotion&#39;s Potion by Euglossine</a></iframe></p>
-
-                  </div>
-                  </div>
-                  <div class="mySlides2 fade">
-
-                    <div style="text-align:center;">
-                      <p><iframe id="index10"style="border: 0; width: 350px; height: 470px;" src="https://bandcamp.com/EmbeddedPlayer/album=2059335499/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless><a href="http://euglossine.bandcamp.com/album/complex-playground">Complex Playground by Euglossine</a></iframe></p>
-
-                  </div>
-                  </div>
-                  <div class="mySlides2 fade">
-
-                    <div style="text-align:center;">
-                      <p><iframe id="index11" style="border: 0; width: 350px; height: 470px;" src="https://bandcamp.com/EmbeddedPlayer/album=3536492710/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless><a href="http://euglossine.bandcamp.com/album/lustrous">Lustrous by Euglossine</a></iframe></p>
-
-                  </div>
-                  </div>
-
-
-
-
-                  <!-- Next and previous buttons -->
-                  <a class="prev" onclick="plusSlides2(-1)"> &#10550; </a>
-                  <a class="next" onclick="plusSlides2(1)"> &#10551; </a>
-                </div>
-                <br>
-
-                <!-- The dots/circles -->
-                <div style="text-align:center">
-                  <span class="dot2" onclick="currentSlide2(1)"></span>
-                  <span class="dot2" onclick="currentSlide2(2)"></span>
-                  <span class="dot2" onclick="currentSlide2(3)"></span>
-                  <span class="dot2" onclick="currentSlide2(4)"></span>
-                  <span class="dot2" onclick="currentSlide2(5)"></span>
-                  <span class="dot2" onclick="currentSlide2(6)"></span>
-                  <span class="dot2" onclick="currentSlide2(7)"></span>
-                  <span class="dot2" onclick="currentSlide2(8)"></span>
-                  <span class="dot2" onclick="currentSlide2(9)"></span>
-                  <span class="dot2" onclick="currentSlide2(10)"></span>
-                  <span class="dot2" onclick="currentSlide2(11)"></span>
-
-                </div>
-                <br>
-                <br>
-              </div>
-                <script src="slides3.js"></script>
 
 
 
