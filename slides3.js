@@ -20,7 +20,7 @@ function showSlides2(n) {
   for (i = 0; i < slides.length; i++) {
       slides[i].style.display = "none";
 
-    var iframes = document.getElementById('index'+ i).contentDocument;
+    var iframes = document.getElementsByTagName('iframe')[i].contentDocument;
     iframes.location.reload(true);
       // iframe.src = iframe.src;
   }
