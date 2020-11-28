@@ -4,11 +4,10 @@ showSlides2(slideIndexc);
 // Next/previous controls
 function plusSlides2(n) {
   showSlides2(slideIndexc += n);
-  var slides2 = document.getElementsByClassName("mySlides2");
-  for (i = 0; i < slides2.length; i++) {
-  var iframes = document.getElementsByTagName('iframe')[i].contentDocument;
+
+  var iframes = document.getElementsByTagName('iframe')[slideIndexc += n].contentDocument;
   iframes.location.reload(true);
-  }
+
 
 }
 
