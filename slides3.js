@@ -5,7 +5,7 @@ showSlides2(slideIndexc);
 function plusSlides2(n) {
   showSlides2(slideIndexc += n);
 
-  var iframes = document.getElementsByTagName('iframe')[slideIndexc += n].contentDocument;
+  var iframes = document.getElementsByTagName('iframe').contentDocument;
   iframes.location.reload(true);
 
 
