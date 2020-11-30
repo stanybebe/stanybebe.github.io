@@ -143,10 +143,24 @@
     </div>
 <br>
 <br>
+<script>
+  var elem2 = document.querySelector('.main-carousel2');
+  var flkty2 = new Flickity(elem2, {
+    // options
+    cellAlign: 'left',
+    contain: true
+  });
+
+  // element argument can be a selector string
+  //   for an individual element
+  var flkty2 = new Flickity('.main-carousel2', {
+    // options
+  });
+</script>
 
     <h2 class="copy">ANIMATION</h2>
 
-    <div class="main-carousel" data-flickity='{"wrapAround": true , "cellAlign": "center", "contain": true }'>
+    <div class="main-carousel2" data-flickity='{"wrapAround": true , "cellAlign": "center", "contain": true }'>
 
       <p class="carousel-cell" ><iframe frameborder="0" height="315" src="https://www.youtube.com/embed/w1-oexM_KzI" width="100%"></iframe></p>
 
