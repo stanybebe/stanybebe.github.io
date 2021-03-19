@@ -13,7 +13,7 @@ vec2 hash( vec2 x )
 float noise( in vec2 p )
 {
     vec2 i = floor( p*u_resolution.x*.002);
-    vec2 f = fract( p *u_resolution.y*.002);
+    vec2 f = fract( p *u_resolution.y*.004);
 	vec2 u = f*f*(1.0-2.0*f);
     return mix( mix( dot( hash( i + vec2(0.0,0.0) ), f - vec2(0.0,0.0) ),
                      dot( hash( i + vec2(1.0,0.0) ), f - vec2(1.0,0.0) ), u.x),
@@ -24,7 +24,7 @@ void main()
 {
     vec2 uv = gl_FragCoord.xy/u_resolution.xy*.75;
     vec2 r = vec2(gl_FragCoord.xy+ 0.5*u_resolution.xy );
-	float n= noise(1.5*uv);
+	 float n= noise(.5*uv);
     float n2= noise(.5*uv)*cos(n*u_time*.0003)*2.;
 	r = .20 * r.xy / u_resolution.xy;
     vec3 col1 = vec3 (.97647,0.78431,0.71373);
@@ -32,8 +32,8 @@ void main()
      vec3 col3 = vec3 (.97647,0.78431,0.71373);
     vec3 pixi;
     float width = cos(cos(.03 * u_time)*0.05)*n;
-    float width2 = sin(fract(.03 * u_time)*n2);
-    float mody = mod(width-width2+n2,fract(floor(r.y+u_time*.04)*6.));
+    float width2 = sin(fract(.03 * u_time)*n2+width);
+    float mody = mod(width-width2+n2,fract(floor(r.y+u_time*.4)*6.));
     if(cos(cos(.05* u_time)*n2) < mody){
         pixi = col3;
     	}
