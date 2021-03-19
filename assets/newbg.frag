@@ -35,7 +35,7 @@ void main() {
     float n= noise(.005*r.xy);
 
 
-    float n2= noise(.004*r.xy)*n;
+    float n2= noise(.05*r.xy)+n;
 	  r =  r.xy / u_resolution.xy;
 
 
@@ -47,7 +47,7 @@ void main() {
     float width2 = sin(cos(.03 * u_time)*n/2);
     float mody = mod(width-width2+n2,cos(sin(r.y+u_time*.04)*4.));
 
-    if(cos(cos(.05* u_time)*n2) < mody){
+    if(cos(cos(.5* u_time)*n2) < mody){
         pixi = col3;
     	}
     else {
