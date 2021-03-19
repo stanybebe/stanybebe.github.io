@@ -31,10 +31,15 @@ float noise( in vec2 p )
 void main() {
     vec2 st = gl_FragCoord.xy/u_resolution.xy;
 
-    vec2 r = vec2( gl_FragCoord.xy - .5 * u_resolution.xy );
+    vec2 r = vec2( gl_FragCoord.xy - 0.05*u_resolution.xy );
     float n= noise(.005*r.xy);
+<<<<<<< HEAD
     float n2= noise(.05*r.xy)*cos(n*u_time*0.003);
    	r =   r.xy / u_resolution.xy;
+=======
+    float n2= noise(.05*r.xy)*cos(n*u_time*0.003)*1.;
+	r = .20 * r.xy / u_resolution.xy;
+>>>>>>> parent of b6a86c0... Update newbg.frag
 
     vec3 col1 = vec3 (.97647,0.78431,0.71373);
     vec3 col2 = vec3 (0.06275,  0.14902 , 0.95686);
