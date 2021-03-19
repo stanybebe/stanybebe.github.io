@@ -34,6 +34,7 @@ void main() {
     vec2 r = vec2( gl_FragCoord.xy - 0.05*u_resolution.xy );
     float n= noise(.005*r.xy);
 
+
     float n2= noise(.05*r.xy)*cos(n*u_time*0.003)*1.;
 	r = .20 * r.xy / u_resolution.xy;
 
@@ -43,7 +44,7 @@ void main() {
     vec3 col3 = vec3 (.97647,0.78431,0.71373);
      vec3 pixi;
     float width = cos(cos(.003 * u_time)*0.5)*n;
-    float width2 = sin(cos(.03 * u_time)*n);
+    float width2 = sin(sin(.03 * u_time)*n);
     float mody = mod(width-width2+n2,fract(floor(r.y+u_time*.04)*4.));
 
     if(cos(cos(.5* u_time)*n2) < mody){
