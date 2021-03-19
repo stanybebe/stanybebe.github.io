@@ -35,7 +35,7 @@ void main() {
     float n= noise(.005*r.xy);
 
 
-    float n2= noise(.05*r.xy)+n;
+    float n2= noise(.004*r.xy)+n;
 	  r =  r.xy / u_resolution.xy;
 
 
@@ -43,11 +43,11 @@ void main() {
     vec3 col2 = vec3 (0.06275,  0.14902 , 0.95686);
     vec3 col3 = vec3 (.97647,0.78431,0.71373);
      vec3 pixi;
-    float width = cos(sin(.3 * u_time)*0.5)*n;
-    float width2 = sin(cos(.03 * u_time)*n);
+    float width = cos(sin(.03 * u_time)*0.5)*n;
+    float width2 = sin(cos(.03 * u_time)*n/2);
     float mody = mod(width-width2+n2,cos(sin(r.y+u_time*.04)*4.));
 
-    if(cos(cos(.5* u_time)*n2) < mody){
+    if(cos(cos(.05* u_time)*n2) < mody){
         pixi = col3;
     	}
     else {
