@@ -36,7 +36,7 @@ void main() {
 
 
     float n2= noise(.05*r.xy)*cos(n*u_time*0.003)*1.;
-	r = .20 * r.xy / u_resolution.xy;
+	  r =  r.xy / u_resolution.xy;
 
 
     vec3 col1 = vec3 (.97647,0.78431,0.71373);
@@ -53,10 +53,10 @@ void main() {
     else {
         pixi =col2;
         }
-      if(sin(r.x+u_time)-n2 < mody){
+    if(sin(r.x+u_time)-n2 < mody){
         pixi = col3;
 
-    	}
+  	}
 
  gl_FragColor = vec4(pixi,1.0);
 
