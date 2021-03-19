@@ -13,7 +13,7 @@ vec2 hash( vec2 x )
 {
     const vec2 k = vec2( 0.3183099, 0.3678794 );
     x = x*k + k.yx;
-    return -1.0 + 2.0*sin( (u_time*.04)*13.0 * k*fract( x.x*x.y*(x.x+x.y)) );
+    return -1.0 + 2.0*sin( (u_time*.04)*1.0 * k*fract( x.x*x.y*(x.x+x.y)) );
 }
 
 float noise( in vec2 p )
@@ -30,11 +30,11 @@ float noise( in vec2 p )
 }
 void main() {
     vec2 st = gl_FragCoord.xy/u_resolution.xy;
-    
+
     vec2 r = vec2( gl_FragCoord.xy - 0.05*u_resolution.xy );
     float n= noise(.005*r.xy);
-    float n2= noise(.05*r.xy)*cos(n*u_time*0.003)*2.;
-	r = 1.0 * r.xy / u_resolution.xy;
+    float n2= noise(.05*r.xy)*cos(n*u_time*0.003)*1.;
+	r = .20 * r.xy / u_resolution.xy;
 
     vec3 col1 = vec3 (.97647,0.78431,0.71373);
     vec3 col2 = vec3 (0.06275,  0.14902 , 0.95686);
@@ -43,7 +43,7 @@ void main() {
     float width = cos(cos(.003 * u_time)*0.5)*n;
     float width2 = sin(fract(.03 * u_time)*n);
     float mody = mod(width-width2+n2,fract(floor(r.y+u_time*.04)*.04));
-    
+
     if(cos(cos(.5* u_time)*n2) < mody){
         pixi = col3;
     	}
@@ -56,7 +56,7 @@ void main() {
     	}
 
  gl_FragColor = vec4(pixi,1.0);
-    
+
 
 
 }
