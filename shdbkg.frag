@@ -8,7 +8,7 @@ vec2 hash( vec2 x )
 {
     const vec2 k = vec2( 0.5183099, 0.3678794 );
     x = x*k + k.yx;
-    return -1.0 + 5.0*sin( (u_time*.4)*10.0 * k*fract( x.x*x.y*(x.x+x.y)) );
+    return -1.0 + 5.0*sin( (u_time*.4)*2.0 * k*fract( x.x*x.y*(x.x+x.y)) );
 }
 float noise( in vec2 p )
 {
@@ -25,7 +25,7 @@ void main()
     vec2 uv = gl_FragCoord.xy/u_resolution.xy*.75;
     vec2 r = vec2(gl_FragCoord.xy+ 0.5*u_resolution.xy );
 	 float n= noise(.5*uv);
-    float n2= noise(.5*uv)*cos(n*u_time*.0003)*2.;
+    float n2= noise(.5*uv)*cos(n*u_time*.003)*2.;
 	  r = .70 * r.xy / u_resolution.xy;
     vec3 col1 = vec3 (.97647,0.78431,0.71373);
     vec3 col2 = vec3 (0.06275,  0.14902 , 0.95686);
