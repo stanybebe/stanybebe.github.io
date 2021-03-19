@@ -32,10 +32,10 @@ void main() {
     vec2 st = gl_FragCoord.xy/u_resolution.xy;
 
     vec2 r = vec2( gl_FragCoord.xy - 0.5*u_resolution.xy );
-    float n= noise(.005*r.xy);
+    float n= noise(.05*r.xy);
 
 
-    float n2= noise(.05*r.xy)*cos(n*u_time*0.003)*1.;
+    float n2= noise(.05*r.xy)*n;
 	  r =  r.xy / u_resolution.xy;
 
 
