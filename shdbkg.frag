@@ -12,8 +12,8 @@ vec2 hash( vec2 x )
 }
 float noise( in vec2 p )
 {
-    vec2 i = floor( p*u_resolution.x*.02);
-    vec2 f = fract( p *u_resolution.y*.04);
+    vec2 i = floor( p*u_resolution.x);
+    vec2 f = fract( p *u_resolution.y);
 	vec2 u = f*f*(1.0-2.0*f);
     return mix( mix( dot( hash( i + vec2(0.0,0.0) ), f - vec2(0.0,0.0) ),
                      dot( hash( i + vec2(1.0,0.0) ), f - vec2(1.0,0.0) ), u.x),
