@@ -26,7 +26,7 @@ void main()
     vec2 r = vec2(gl_FragCoord.xy+ 0.5*u_resolution.xy );
 	 float n= noise(.5*uv);
     float n2= noise(.5*uv)*cos(n*u_time*.0003)*2.;
-	r = .20 * r.xy / u_resolution.xy;
+	  r = .70 * r.xy / u_resolution.xy;
     vec3 col1 = vec3 (.97647,0.78431,0.71373);
     vec3 col2 = vec3 (0.06275,  0.14902 , 0.95686);
      vec3 col3 = vec3 (.97647,0.78431,0.71373);
