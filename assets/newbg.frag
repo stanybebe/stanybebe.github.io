@@ -13,7 +13,7 @@ vec2 hash( vec2 x )
 {
     const vec2 k = vec2( 0.5183099, 0.3678794 );
     x = x*k + k.yx;
-    return -1.0 + 1.0*sin(cos(u_time*.4)*10.0 * k*fract( x.x*x.y*(x.x+x.y)) );
+    return -1.0 + 2.0*sin(cos(u_time*.4)*10.0 * k*fract( x.x*x.y*(x.x+x.y)) );
 }
 
 float noise( in vec2 p )
@@ -21,7 +21,7 @@ float noise( in vec2 p )
     vec2 i = floor( p );
     vec2 f = fract( p );
 
-	vec2 u = f*f*(2.0-3.0*f);
+	vec2 u = f*f*(3.0-2.0*f);
 
     return mix( mix( dot( hash( i + vec2(0.0,0.0) ), f - vec2(0.0,0.0) ),
                      dot( hash( i + vec2(1.0,0.0) ), f - vec2(1.0,0.0) ), u.x),
