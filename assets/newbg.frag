@@ -45,7 +45,7 @@ void main() {
      vec3 pixi;
     float width = cos(sin(.3 * u_time)*0.5)*n;
     float width2 = sin(cos(.03 * u_time)*n);
-    float mody = mod(width-width2+n2,cos(sin(r.y+u_time*.04)*4.));
+    float mody = mod(width+width2-n2,cos(sin(r.y+u_time*.04)*4.));
 
     if(cos(cos(.5* u_time)*n2) < mody){
         pixi = col3;
