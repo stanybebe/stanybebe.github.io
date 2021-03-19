@@ -35,7 +35,7 @@ void main() {
     float n= noise(.005*r.xy);
 
 
-    float n2= noise(.05*r.xy-n)+n;
+    float n2= noise(.05*r.xy)*n;
 	  r =  r.xy / u_resolution.xy;
 
 
