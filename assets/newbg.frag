@@ -19,7 +19,7 @@ vec2 hash( vec2 x )
 float noise( in vec2 p )
 {
     vec2 i = floor( p );
-    vec2 f = floor(fract( p ));
+    vec2 f = ceil(fract( p ));
 
 	vec2 u = f*f*(3.0-2.0*f);
 
