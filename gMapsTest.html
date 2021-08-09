@@ -37,21 +37,48 @@
       '{"name":"Moisturizer","latitude":"29.678196230958015","longitude":"-82.29569554602904" }]}';
 
     const gParse = JSON.parse(galleries);
+    console.log(gParse);
+    console.log(posLat);
 
-    var length = Object.keys(galleries).length;
+    var key, length = 0;
+    for(key in galleries) {
+    if(galleries.hasOwnProperty(key)) {
+     length++;
+    }
+}
+
+  //  var length = Object.keys(galleries).length;
+    console.log(length);
+
     for (var i = 0; i < length; i++) {
-      console.log(gParse);
-      console.log(posLat);
-      console.log(gParse.galleries[i].longitude);
-      console.log(length);
-      if (Number(gParse.galleries[i].latitude) <= posLat +.1 &&
-        Number(gParse.galleries[i].longitude) <= posLng + .1) {
-        console.log(gParse.galleries[i]);
-        console.log("yes is running check");
-      };
 
-    }}
+      if (calcCrow(galleries[i].latitude,galleries[i].longitude,posLat,posLng)>= .5){
+         //do something
+      }
 
+    }
+}
+    function calcCrow(coords1lat,coords1lng,coords2lat,coords2lng)
+    {
+      // var R = 6.371; // km
+      var R = 1;
+      var dLat = toRad(coords2lat-coords1lat);
+      var dLon = toRad(coords2lng-coords1lng);
+      var lat1 = toRad(coords1lat);
+      var lat2 = toRad(coords2lat);
+
+      var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+        Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2);
+      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+      var d = R * c;
+      return d;
+    }
+
+    // Converts numeric degrees to radians
+    function toRad(Value)
+    {
+        return Value * Math.PI / 180;
+    }
   </script>
   <button onclick="getLocation()">Try It</button>
 </body>
