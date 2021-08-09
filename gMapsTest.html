@@ -30,20 +30,22 @@
     function checkLocation(position){
       posLat = position.coords.latitude;
       posLng = position.coords.longitude;
+    //  29.678196230958015, -82.29569554602904
     let galleries = '{"galleries":[' +
       '{"name":"Santa Fe College Gallery","latitude":"29.680095271019443","longitude":"-82.43478467358335" },' +
-      '{"name":"Curia","latitude":"29.67198651033575","longitude":"-82.33024074659807" }]}';
+      '{"name":"Curia","latitude":"29.67198651033575","longitude":"-82.33024074659807" },' +
+      '{"name":"Moisturizer","latitude":"29.678196230958015","longitude":"-82.29569554602904" }]}';
 
     const gParse = JSON.parse(galleries);
-    var length = 0;
-    for (var k in gParse)
-      if (gParse.hasOwnProperty(k)) length++;
+
+    var length = Object.keys(galleries).length;
     for (var i = 0; i < length; i++) {
       console.log(gParse);
       console.log(posLat);
       console.log(gParse.galleries[i].longitude);
-      if (Number(gParse.galleries[i].latitude) <= posLat + .5 &&
-        Number(gParse.galleries[i].longitude) <= posLng + .5) {
+      console.log(length);
+      if (Number(gParse.galleries[i].latitude) <= posLat +.1 &&
+        Number(gParse.galleries[i].longitude) <= posLng + .1) {
         console.log(gParse.galleries[i]);
         console.log("yes is running check");
       };
