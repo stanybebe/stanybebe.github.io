@@ -8,8 +8,9 @@
 </head>
 
 <body>
-
+<p id="text"></p>
   <script type="text/javascript">
+    var x = document.getElementById("text");
     var posLng;
     var posLat;
     function getLocation() {
@@ -56,6 +57,7 @@
       gParse.galleries[i].longitude,
       posLat,posLng)<= .5){
          //do something
+       x.innerHTML = gParse.galleries[i].name+"_this gallery is within half a mile of you"
        console.log(gParse.galleries[i].name+"_this gallery is within half a mile of you");
       }
 
