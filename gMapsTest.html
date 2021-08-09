@@ -41,18 +41,20 @@
     console.log(posLat);
 
     var key, length = 0;
-    for(key in galleries) {
-    if(galleries.hasOwnProperty(key)) {
+    for(key in gParse.galleries) {
+    if(gParse.galleries.hasOwnProperty(key)) {
      length++;
     }
 }
 
   //  var length = Object.keys(galleries).length;
-    console.log(length);
+    console.log(length + 'number of galleries');
 
     for (var i = 0; i < length; i++) {
 
-      if (calcCrow(galleries[i].latitude,galleries[i].longitude,posLat,posLng)>= .5){
+      if (calcCrow(gParse.galleries[i].latitude,
+      gParse.galleries[i].longitude,
+      posLat,posLng)>= .5){
          //do something
       }
 
@@ -61,7 +63,7 @@
     function calcCrow(coords1lat,coords1lng,coords2lat,coords2lng)
     {
       // var R = 6.371; // km
-      var R = 1;
+      var R = 69;
       var dLat = toRad(coords2lat-coords1lat);
       var dLon = toRad(coords2lng-coords1lng);
       var lat1 = toRad(coords1lat);
@@ -70,8 +72,11 @@
       var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
         Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2);
       var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-      var d = R * c;
-      return d;
+      var d = c;
+      var deg = (d * 180/Math.PI) * 69;
+      console.log(deg+ 'distance');
+      return deg;
+
     }
 
     // Converts numeric degrees to radians
