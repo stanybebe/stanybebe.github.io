@@ -54,8 +54,9 @@
 
       if (calcCrow(gParse.galleries[i].latitude,
       gParse.galleries[i].longitude,
-      posLat,posLng)>= .5){
+      posLat,posLng)<= .5){
          //do something
+       console.log(gParse.galleries[i].name+"_this gallery is within half a mile of you");
       }
 
     }
