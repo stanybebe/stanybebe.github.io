@@ -34,10 +34,18 @@ function draw(){
 })
 const sampler = new Tone.Sampler({
 urls: {
-  "C4": "C4.mp3"
+  "C4": "pluck.mp3"
 },
 release: 1,
-baseUrl: "https://tonejs.github.io/audio/salamander/",
+baseUrl: "https://github.com/stanybebe/stanybebe.github.io/",
+}).toDestination();
+
+const sampler2 = new Tone.Sampler({
+urls: {
+  "C4": "violin.mp3"
+},
+release: 1,
+baseUrl: "https://github.com/stanybebe/stanybebe.github.io/",
 }).toDestination();
 
   const synth = new Tone.Synth().toDestination();
