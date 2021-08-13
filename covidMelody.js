@@ -1,16 +1,11 @@
 let data = {};
 
-var midiNotes = ['C_1', 'Db_1', 'D_1', 'Eb_1', 'Fb_1', 'F_1', 'Gb_1', 'G_1', 'Ab_1', 'A_1', 'Bb_1', 'Cb0',
-                    'C0', 'Db0', 'D0', 'Eb0', 'Fb0', 'F0', 'Gb0', 'G0', 'Ab0', 'A0', 'Bb0', 'Cb1',
-                    'C1', 'Db1', 'D1', 'Eb1', 'Fb1', 'F1', 'Gb1', 'G1', 'Ab1', 'A1', 'Bb1', 'Cb2',
-                    'C2', 'Db2', 'D2', 'Eb2', 'Fb2', 'F2', 'Gb2', 'G2', 'Ab2', 'A2', 'Bb2', 'Cb3',
-                    'C3', 'Db3', 'D3', 'Eb3', 'Fb3', 'F3', 'Gb3', 'G3', 'Ab3', 'A3', 'Bb3', 'Cb4',
-                    'C4', 'Db4', 'D4', 'Eb4', 'Fb4', 'F4', 'Gb4', 'G4', 'Ab4', 'A4', 'Bb4', 'Cb5',
-                    'C5', 'Db5', 'D5', 'Eb5', 'Fb5', 'F5', 'Gb5', 'G5', 'Ab5', 'A5', 'Bb5', 'Cb6',
-                    'C6', 'Db6', 'D6', 'Eb6', 'Fb6', 'F6', 'Gb6', 'G6', 'Ab6', 'A6', 'Bb6', 'Cb7',
-                    'C7', 'Db7', 'D7', 'Eb7', 'Fb7', 'F7', 'Gb7', 'G7', 'Ab7', 'A7', 'Bb7', 'Cb8',
-                    'C8', 'Db8', 'D8', 'Eb8', 'Fb8', 'F8', 'Gb8', 'G8', 'Ab8', 'A8', 'Bb8', 'Cb9',
-                    'C9', 'Db9', 'D9', 'Eb9', 'Fb9', 'F9', 'Gb9', 'G9'];
+var midiNotes = [   'C4', 'D4', 'Eb4',  'F4',  'G4',  'A4',  'Cb5',
+                    'C5', 'D5', 'Eb5',  'F5',  'G5',  'A5',  'Cb6',
+                    'C6', 'D6', 'Eb6',  'F6','G6',  'A6',  'Cb7',
+                    'C7', 'D7', 'Eb7',  'F7', 'G7',  'A7',  'Cb8',
+                    'C8', 'D8', 'Eb8',  'F8',  'G8',  'A8',  'Cb9',
+                    'C9', 'D9', 'Eb9',  'F9', 'G9'];
 function preload(){
  data = loadJSON('https://raw.githubusercontent.com/stanybebe/stanybebe.github.io/master/covid.json');
 }
@@ -37,8 +32,16 @@ function draw(){
 	await Tone.start()
 	console.log('audio is ready')
 })
+const sampler = new Tone.Sampler({
+urls: {
+  "C4": "C4.mp3"
+},
+release: 1,
+baseUrl: "https://tonejs.github.io/audio/salamander/",
+}).toDestination();
 
   const synth = new Tone.Synth().toDestination();
+  const synth2 = new Tone.Synth().toDestination();
 //   for(var i = data.length; i > 0; i --){
 //
 //
@@ -46,29 +49,39 @@ function draw(){
 //
 //   }
  var d = [];
+ var d2 = [];
  var mN = [];
- var invertd = d.reverse();
+ var mN2 = [];
+ console.log(d2);
   for(k in data){
 
     d.push(Number(data[k].deathIncrease));
-
+    d2.push(Number(data[k].positiveIncrease));
   }
   var invertd = d.reverse();
+  var invertd2 = d2.reverse();
 
   for (var i = 0; i < invertd.length; i++) {
-    invertd[i] = mapRange([0, 10000], [63, 127], invertd[i]);
+    invertd[i] = mapRange([0, 10000], [0, 24], invertd[i]);
+    invertd2[i] = mapRange([0, 600000], [0, 24], invertd2[i]);
   }
   for(n in invertd){
     mN.push(midiNotes[round(invertd[n])]);
-
+    mN2.push(midiNotes[round(invertd2[n])]);
   }
 
  console.log(d);
  console.log(mN);
+ console.log(d2);
+ console.log(mN2);
+  console.log(midiNotes.length);
 
   const loopA = new Tone.Sequence((time,note) => {
 
-    synth.triggerAttackRelease(note, "8n",time);},mN).start(0);
+    sampler.triggerAttackRelease(note, "8n",time);},mN).start(0);
+  const loopB = new Tone.Sequence((time,note) => {
+
+      synth2.triggerAttackRelease(note, "4n",time);},mN2).start(0);
 
  Tone.Transport.start();
 
