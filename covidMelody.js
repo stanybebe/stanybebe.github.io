@@ -98,8 +98,8 @@ sampler3.connect(freeverb);
 
   for (var i = 0; i < invertd.length; i++) {
     invertd[i] = mapRange([0, 10000], [0, 24], invertd[i]);
-    invertd2[i] = mapRange([0, 600000], [0, 24], invertd2[i]);
-    invertd3[i] = mapRange([0, 60000], [0, 24], invertd3[i]);
+    invertd2[i] = mapRange([0, 700000], [0, 24], invertd2[i]);
+    invertd3[i] = mapRange([0, 70000], [0, 24], invertd3[i]);
   }
   for(n in invertd){
     mN.push(midiNotes[round(invertd[n])]);
@@ -164,7 +164,7 @@ noStroke();
 }
 pop()
 rect(-(width/2),0,2,10);
-console.log(loopA.progress+"prog");
+console.log(Tone.Transport.ticks+"prog");
 
  }
 // Number(data[k].deathIncrease)
