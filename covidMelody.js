@@ -1,6 +1,4 @@
 let data = {};
-let font,
-  fontsize = 32;
 
 var midiNotes = [   'C4', 'D4', 'Eb4',  'F4',  'G4',  'A4',  'Cb5',
                     'C5', 'D5', 'Eb5',  'F5',  'G5',  'A5',  'Cb6',
@@ -10,9 +8,6 @@ var midiNotes = [   'C4', 'D4', 'Eb4',  'F4',  'G4',  'A4',  'Cb5',
                     'C9', 'D9', 'Eb9',  'F9', 'G9'];
 function preload(){
  data = loadJSON('https://raw.githubusercontent.com/stanybebe/stanybebe.github.io/master/covid.json');
- font = loadFont('assets/EB.ttf');
-}
-
 }
 
 function setup(){
@@ -22,9 +17,6 @@ var width = myCanvas2.offsetWidth;
 
 var sketchCanvas = createCanvas(width,500, WEBGL);
 sketchCanvas.parent("myCanvas2");
-textFont(font);
-textSize(fontsize);
-textAlign(CENTER, CENTER);
 
 }
 
@@ -169,16 +161,7 @@ noStroke();
   rect(i*2.8,100,1,-invertd3[i]*20);
 }
 pop()
-
-push();
-
-translate(-width/2,0);
-
-fill(c);
-noStroke();
-rect(i*2.8,100,1,-invertd3[i]*20);
-}
-pop()
+rect(loopA.progress-(width/2),0,2,10);
+console.log(loopA.progress+"prog");
  }
- text
 // Number(data[k].deathIncrease)
