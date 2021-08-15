@@ -41,7 +41,7 @@ const sampler = new Tone.Sampler({
 urls: {
   "C4": "pluck.mp3"
 },
-attack:3,
+attack:20,
 release: 5,
 baseUrl: "https://tristanwhitehill.com/audio/",
 });
@@ -50,7 +50,7 @@ const sampler2 = new Tone.Sampler({
 urls: {
   "C4": "violin.mp3"
 },
-attack:7,
+attack:50,
 release: 1,
 baseUrl: "https://tristanwhitehill.com/audio/",
 });
@@ -59,12 +59,13 @@ const sampler3 = new Tone.Sampler({
 urls: {
   "C4": "pluck2.mp3"
 },
-attack:3,
+attack:20,
 release:5,
+
 baseUrl: "https://tristanwhitehill.com/audio/",
 });
 
-const freeverb = new Tone.FeedbackDelay("8n", 0.7).toDestination();
+const freeverb = new Tone.FeedbackDelay("4n", 0.5).toDestination();
 
 sampler.connect(freeverb);
 sampler2.connect(freeverb);
@@ -122,6 +123,7 @@ sampler3.connect(freeverb);
 
     sampler3.triggerAttackRelease(note, "4n",time);},mN3).start(0);
  Tone.Transport.start();
+ Tone.Transport.bpm.value =85;
 
   for(j in data){
    console.log(data[j].deathIncrease);
@@ -161,7 +163,8 @@ noStroke();
   rect(i*2.8,100,1,-invertd3[i]*20);
 }
 pop()
-rect(loopA.progress-(width/2),0,2,10);
+rect(-(width/2),0,2,10);
 console.log(loopA.progress+"prog");
+
  }
 // Number(data[k].deathIncrease)
