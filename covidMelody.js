@@ -59,13 +59,13 @@ const sampler3 = new Tone.Sampler({
 urls: {
   "C4": "pluck2.mp3"
 },
-attack:20,
+attack:30,
 release:5,
 
 baseUrl: "https://tristanwhitehill.com/audio/",
 });
 
-const freeverb = new Tone.FeedbackDelay("4n", 0.5).toDestination();
+const freeverb = new Tone.FeedbackDelay("4n", 0.2).toDestination();
 
 sampler.connect(freeverb);
 sampler2.connect(freeverb);
@@ -112,9 +112,13 @@ sampler3.connect(freeverb);
  console.log(d2);
  console.log(mN2);
  console.log(midiNotes.length);
-
+var tick =0;
   const loopA = new Tone.Sequence((time,note) => {
-
+    Tone.Draw.schedule(function(){
+  		//this callback is invoked from a requestAnimationFrame
+  		//and will be invoked close to AudioContext time
+      tick++;
+  	}, time) //use AudioContext time of the event
     sampler.triggerAttackRelease(note, "8n",time);},mN).start(0);
   const loopB = new Tone.Sequence((time,note) => {
 
@@ -123,7 +127,7 @@ sampler3.connect(freeverb);
 
     sampler3.triggerAttackRelease(note, "4n",time);},mN3).start(0);
  Tone.Transport.start();
- Tone.Transport.bpm.value =85;
+ Tone.Transport.bpm.value =95;
 
   for(j in data){
    console.log(data[j].deathIncrease);
@@ -164,7 +168,7 @@ noStroke();
 }
 pop()
 rect(-(width/2),0,2,10);
-console.log(Tone.Transport.ticks+"prog");
+console.log(tick);
 
  }
 // Number(data[k].deathIncrease)
