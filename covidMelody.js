@@ -30,13 +30,13 @@ var mapRange = function(from, to, s) {
 function draw(){
   background(50,150,255);
  var isOn =false;
-  document.querySelector('button')?.addEventListener('click', async () => {
-	await Tone.start()
-    isOn = true;
-  Tone.context.resume();
-  Tone.Transport.start();
-	console.log('audio is ready')
-})
+//   document.querySelector('button')?.addEventListener('click', async () => {
+// 	await Tone.start()
+//     isOn = true;
+//   Tone.context.resume();
+//   Tone.Transport.start();
+// 	console.log('audio is ready')
+// })
 
 
 const sampler = new Tone.Sampler({
@@ -67,11 +67,6 @@ release:5,
 baseUrl: "https://tristanwhitehill.com/audio/",
 });
 
-const freeverb = new Tone.FeedbackDelay("4n", 0.2).toDestination();
-
-sampler.connect(freeverb);
-sampler2.connect(freeverb);
-sampler3.connect(freeverb);
 
   const synth = new Tone.Synth().toDestination();
   const synth2 = new Tone.Synth().toDestination();
@@ -97,11 +92,13 @@ sampler3.connect(freeverb);
   var invertd = d.reverse();
   var invertd2 = d2.reverse();
   var invertd3 = d3.reverse();
+  var invertd4 = invertd;
 
   for (var i = 0; i < invertd.length; i++) {
     invertd[i] = mapRange([0, 10000], [0, 24], invertd[i]);
     invertd2[i] = mapRange([0, 700000], [0, 24], invertd2[i]);
     invertd3[i] = mapRange([0, 70000], [0, 24], invertd3[i]);
+    invertd4[i] = mapRange([0, 10000], [0, 10000], invertd4[i]);
   }
   for(n in invertd){
     mN.push(midiNotes[round(invertd[n])]);
@@ -116,15 +113,16 @@ sampler3.connect(freeverb);
  console.log(midiNotes.length);
 
   const loopA = new Tone.Sequence((time,note) => {
-    loopA.loop=false;
+
+
     Tone.Draw.schedule(function(){
   		//this callback is invoked from a requestAnimationFrame
   		//and will be invoked close to AudioContext time
 
-     console.log(note);
+
      noStroke();
      var pTime = time;
-     rect((time*(width/132))-(width/2)-10-pTime,-height/2,5,10);
+     rect((time*(width/132))-(width/2)-10,-height/2,5,10);
 
   //   console.log(tick);
 
@@ -138,8 +136,20 @@ sampler3.connect(freeverb);
       loopC.loop=false;
     sampler3.triggerAttackRelease(note, "4n",time);},mN3).start(0);
 
- Tone.Transport.bpm.value =95;
+    const freeverb = new Tone.FeedbackDelay("4n", 0.7).toDestination();
+    const filter = new Tone.Filter(100, "lowpass").connect(freeverb);
+    filter.frequency.rampTo(20000, 100);
 
+
+
+
+   console.log(Tone.Transport.time);
+    sampler.connect(filter);
+    sampler2.connect(filter);
+    sampler3.connect(filter);
+
+ Tone.Transport.bpm.value =95;
+ Tone.Transport.start();
   for(j in data){
    console.log(data[j].deathIncrease);
 }
