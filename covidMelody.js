@@ -29,10 +29,12 @@ var mapRange = function(from, to, s) {
 
 function draw(){
   background(50,150,255);
-
-
+ var isOn =false;
   document.querySelector('button')?.addEventListener('click', async () => {
 	await Tone.start()
+    isOn = true;
+  Tone.context.resume();
+  Tone.Transport.start();
 	console.log('audio is ready')
 })
 
@@ -112,21 +114,30 @@ sampler3.connect(freeverb);
  console.log(d2);
  console.log(mN2);
  console.log(midiNotes.length);
-var tick =0;
+
   const loopA = new Tone.Sequence((time,note) => {
+    loopA.loop=false;
     Tone.Draw.schedule(function(){
   		//this callback is invoked from a requestAnimationFrame
   		//and will be invoked close to AudioContext time
-      tick++;
+
+     console.log(note);
+     noStroke();
+     var pTime = time;
+     rect((time*(width/132))-(width/2)-10-pTime,-height/2,5,10);
+
+  //   console.log(tick);
+
   	}, time) //use AudioContext time of the event
     sampler.triggerAttackRelease(note, "8n",time);},mN).start(0);
   const loopB = new Tone.Sequence((time,note) => {
+      loopB.loop=false;
 
     sampler2.triggerAttackRelease(note, "4n",time);},mN2).start(0);
   const loopC = new Tone.Sequence((time,note) => {
-
+      loopC.loop=false;
     sampler3.triggerAttackRelease(note, "4n",time);},mN3).start(0);
- Tone.Transport.start();
+
  Tone.Transport.bpm.value =95;
 
   for(j in data){
@@ -167,8 +178,7 @@ noStroke();
   rect(i*2.8,100,1,-invertd3[i]*20);
 }
 pop()
-rect(-(width/2),0,2,10);
-console.log(tick);
+
 
  }
 // Number(data[k].deathIncrease)
