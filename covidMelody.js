@@ -7,6 +7,7 @@ var midiNotes = [   'C4', 'D4', 'Eb4',  'F4',  'G4',  'A4',  'Cb5',
                     'C8', 'D8', 'Eb8',  'F8',  'G8',  'A8',  'Cb9',
                     'C9', 'D9', 'Eb9',  'F9', 'G9'];
 function preload(){
+ myFont = loadFont('https://raw.githubusercontent.com/stanybebe/stanybebe.github.io/master/vcr.ttf');
  data = loadJSON('https://raw.githubusercontent.com/stanybebe/stanybebe.github.io/master/covid.json');
 }
 
@@ -30,13 +31,17 @@ var mapRange = function(from, to, s) {
 function draw(){
   background(50,150,255);
  var isOn =false;
-//   document.querySelector('button')?.addEventListener('click', async () => {
-// 	await Tone.start()
-//     isOn = true;
-//   Tone.context.resume();
-//   Tone.Transport.start();
-// 	console.log('audio is ready')
-// })
+
+ if (isOn ==false){
+    Tone.stop;
+ }
+  document.querySelector('button')?.addEventListener('click', async () => {
+	await Tone.start()
+    isOn = true;
+
+  Tone.Transport.start();
+	console.log('audio is ready')
+})
 
 
 const sampler = new Tone.Sampler({
@@ -92,13 +97,13 @@ baseUrl: "https://tristanwhitehill.com/audio/",
   var invertd = d.reverse();
   var invertd2 = d2.reverse();
   var invertd3 = d3.reverse();
-  var invertd4 = invertd;
+
 
   for (var i = 0; i < invertd.length; i++) {
     invertd[i] = mapRange([0, 10000], [0, 24], invertd[i]);
-    invertd2[i] = mapRange([0, 700000], [0, 24], invertd2[i]);
+    invertd2[i] = mapRange([0, 700000], [0, 16], invertd2[i]);
     invertd3[i] = mapRange([0, 70000], [0, 24], invertd3[i]);
-    invertd4[i] = mapRange([0, 10000], [0, 10000], invertd4[i]);
+
   }
   for(n in invertd){
     mN.push(midiNotes[round(invertd[n])]);
@@ -113,7 +118,7 @@ baseUrl: "https://tristanwhitehill.com/audio/",
  console.log(midiNotes.length);
 
   const loopA = new Tone.Sequence((time,note) => {
-
+     loopA.loop=false;
 
     Tone.Draw.schedule(function(){
   		//this callback is invoked from a requestAnimationFrame
@@ -121,8 +126,7 @@ baseUrl: "https://tristanwhitehill.com/audio/",
 
 
      noStroke();
-     var pTime = time;
-     rect((time*(width/132))-(width/2)-10,-height/2,5,10);
+
 
   //   console.log(tick);
 
@@ -149,7 +153,7 @@ baseUrl: "https://tristanwhitehill.com/audio/",
     sampler3.connect(filter);
 
  Tone.Transport.bpm.value =95;
- Tone.Transport.start();
+ // Tone.Transport.start();
   for(j in data){
    console.log(data[j].deathIncrease);
 }
@@ -188,7 +192,17 @@ noStroke();
   rect(i*2.8,100,1,-invertd3[i]*20);
 }
 pop()
-
+textSize(15);
+textFont(myFont);
+text(' x:days(0-420)',-width/2,185);
+let c = color(255, 0, 0);
+fill(c);
+text(' y:death increase per day(0-10000)',-width/2,200);
+let c2 = color(0, 0, 0);
+fill(c2);
+text(' y:positive increase per day(0-700000)',-width/2,215);
+let c3 = color(255);
+fill(c3);
+text(' y:cumulative in ICU(0-70000)',-width/2,230);
 
  }
-// Number(data[k].deathIncrease)
