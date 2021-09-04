@@ -63,7 +63,12 @@ li a:hover {
   margin: 4px 2px;
   cursor: pointer;
 }
+.pad {
+  font-size: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
 
+}
 .button1 {background-color:  #F9C8B6;}
 
 * {
