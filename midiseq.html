@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.js"></script>
+  <script src="p5.js"></script>
+  </head>
+  <body>
+
+    <tone-example label="Step Sequencer">
+		<tone-loader></tone-loader>
+		<div slot="explanation">
+			<a href="https://tonejs.github.io/docs/Transport">Tone.Transport</a>
+			is the application-wide timekeeper. It's clock source enables sample-accurate scheduling as well as tempo-curves and automation. This example uses Tone.Sequence to invoke a callback every 16th note.
+		</div>
+
+		<div id="content">
+			<tone-play-toggle></tone-play-toggle>
+			<tone-slider label="tempo" units="bpm" min="60" max="240" value="120"></tone-slider>
+			<tone-step-sequencer></tone-step-sequencer>
+		</div>
+	</tone-example>
+
+	<script type="text/javascript">
+		const keys = new Tone.Players({
+			urls: {
+				0: "A1.mp3",
+				1: "Cs2.mp3",
+				2: "E2.mp3",
+				3: "Fs2.mp3",
+			},
+			fadeOut: "64n",
+			baseUrl: "https://tonejs.github.io/audio/casio/"
+		}).toDestination();
+
+		document.querySelector("tone-play-toggle").addEventListener("start", () => Tone.Transport.start());
+		document.querySelector("tone-play-toggle").addEventListener("stop", () => Tone.Transport.stop());
+		document.querySelector("tone-slider").addEventListener("input", (e) => Tone.Transport.bpm.value = parseFloat(e.target.value));
+		document.querySelector("tone-step-sequencer").addEventListener("trigger", ({ detail }) => {
+			keys.player(detail.row).start(detail.time, 0, "16t");
+		});
+
+	</script>
+
+
+
+  </body>
+</html>
