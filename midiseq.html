@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <style>
+        .col {
+            -webkit-column-count: 6; /* Chrome, Safari, Opera */
+            -moz-column-count: 6; /* Firefox */
+            column-count: 2;
+        }
+        </style>
+    <meta content="X-Content-Type-Options: nosniff" charset="utf-8">
+    <title></title>
+      <link rel="stylesheet" href="main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.js"></script>
+  <script src="p5.js"></script>
+  </head>
+  <body onload="printBtn();">
+    <header class="title" >
+      <h1 style="font-family:vcr_osd_monoregular;"> MidiSeqTest </h1>
+      <a style="font-family:vcr_osd_monoregular;" href="index"> Home</a>
+    </header>
+    <input type="checkbox" id="play" >PLAY</button>
+    <input type="range" id="tempo" min="1000" max="5000" value="2000">
+
+    <div class="copy" >
+
+    </div>
+
+  <script src="midiseq.js"></script>
+ 
+  </body>
+</html>
