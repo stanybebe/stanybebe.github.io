@@ -3,15 +3,19 @@
 
 
 var isOn;
+var count=0;
+var vol;
 var tempo = document.getElementById('tempo');
-const refreshRate = 1000 / 5;
+const refreshRate = 1000 / 63;
 var index=0;
  document.getElementById('play').checked = false;
 
 var notes =['C4','C#4','D4','D#4','E4','F4','F#4','G4','G#4','A4', 'A#4', "B4"];   
 
 var notesToPlay = [];
-const synth = new Tone.MonoSynth().toDestination();
+const synth = new Tone.MonoSynth({
+    volume: vol
+}).toDestination();
 var selected = document.getElementById('div'+index);
 function printBtn() {
 
@@ -83,31 +87,36 @@ play.addEventListener('change', () => {
 
 
     setInterval(() => {  
-
+  
+    
+    count++;
+    // console.log(count);
+    if(count > document.getElementById('tempo').value){
+    count = 0;
     if(isOn===true){  
-
+    
     updateSeq();
     index++;
     var prevIndex = index -1;
-    synth.triggerAttackRelease(notesToPlay[0],'2n');
-    synth.volume=.5;
-
+   
+    synth.triggerAttackRelease(notesToPlay[0],'32n');
+    
+    synth.volume.value=0 ;
     if(index>=16){
         index = 0;
     }
     if(index != prevIndex){
         notesToPlay.length = 0;
-        synth.volume=0;
+        synth.volume.rampTo(0, .5);
+
         var selected = document.getElementById('div'+index);
         selected.style.backgroundColor = "red";
     
 
     }
-   if (notesToPlay.length=0){
-       synth.volume=0;
-   }
 
-}}
+
+}}}
 ,refreshRate);
 
 
