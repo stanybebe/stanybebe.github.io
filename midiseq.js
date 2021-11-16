@@ -31,11 +31,10 @@ const sampler = new Tone.Sampler({
     urls: {
       "C4": "test.mp3"
     },
-    attack:1,
-    release:0,
-    
+    attack:0,
+    release: .5,
     baseUrl: "https://tristanwhitehill.com/audio/",
-    });
+    }).toDestination();
 var selected = document.getElementById('div'+index);
 function printBtn() {
 
@@ -119,7 +118,10 @@ play.addEventListener('change', () => {
     index++;
     var prevIndex = index -1;
     
-    sampler.triggerAttack(notesToPlay[0],0, 0.3 );
+    if(notesToPlay.length === 1){
+        sampler.triggerAttackRelease(notesToPlay[0],'64n');
+    console.log("hi");
+    }   
 
     
     
@@ -138,9 +140,7 @@ play.addEventListener('change', () => {
 
     }
 
-if(notesToPlay.length===0){
 
-}
 }}}
 ,refreshRate);
 
