@@ -4,18 +4,29 @@
 
 var isOn;
 var count=0;
-var vol;
+
 var tempo = document.getElementById('tempo');
+var checkbox = document.getElementById('play');
+Tone.setContext(new Tone.Context({ latencyHint : "interactive" }))
+checkbox.addEventListener('change',async function() {
+  if (this.checked) {
+        await Tone.start()
+        isOn = true;
+  } else {
+    Tone.stop;
+  }
+});
 const refreshRate = 1000 / 63;
 var index=0;
  document.getElementById('play').checked = false;
-
+ document.querySelector('play')?.addEventListener('checked', async () => {
+	await Tone.start()
+	console.log('audio is ready')
+})
 var notes =['C4','C#4','D4','D#4','E4','F4','F#4','G4','G#4','A4', 'A#4', "B4"];   
 
 var notesToPlay = [];
-const synth = new Tone.MonoSynth({
-    volume: vol
-}).toDestination();
+const synth = new Tone.Synth().toDestination();
 var selected = document.getElementById('div'+index);
 function printBtn() {
 
@@ -61,7 +72,7 @@ function updateSeq(){
 
  for (let i = 0; i < selected.children.length; i++) {
     if(selected.children[i].checked){
-    notesToPlay.push(selected.children[i].value);
+    notesToPlay.unshift(selected.children[i].value);
     console.log(notesToPlay);
     }else{
    
@@ -94,20 +105,23 @@ play.addEventListener('change', () => {
     if(count > document.getElementById('tempo').value){
     count = 0;
     if(isOn===true){  
-    
+    Tone.start();
     updateSeq();
     index++;
     var prevIndex = index -1;
-   
-    synth.triggerAttackRelease(notesToPlay[0],'32n');
     
-    synth.volume.value=0 ;
+    synth.triggerAttack(notesToPlay[0],0, 0.3 );
+
+    
+    
+
     if(index>=16){
         index = 0;
     }
     if(index != prevIndex){
+      
         notesToPlay.length = 0;
-        synth.volume.rampTo(0, .5);
+        
 
         var selected = document.getElementById('div'+index);
         selected.style.backgroundColor = "red";
@@ -115,9 +129,12 @@ play.addEventListener('change', () => {
 
     }
 
+if(notesToPlay.length===0){
 
+}
 }}}
 ,refreshRate);
+
 
 
 
