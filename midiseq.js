@@ -24,8 +24,10 @@ var index=0;
 	console.log('audio is ready')
 })
 var notes =['C4','C#4','D4','D#4','E4','F4','F#4','G4','G#4','A4', 'A#4', "B4"];   
+var notesB =['C2','C#2','D2','D#2','E2','F2','F#2','G2','G#2','A2', 'A#2', "B2"]; 
 
 var notesToPlay = [];
+var notesToPlayB = [];
 const synth = new Tone.Synth().toDestination();
 const sampler = new Tone.Sampler({
     urls: {
@@ -36,6 +38,7 @@ const sampler = new Tone.Sampler({
     baseUrl: "https://tristanwhitehill.com/audio/",
     }).toDestination();
 var selected = document.getElementById('div'+index);
+var selectedB = document.getElementById('divB'+index);
 function printBtn() {
 
    
@@ -54,8 +57,9 @@ function printBtn() {
        btn.setAttribute("id","btn"+j);
        btn.setAttribute("value",notes[j]);
 
+ 
 
-
+        
 
    
        
@@ -68,6 +72,46 @@ function printBtn() {
     }
  
 }
+
+function printBtnB() {
+
+    let br = document.createElement("br");
+    document.body.appendChild(br);
+
+    for (var i = 0; i < 16; i++) {
+        let divB = document.createElement("div")
+        divB.setAttribute("style", "display: block;width:270px;");
+        divB.setAttribute("id","divB"+i);
+        document.body.appendChild(divB);
+        
+
+        for (var j = 0; j < 12; j++) {
+       var btnB = document.createElement("input");
+       btnB.setAttribute("type", "radio");
+       btnB.setAttribute("name", "groupB"+i);
+       btnB.setAttribute("class", "btnB");
+       btnB.setAttribute("id","btnB"+j);
+       btnB.setAttribute("value",notesB[j]);
+
+ 
+
+        
+
+   
+       
+    //    var t = document.createTextNode(listB[i]);
+    //    btn.appendChild(t);
+       divB.appendChild(btnB);
+     
+        }
+      
+    }
+ 
+}
+
+
+
+
 function updateSeq(){
    
     var selected = document.getElementById('div'+index);
@@ -89,7 +133,33 @@ function updateSeq(){
   
   }
 
- console.log(notesToPlay);
+//  console.log(notesToPlay);
+
+
+}
+
+function updateSeqB(){
+   
+    var selectedB = document.getElementById('divB'+index);
+    
+    selectedB.style.backgroundColor = "red";
+    selectedB.style.backgroundColor = "white";
+     
+
+
+
+ for (let i = 0; i < selectedB.children.length; i++) {
+    if(selectedB.children[i].checked){
+    notesToPlayB.unshift(selectedB.children[i].value);
+    console.log(notesToPlay);
+    }else{
+   
+    }
+      
+  
+  }
+
+//  console.log(notesToPlay);
 
 
 }
@@ -115,11 +185,17 @@ play.addEventListener('change', () => {
     if(isOn===true){  
     Tone.start();
     updateSeq();
+    updateSeqB();
     index++;
     var prevIndex = index -1;
     
     if(notesToPlay.length === 1){
         sampler.triggerAttackRelease(notesToPlay[0],'64n');
+    console.log("hi");
+    }   
+
+    if(notesToPlayB.length === 1){
+        synth.triggerAttackRelease(notesToPlayB[0],'64n');
     console.log("hi");
     }   
 
@@ -132,10 +208,13 @@ play.addEventListener('change', () => {
     if(index != prevIndex){
       
         notesToPlay.length = 0;
+        notesToPlayB.length = 0;
         
 
         var selected = document.getElementById('div'+index);
         selected.style.backgroundColor = "red";
+        var selectedB = document.getElementById('divB'+index);
+        selectedB.style.backgroundColor = "red";
     
 
     }
