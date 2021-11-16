@@ -27,6 +27,15 @@ var notes =['C4','C#4','D4','D#4','E4','F4','F#4','G4','G#4','A4', 'A#4', "B4"];
 
 var notesToPlay = [];
 const synth = new Tone.Synth().toDestination();
+const sampler = new Tone.Sampler({
+    urls: {
+      "C4": "test.mp3"
+    },
+    attack:1,
+    release:0,
+    
+    baseUrl: "https://tristanwhitehill.com/audio/",
+    });
 var selected = document.getElementById('div'+index);
 function printBtn() {
 
@@ -110,7 +119,7 @@ play.addEventListener('change', () => {
     index++;
     var prevIndex = index -1;
     
-    synth.triggerAttack(notesToPlay[0],0, 0.3 );
+    sampler.triggerAttack(notesToPlay[0],0, 0.3 );
 
     
     
