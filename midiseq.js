@@ -27,6 +27,7 @@ function printBtn() {
        var btn = document.createElement("input");
        btn.setAttribute("type", "radio");
        btn.setAttribute("name", "group"+i);
+       btn.setAttribute("class", "btn");
        btn.setAttribute("id","btn"+j);
        btn.setAttribute("value",notes[j]);
 
@@ -81,7 +82,7 @@ play.addEventListener('change', () => {
 
 
 
-    window.setInterval(() => {  
+    setInterval(() => {  
 
     if(isOn===true){  
 
