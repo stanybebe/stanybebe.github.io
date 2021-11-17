@@ -37,6 +37,15 @@ const sampler = new Tone.Sampler({
     release: .5,
     baseUrl: "https://tristanwhitehill.com/audio/",
     }).toDestination();
+
+const samplerB = new Tone.Sampler({
+    urls: {
+      "C3": "bass.mp3"
+    },
+    attack:0,
+    release: .5,
+    baseUrl: "https://tristanwhitehill.com/audio/",
+    }).toDestination();    
 var selected = document.getElementById('div'+index);
 var selectedB = document.getElementById('divB'+index);
 function printBtn() {
