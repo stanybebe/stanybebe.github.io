@@ -24,8 +24,27 @@ var notesB =['C2','C#2','D2','D#2','E2','F2','F#2','G2','G#2','A2', 'A#2', "B2"]
 
 var notesToPlay = [];
 var notesToPlayB = [];
-const synth = new Tone.Synth().toDestination();
-const synthB = new Tone.Synth().toDestination();
+const synth = new Tone.Synth({
+    "oscillator": {
+    "partialCount": 7,
+	"partials": [
+		1.2732395447351628,
+		0,
+		0.019775390625,
+		0,
+		0.25464790894703254,
+		0,
+		0.0018838011188271615
+	],
+	"phase": 0,
+	"type": "custom"
+}
+}).toDestination();
+const synthB = new Tone.Synth({
+    "oscillator": {
+    "type": "sawtooth"
+    }
+}).toDestination();
 const sampler = new Tone.Sampler({
     urls: {
       "C4": "test.mp3"
@@ -159,12 +178,12 @@ play.addEventListener('change', () => {
     var prevIndex = index -1;
     
     if(notesToPlay.length === 1){
-        synth.triggerAttackRelease(notesToPlay[0],'64n');
+        synthB.triggerAttackRelease(notesToPlay[0],'64n');
  
     }   
 
     if(notesToPlayB.length === 1){
-        synthB.triggerAttackRelease(notesToPlayB[0],'64n');
+        synth.triggerAttackRelease(notesToPlayB[0],'64n');
 
     }   
 
