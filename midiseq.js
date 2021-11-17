@@ -159,12 +159,12 @@ play.addEventListener('change', () => {
     var prevIndex = index -1;
     
     if(notesToPlay.length === 1){
-        synth.triggerAttackRelease(notesToPlay[0],'64n');
+        sampler.triggerAttackRelease(notesToPlay[0],'64n');
  
     }   
 
     if(notesToPlayB.length === 1){
-        synthB.triggerAttackRelease(notesToPlayB[0],'64n');
+        samplerB.triggerAttackRelease(notesToPlayB[0],'64n');
 
     }   
 
