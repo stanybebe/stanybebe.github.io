@@ -1,7 +1,3 @@
-
-
-
-
 var isOn;
 var count=0;
 
@@ -40,7 +36,7 @@ const sampler = new Tone.Sampler({
 
 const samplerB = new Tone.Sampler({
     urls: {
-      "C3": "bass.mp3"
+      "C4": "bass.mp3"
     },
     attack:0,
     release: .5,
@@ -65,15 +61,6 @@ function printBtn() {
        btn.setAttribute("class", "btn");
        btn.setAttribute("id","btn"+j);
        btn.setAttribute("value",notes[j]);
-
- 
-
-        
-
-   
-       
-    //    var t = document.createTextNode(listB[i]);
-    //    btn.appendChild(t);
        div.appendChild(btn);
      
         }
@@ -101,15 +88,6 @@ function printBtnB() {
        btnB.setAttribute("class", "btnB");
        btnB.setAttribute("id","btnB"+j);
        btnB.setAttribute("value",notesB[j]);
-
- 
-
-        
-
-   
-       
-    //    var t = document.createTextNode(listB[i]);
-    //    btn.appendChild(t);
        divB.appendChild(btnB);
      
         }
@@ -119,31 +97,20 @@ function printBtnB() {
 }
 
 
-
-
 function updateSeq(){
    
     var selected = document.getElementById('div'+index);
     
     selected.style.backgroundColor = "red";
     selected.style.backgroundColor = "white";
-     
-
-
 
  for (let i = 0; i < selected.children.length; i++) {
     if(selected.children[i].checked){
     notesToPlay.unshift(selected.children[i].value);
     console.log(notesToPlay);
-    }else{
-   
     }
-      
   
   }
-
-//  console.log(notesToPlay);
-
 
 }
 
@@ -153,22 +120,16 @@ function updateSeqB(){
     
     selectedB.style.backgroundColor = "red";
     selectedB.style.backgroundColor = "white";
-     
-
 
 
  for (let i = 0; i < selectedB.children.length; i++) {
     if(selectedB.children[i].checked){
     notesToPlayB.unshift(selectedB.children[i].value);
     console.log(notesToPlay);
-    }else{
-   
     }
       
   
   }
-
-//  console.log(notesToPlay);
 
 
 }
@@ -181,8 +142,6 @@ play.addEventListener('change', () => {
       isOn = false;
     }
   });
-
-
 
     setInterval(() => {  
   
@@ -208,8 +167,7 @@ play.addEventListener('change', () => {
     console.log("hi");
     }   
 
-    
-    
+
 
     if(index>=16){
         index = 0;
@@ -231,8 +189,6 @@ play.addEventListener('change', () => {
 
 }}}
 ,refreshRate);
-
-
 
 
 console.log(index);
