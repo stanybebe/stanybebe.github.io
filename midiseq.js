@@ -3,7 +3,7 @@ var count=0;
 
 var tempo = document.getElementById('tempo');
 var checkbox = document.getElementById('play');
-Tone.setContext(new Tone.Context({ latencyHint : "interactive" }))
+
 checkbox.addEventListener('change',async function() {
   if (this.checked) {
         await Tone.start()
@@ -159,12 +159,12 @@ play.addEventListener('change', () => {
     
     if(notesToPlay.length === 1){
         sampler.triggerAttackRelease(notesToPlay[0],'64n');
-    console.log("hi");
+ 
     }   
 
     if(notesToPlayB.length === 1){
-        synth.triggerAttackRelease(notesToPlayB[0],'64n');
-    console.log("hi");
+        samplerB.triggerAttackRelease(notesToPlayB[0],'64n');
+
     }   
 
 
