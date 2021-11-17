@@ -25,6 +25,7 @@ var notesB =['C2','C#2','D2','D#2','E2','F2','F#2','G2','G#2','A2', 'A#2', "B2"]
 var notesToPlay = [];
 var notesToPlayB = [];
 const synth = new Tone.Synth().toDestination();
+const synthB = new Tone.Synth().toDestination();
 const sampler = new Tone.Sampler({
     urls: {
       "C4": "test.mp3"
@@ -36,7 +37,7 @@ const sampler = new Tone.Sampler({
 
 const samplerB = new Tone.Sampler({
     urls: {
-      "C4": "bass.mp3"
+      "C3": "bass.mp3"
     },
     attack:0,
     release: .5,
@@ -158,12 +159,12 @@ play.addEventListener('change', () => {
     var prevIndex = index -1;
     
     if(notesToPlay.length === 1){
-        sampler.triggerAttackRelease(notesToPlay[0],'64n');
+        synth.triggerAttackRelease(notesToPlay[0],'64n');
  
     }   
 
     if(notesToPlayB.length === 1){
-        samplerB.triggerAttackRelease(notesToPlayB[0],'64n');
+        synthB.triggerAttackRelease(notesToPlayB[0],'64n');
 
     }   
 
