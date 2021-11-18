@@ -12,7 +12,7 @@ checkbox.addEventListener('change',async function() {
     Tone.stop;
   }
 });
-const refreshRate = 1000 / 63;
+const refreshRate = 1000 / 64;
 var index=0;
  document.getElementById('play').checked = false;
  document.querySelector('play')?.addEventListener('checked', async () => {
@@ -20,50 +20,71 @@ var index=0;
 	console.log('audio is ready')
 })
 var notes =['C4','C#4','D4','D#4','E4','F4','F#4','G4','G#4','A4', 'A#4', "B4"];   
-var notesB =['C2','C#2','D2','D#2','E2','F2','F#2','G2','G#2','A2', 'A#2', "B2"]; 
+var notesB =['C1','C#1','D1','D#1','E1','F1','F#1','G1','G#1','A1', 'A#1', "B1"]; 
+var notesD =['C1','D1','D#1','F#2']; 
 
 var notesToPlay = [];
 var notesToPlayB = [];
+var notesToPlayK = [];
+var notesToPlayS = [];
+var notesToPlayH = [];
+var notesToPlayC = [];
+const reverb = new Tone.Reverb({
+	"wet": .5,
+	"decay": 2.5,
+	"preDelay": 0.01
+}).toDestination();
+
+const filterLead = new Tone.Filter(2000, "lowpass").connect(reverb);
+const filterBass = new Tone.Filter(500, "lowpass").toDestination();
+const filterSnare = new Tone.Filter(3500, "bandpass").toDestination();
+const filterClap = new Tone.Filter(5500, "bandpass").connect(reverb);
+const filterHH = new Tone.Filter(6500, "highpass").toDestination();
+
 const synth = new Tone.Synth({
     "oscillator": {
-    "partialCount": 7,
-	"partials": [
-		1.2732395447351628,
-		0,
-		0.019775390625,
-		0,
-		0.25464790894703254,
-		0,
-		0.0018838011188271615
-	],
-	"phase": 0,
-	"type": "custom"
+     "type": "sawtooth"
+    // "partialCount": 7,
+	// "partials": [
+	// 	1.2732395447351628,
+	// 	0,
+	// 	0.019775390625,
+	// 	0,
+	// 	0.25464790894703254,
+	// 	0,
+	// 	0.0018838011188271615
+	// ],
+	// "phase": 0,
+	// "type": "custom"
 }
-}).toDestination();
+}).connect(filterLead);
+synth.volume.value =-5;
 const synthB = new Tone.Synth({
     "oscillator": {
     "type": "sawtooth"
     }
+}).connect(filterBass);
+synthB.volume.value =-5;
+const synthK = new Tone.Synth({
+    "oscillator": {
+    "type": "sine"
+    }
 }).toDestination();
-const sampler = new Tone.Sampler({
-    urls: {
-      "C4": "test.mp3"
-    },
-    attack:0,
-    release: .5,
-    baseUrl: "https://tristanwhitehill.com/audio/",
-    }).toDestination();
 
-const samplerB = new Tone.Sampler({
-    urls: {
-      "C3": "bass.mp3"
-    },
-    attack:0,
-    release: .5,
-    baseUrl: "https://tristanwhitehill.com/audio/",
-    }).toDestination();    
+const synthSTone = new Tone.Synth({
+    "oscillator": {
+    "type": "sine"
+    }
+}).connect(filterSnare);
+synthSTone.volume.value =-2;
+const synthSN = new Tone.NoiseSynth().connect(filterSnare);
+const synthC = new Tone.NoiseSynth().connect(filterClap);
+const synthH = new Tone.NoiseSynth().connect(filterHH);
+
 var selected = document.getElementById('div'+index);
 var selectedB = document.getElementById('divB'+index);
+var selectedD = document.getElementById('divD'+index);
+
 function printBtn() {
 
    
@@ -116,6 +137,34 @@ function printBtnB() {
  
 }
 
+function printBtnD() {
+
+    let brB = document.createElement("br");
+    document.body.appendChild(brB);
+
+    for (var i = 0; i < 16; i++) {
+        let divD = document.createElement("div")
+        divD.setAttribute("style", "display: block;width:270px;");
+        divD.setAttribute("id","divD"+i);
+        document.body.appendChild(divD);
+        
+
+        for (var j = 0; j < 4; j++) {
+       var btnD = document.createElement("input");
+       btnD.setAttribute("type", "checkbox");
+       btnD.setAttribute("name", "groupD"+i);
+       btnD.setAttribute("class", "btnD");
+       btnD.setAttribute("id","btnD"+j);
+       btnD.setAttribute("value",notesD[j]);
+       divD.appendChild(btnD);
+     
+        }
+      
+    }
+ 
+}
+
+
 
 function updateSeq(){
    
@@ -145,11 +194,38 @@ function updateSeqB(){
  for (let i = 0; i < selectedB.children.length; i++) {
     if(selectedB.children[i].checked){
     notesToPlayB.unshift(selectedB.children[i].value);
-    console.log(notesToPlay);
+   
     }
       
   
   }
+
+
+}
+
+function updateSeqD(){
+   
+    var selectedD = document.getElementById('divD'+index);
+    
+    selectedD.style.backgroundColor = "red";
+    selectedD.style.backgroundColor = "white";
+
+
+    if(selectedD.children[0].checked){
+        notesToPlayK.unshift(selectedD.children[0].value);
+        }
+        if(selectedD.children[1].checked){
+            notesToPlayS.unshift(selectedD.children[1].value);
+        }
+        if(selectedD.children[2].checked){
+            notesToPlayC.unshift(selectedD.children[2].value);
+        }
+        if(selectedD.children[3].checked){
+            notesToPlayH.unshift(selectedD.children[3].value);
+        }
+      
+        console.log(notesToPlayH);
+  
 
 
 }
@@ -174,18 +250,40 @@ play.addEventListener('change', () => {
     Tone.start();
     updateSeq();
     updateSeqB();
+    updateSeqD();
     index++;
     var prevIndex = index -1;
     
     if(notesToPlay.length === 1){
-        synthB.triggerAttackRelease(notesToPlay[0],'64n');
- 
+       
+        synth.triggerAttackRelease(notesToPlay[0],'64n');
     }   
-
     if(notesToPlayB.length === 1){
-        synth.triggerAttackRelease(notesToPlayB[0],'64n');
+        synthB.triggerAttackRelease(notesToPlayB[0],'64n');
+
+    } 
+    if(notesToPlayK.length === 1){
+        synthK.triggerAttackRelease(notesToPlayK[0],'64n');
+        synthK.frequency.rampTo(50,.01);
 
     }   
+    if(notesToPlayS.length === 1){
+       
+        synthSTone.triggerAttackRelease("500hz",'64n');
+        synthSTone.frequency.rampTo(100,.002);
+
+        synthSN.triggerAttackRelease(.001);
+ 
+   
+    }   
+    if(notesToPlayC.length === 1){
+        synthC.triggerAttackRelease(.001);
+
+    }   
+    if(notesToPlayH.length === 1){
+        synthH.triggerAttackRelease(.001);
+
+    }     
 
 
 
@@ -196,12 +294,18 @@ play.addEventListener('change', () => {
       
         notesToPlay.length = 0;
         notesToPlayB.length = 0;
+        notesToPlayK.length = 0;
+        notesToPlayS.length = 0;
+        notesToPlayC.length = 0;
+        notesToPlayH.length = 0;
         
 
         var selected = document.getElementById('div'+index);
         selected.style.backgroundColor = "red";
         var selectedB = document.getElementById('divB'+index);
         selectedB.style.backgroundColor = "red";
+        var selectedD = document.getElementById('divD'+index);
+        selectedD.style.backgroundColor = "red";
     
 
     }
@@ -214,3 +318,24 @@ play.addEventListener('change', () => {
 console.log(index);
 
 
+// function makeFile(){
+    ////note to self : need to stop playing and go through all the checkboxes not clearing the current one prob just make a new global array
+// // create a new midi file
+// var midi = new Midi();
+// // add a track
+// const track = midi.addTrack();
+// track.addNote({
+//   midi : 60,
+//   time : 0,
+//   duration: 0.2
+// })
+
+// const trackB = midi.addTrack();
+// track.addNote({
+//     midi : 60,
+//     time : 0,
+//     duration: 0.2
+//   })
+
+// fs.writeFileSync("output.mid", new Buffer(midi.toArray()))
+// }
