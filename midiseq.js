@@ -19,7 +19,7 @@ var index=0;
 	await Tone.start()
 	console.log('audio is ready')
 })
-var notes =['C4','C#4','D4','D#4','E4','F4','F#4','G4','G#4','A4', 'A#4', "B4"];   
+var notes =['C4','C#4','D4','D#4','E4','F4','F#4','G4','G#4','A4', 'A#4', "B4","rest"];   
 var notesB =['C1','C#1','D1','D#1','E1','F1','F#1','G1','G#1','A1', 'A#1', "B1"]; 
 var notesD =['C1','D1','D#1','F#2']; 
 
@@ -90,7 +90,7 @@ function printBtn() {
    
     for (var i = 0; i < 16; i++) {
         let div = document.createElement("div")
-        div.setAttribute("style", "display: block;width:270px;");
+        div.setAttribute("style", "display: block;width:300px;");
         div.setAttribute("id","div"+i);
         document.body.appendChild(div);
         
@@ -102,11 +102,15 @@ function printBtn() {
        btn.setAttribute("class", "btn");
        btn.setAttribute("id","btn"+j);
        btn.setAttribute("value",notes[j]);
+    //    if(j===12){
+    //     btn.setAttribute("checked",true);
+    // }
        div.appendChild(btn);
-     
+      
         }
       
     }
+
  
 }
 
@@ -318,24 +322,105 @@ play.addEventListener('change', () => {
 console.log(index);
 
 
-// function makeFile(){
-    ////note to self : need to stop playing and go through all the checkboxes not clearing the current one prob just make a new global array
-// // create a new midi file
-// var midi = new Midi();
-// // add a track
-// const track = midi.addTrack();
+function makeFile(){
+    isOn = false;
+    let leadNotes=[];
+    let bassNotes=[];
+    let kickNotes=[];
+    let snareNotes=[];
+    let clapNotes=[];
+    let hhNotes=[];
+    var selectedDiv=[];
+    for (let i = 0; i < 16; i++) {
+        selectedDiv.push(document.getElementById('div'+i));
+        for (let j = 0; j < 12; j++) {
+    if(selectedDiv[i].children[j].checked===true){
+    leadNotes.push(selectedDiv[i].children[j].value);
+    }
+   
+    
+ 
+    // leadNotes.push(document.getElementById('div'+i).children[j].checked.value);
+    // bassNotes.push(document.getElementById('divB'+i).children[j].checked.value);
+    // kickNotes.push(document.getElementById('divD'+i).children[0].checked.value);
+    // snareNotes.push(document.getElementById('divD'+i).children[1].checked.value);
+    // clapNotes.push(document.getElementById('divD'+i).children[2].checked.value);
+    // hhNotes.push(document.getElementById('divD'+i).children[3].checked.value);
+
+    }
+    }
+    for (let i = 0; i < 16; i++) {
+
+    }
+    //     bassNotes.push("noteOff.midi");}
+
+
+    //note to self : need to stop playing and go through all the checkboxes not clearing the current one prob just make a new global array
+// create a new midi file
+var midi = new Midi();
+// add a track
+const track = midi.addTrack(
+    {
+        channel:1
+    }
+);
+const trackB = midi.addTrack(
+    {
+        channel:2
+    }
+);
+
+  const trackC = midi.addTrack(    {
+    channel:10
+});
+console.log(selectedDiv);
+console.log(leadNotes);
+var pos =0;
+for (let i = 0; i < 16; i++) {
+
+// if(leadNotes[i]==="rest"){
+
+// }
 // track.addNote({
-//   midi : 60,
-//   time : 0,
+//   name : leadNotes[i],
+//   time : i,
 //   duration: 0.2
 // })
 
-// const trackB = midi.addTrack();
-// track.addNote({
-//     midi : 60,
-//     time : 0,
+// trackB.addNote({
+//     name : bassNotes[i],
+//     time : i,
 //     duration: 0.2
 //   })
+//   trackC.addNote({
+//     name : kickNotes[i],
+//       time : i,
+//       duration: 0.2
+//     })
 
-// fs.writeFileSync("output.mid", new Buffer(midi.toArray()))
+// trackC.addNote({
+//    name : snareNotes[i], 
+//    time : i,
+//    duration: 0.2
+//       })
+
+// trackC.addNote({
+//     name : clapNotes[i],         
+//      time : i,
+//           duration: 0.2
+//         })
+
+// trackC.addNote({
+//        name : hhNotes[i], 
+//        time : i,
+//        duration: 0.2
+//           })      
 // }
+
+}
+
+
+
+
+fs.writeFileSync("output.mid", new Buffer(midi.toArray()))
+}
