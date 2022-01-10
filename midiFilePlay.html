@@ -4,7 +4,7 @@
 	<title>Tonejs Midi</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.js"></script>
     <script src="https://unpkg.com/@tonejs/midi@2.0.27/build/Midi.js"></script>
-
+	<script type="text/javascript" src="https://unpkg.com/@tonejs/ui@0.0.8"></script>
 </head>
 <body>
 	<style>
@@ -13,10 +13,10 @@
 			height: 40px;
 		}
 	</style>
-
+	<tone-top-bar></tone-top-bar>
 
 	<tone-content>
-
+		<div id="Description">Load and play Bach's <i>Prelude in C</i></div>
 		<div id="Status">Loading...</div>
 		<tone-play-toggle disabled>Loading...</tone-play-toggle>
 	</tone-content>
@@ -36,7 +36,7 @@
 					const now = Tone.now() + 0.5
 					midi.tracks.forEach(track => {
 						//create a synth for each track
-						const synth = new Tone.PolySynth(Tone.Synth, {
+						const synth = new Tone.PolySynth( Tone.Synth, {
 							envelope: {
 								attack: 0.02,
 								decay: 0.1,
