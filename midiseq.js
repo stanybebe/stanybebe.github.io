@@ -3,7 +3,9 @@ var count=0;
 
 var tempo = document.getElementById('tempo');
 var checkbox = document.getElementById('play');
-
+var mapRange = function(s, from, to) {
+    return to[0] + (s - from[0]) * (to[1] - to[0]) / (from[1] - from[0]);
+  };
 checkbox.addEventListener('change',async function() {
   if (this.checked) {
         await Tone.start()
@@ -44,18 +46,6 @@ const filterHH = new Tone.Filter(6500, "highpass").toDestination();
 const synth = new Tone.Synth({
     "oscillator": {
      "type": "sawtooth"
-    // "partialCount": 7,
-	// "partials": [
-	// 	1.2732395447351628,
-	// 	0,
-	// 	0.019775390625,
-	// 	0,
-	// 	0.25464790894703254,
-	// 	0,
-	// 	0.0018838011188271615
-	// ],
-	// "phase": 0,
-	// "type": "custom"
 }
 }).connect(filterLead);
 synth.volume.value =-5;
@@ -178,11 +168,12 @@ function updateSeq(){
     selected.style.backgroundColor = "white";
 
  for (let i = 0; i < selected.children.length; i++) {
+    
     if(selected.children[i].checked){
     notesToPlay.unshift(selected.children[i].value);
     console.log(notesToPlay);
     }
-  
+   
   }
 
 }
@@ -324,38 +315,54 @@ console.log(index);
 
 function makeFile(){
     isOn = false;
+    let leadDist=[];
     let leadNotes=[];
+    let leadTime=[];
+    var timeSumMap = [];
     let bassNotes=[];
     let kickNotes=[];
     let snareNotes=[];
     let clapNotes=[];
     let hhNotes=[];
     var selectedDiv=[];
+    var time = 0;
+    var ptimeA =0;
+    var timeSum = 0;
+    var sum =0;
+  
     for (let i = 0; i < 16; i++) {
         selectedDiv.push(document.getElementById('div'+i));
-        for (let j = 0; j < 12; j++) {
-    if(selectedDiv[i].children[j].checked===true){
+    for (let j = 0; j < 12; j++) {
+    if(selectedDiv[i].children[j].checked===true){  
     leadNotes.push(selectedDiv[i].children[j].value);
     }
+    if(selectedDiv[i].children[j].checked!=true){
+        console.log(time);
+         time=time+1;
+        //  leadTime.push[time];
+
+    }else{
+        ptimeA= time;
+        leadDist.push(ptimeA);
+        time = 0;
+     
+    }
    
+    }
     
- 
-    // leadNotes.push(document.getElementById('div'+i).children[j].checked.value);
-    // bassNotes.push(document.getElementById('divB'+i).children[j].checked.value);
-    // kickNotes.push(document.getElementById('divD'+i).children[0].checked.value);
-    // snareNotes.push(document.getElementById('divD'+i).children[1].checked.value);
-    // clapNotes.push(document.getElementById('divD'+i).children[2].checked.value);
-    // hhNotes.push(document.getElementById('divD'+i).children[3].checked.value);
-
     }
+    for (let j = 0; j < leadDist.length; j++){
+        sum= sum + leadDist[j];      
     }
-    for (let i = 0; i < 16; i++) {
-
+    // leadDist.push(192-sum);
+    // leadDist.shift();
+    for (let j = 0; j < leadDist.length; j++){
+        timeSum= timeSum + leadDist[j];
+        leadTime.push(timeSum); 
+        timeSumMap.push(Math.round(leadTime[j]/12)*(j*4));
+        
     }
-    //     bassNotes.push("noteOff.midi");}
 
-
-    //note to self : need to stop playing and go through all the checkboxes not clearing the current one prob just make a new global array
 // create a new midi file
 var midi = new Midi();
 // add a track
@@ -375,6 +382,7 @@ const trackB = midi.addTrack(
 });
 console.log(selectedDiv);
 console.log(leadNotes);
+console.log(leadDist);
 var pos =0;
 for (let i = 0; i < 16; i++) {
 
@@ -387,40 +395,19 @@ for (let i = 0; i < 16; i++) {
 //   duration: 0.2
 // })
 
-// trackB.addNote({
-//     name : bassNotes[i],
-//     time : i,
-//     duration: 0.2
-//   })
-//   trackC.addNote({
-//     name : kickNotes[i],
-//       time : i,
-//       duration: 0.2
-//     })
-
-// trackC.addNote({
-//    name : snareNotes[i], 
-//    time : i,
-//    duration: 0.2
-//       })
-
-// trackC.addNote({
-//     name : clapNotes[i],         
-//      time : i,
-//           duration: 0.2
-//         })
-
-// trackC.addNote({
-//        name : hhNotes[i], 
-//        time : i,
-//        duration: 0.2
-//           })      
-// }
 
 }
 
 
 
 
-fs.writeFileSync("output.mid", new Buffer(midi.toArray()))
+
+
+
+console.log(leadTime);
+console.log(timeSumMap); // 6
+// fs.writeFileSync("output.mid", new Buffer(midi.toArray()))
 }
+
+
+  
