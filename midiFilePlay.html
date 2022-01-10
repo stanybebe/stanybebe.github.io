@@ -36,7 +36,7 @@
 					const now = Tone.now() + 0.5
 					midi.tracks.forEach(track => {
 						//create a synth for each track
-						const synth = new Tone.PolySynth(10, Tone.Synth, {
+						const synth = new Tone.PolySynth(Tone.Synth, {
 							envelope: {
 								attack: 0.02,
 								decay: 0.1,
