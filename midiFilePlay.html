@@ -5,6 +5,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.js"></script>
     <script src="https://unpkg.com/@tonejs/midi@2.0.27/build/Midi.js"></script>
 	<script type="text/javascript" src="https://unpkg.com/@tonejs/ui@0.0.8"></script>
+	<script src="p5.js"></script>
 </head>
 <body>
 	<style>
@@ -13,21 +14,34 @@
 			height: 40px;
 		}
 	</style>
-	<tone-top-bar></tone-top-bar>
+	
 
 	<tone-content>
-		<div id="Description">Load and play Bach's <i>Prelude in C</i></div>
+		<div id="Description">Load and play Stany's <i>keyboard fantasy</i></div>
 		<div id="Status">Loading...</div>
 		<tone-play-toggle disabled>Loading...</tone-play-toggle>
 	</tone-content>
-
+   <div id="myCanvas" style="  display: flex;
+   justify-content: center;"></div>
 	<script type="text/javascript">
-
-		Midi.fromUrl("./examples_bach_846.mid").then(midi => {
-
+        let midiLog = [];
+		let testTicks = [];
+        var mapRange = function(from, to, s) {
+  return to[0] + (s - from[0]) * (to[1] - to[0]) / (from[1] - from[0]);
+};
+		Midi.fromUrl("./synthlinetest.mid").then(midi => {
+            midiLog = midi;
+			console.log(midiLog);
 			document.querySelector('tone-play-toggle').removeAttribute('disabled')
 			document.querySelector('#Status').textContent = ''
-
+			
+			
+				midi.tracks[0].notes.forEach(note => {
+					var mappedrange = mapRange([0,4530],[0,200],note.ticks)
+						testTicks.push(mappedrange)
+	
+				})
+			
 			//synth playback
 			const synths = []
 			document.querySelector('tone-play-toggle').addEventListener('play', (e) => {
@@ -48,6 +62,7 @@
 						//schedule all of the events
 						track.notes.forEach(note => {
 							synth.triggerAttackRelease(note.name, note.duration, note.time + now, note.velocity)
+						    
 						})
 					})
 				} else {
@@ -59,7 +74,36 @@
 				}
 			})
 		})
+	
+        function setup(){
+			var canvasDiv = document.getElementById('myCanvas');
+			var sketchCanvas=createCanvas(400, 400,WEBGL);
+			sketchCanvas.parent("myCanvas")
+            background(0);
+			console.log(testTicks)
+			
+			
 
+		}
+
+		function draw(){
+			for (let i = 0; i <testTicks.length; i++) {
+	        noStroke();
+			fill(255);
+			rectMode(CENTER)
+			rect(testTicks[i]-100,0, .5,40)
+			// console.log(testTicks[i])
+				}
+
+			
+    
+		}
+			
+
+
+
+
+		
 	</script>
 
 </body>
