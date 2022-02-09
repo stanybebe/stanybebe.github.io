@@ -17,7 +17,7 @@
 	
 
 	<tone-content>
-		<div id="Description">Load and play Stany's <i>keyboard fantasy</i></div>
+		<div id="Description">Load and play DEBUSSY <i>String quartet Op. 10</i></div>
 		<div id="Status">Loading...</div>
 		<tone-play-toggle disabled>Loading...</tone-play-toggle>
 	</tone-content>
@@ -25,29 +25,38 @@
    justify-content: center;"></div>
 	<script type="text/javascript">
         let midiLog = [];
+		let testTracks = [];
 		let testTicks = [];
+		var trig = 0;
+		var nowAnim =1;
         var mapRange = function(from, to, s) {
   return to[0] + (s - from[0]) * (to[1] - to[0]) / (from[1] - from[0]);
 };
-		Midi.fromUrl("./synthlinetest.mid").then(midi => {
-            midiLog = midi;
-			console.log(midiLog);
+		Midi.fromUrl("./d.mid").then(midi => {
+           
+		
 			document.querySelector('tone-play-toggle').removeAttribute('disabled')
 			document.querySelector('#Status').textContent = ''
 			
+			midi.tracks.forEach(track => {
+				
+				track.notes.forEach(note => {
 			
-				midi.tracks[0].notes.forEach(note => {
-					var mappedrange = mapRange([0,4530],[0,200],note.ticks)
-						testTicks.push(mappedrange)
-	
+					// var mappedrange = mapRange([0,4530],[0,200],track.notes.ticks)
+					// var mrArray = [];
+					// mrArray.push(mappedrange)
+					
+				
+						// testTracks.push(testTicks.push(mappedrange))
 				})
-			
+			})
 			//synth playback
 			const synths = []
 			document.querySelector('tone-play-toggle').addEventListener('play', (e) => {
 				const playing = e.detail
 				if (playing) {
 					const now = Tone.now() + 0.5
+	        
 					midi.tracks.forEach(track => {
 						//create a synth for each track
 						const synth = new Tone.PolySynth( Tone.Synth, {
@@ -63,6 +72,8 @@
 						track.notes.forEach(note => {
 							synth.triggerAttackRelease(note.name, note.duration, note.time + now, note.velocity)
 						    
+						
+
 						})
 					})
 				} else {
@@ -74,29 +85,52 @@
 				}
 			})
 		})
-	
+	    
         function setup(){
 			var canvasDiv = document.getElementById('myCanvas');
 			var sketchCanvas=createCanvas(400, 400,WEBGL);
 			sketchCanvas.parent("myCanvas")
-            background(0);
-			console.log(testTicks)
+            
 			
+			Midi.fromUrl("./d.mid").then(midi => {
+			console.log(midi)
+		    midiLog.push(midi)
+			for (let i = 0; i <midiLog[0].tracks[0].notes.length; i++) {
+			testTicks.push(midiLog[0].tracks[0].notes[i].ticks)
+		
+		}
 			
 
+		})
+
+	
+          console.log(testTicks)
 		}
 
 		function draw(){
+			background(0);
 			for (let i = 0; i <testTicks.length; i++) {
+		   
 	        noStroke();
 			fill(255);
 			rectMode(CENTER)
+		
 			rect(testTicks[i]-100,0, .5,40)
+			
 			// console.log(testTicks[i])
 				}
 
-			
-    
+			// for (let i = 0; i < testTracks.notes.length; i++) {	
+		    // if(Tone.now()+ 0.5 == testTracks[0].notes[i].ticks){
+			// 	trig = 1;
+			// }
+			// else{trig=0}
+		    // }
+			if (trig ==1){
+				rect(0,0,100,100)
+	
+			}
+         
 		}
 			
 
