@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+	<title>PolySynth</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.4.3/webcomponents-bundle.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Material+Icons&display=block" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.js"></script>
+    <script src="https://unpkg.com/@tonejs/midi@2.0.27/build/Midi.js"></script>
+	<script type="text/javascript" src="https://unpkg.com/@tonejs/ui@0.0.8"></script>
+	<script src="p5.js"></script>
+</head>
+<body>
+
+	<button name='play' onClick="playing()"style="width:50px;height:50px;"></button>
+    <div style="display:flex; flex-direction: column; width:140px">
+    <input id="name" type="text">
+    <h2>adsr</h2>
+    <input id="a" type="range" min="0.01" max="1" step=".01" oninput="updateIt(s=this.value)">
+    <input id="d" type="range" min="0" max="1" step=".01" oninput="updateIt(t=this.value)">
+    <input id="s" type="range" min="0" max="1" step=".01" oninput="updateIt(u=this.value)">
+    <input id="r" type="range" min="0" max="1" step=".01" oninput="updateIt(v=this.value)">
+    <h2>partials</h2>
+	<input id="partial1" type="range" min="0" max="10" step=".01" oninput="updateIt(a=this.value)">
+    <input id="partial2" type="range" min="0" max="10" step=".01" oninput="updateIt(b=this.value)">
+    <input id="partial3" type="range" min="0" max="10" step=".01" oninput="updateIt(c=this.value)">
+    <input id="partial4" type="range" min="0" max="10" step=".01" oninput="updateIt(d=this.value)">
+    <input id="partial5" type="range" min="0" max="10" step=".01" oninput="updateIt(e=this.value)">
+    <input id="partial6" type="range" min="0" max="10" step=".01" oninput="updateIt(f=this.value)">
+    <input id="partial7" type="range" min="0" max="10" step=".01" oninput="updateIt(g=this.value)">
+    <input id="partial8" type="range" min="0" max="10" step=".01" oninput="updateIt(h=this.value)">
+    <input id="partial9" type="range" min="0" max="10" step=".01" oninput="updateIt(k=this.value)">
+    <input id="partial10" type="range" min="0" max="10" step=".01" oninput="updateIt(l=this.value)">
+    <input id="partial11" type="range" min="0" max="10" step=".01" oninput="updateIt(m=this.value)">
+    <input id="partial12" type="range" min="0" max="10" step=".01" oninput="updateIt(n=this.value)">
+    <input id="partial13" type="range" min="0" max="10" step=".01" oninput="updateIt(o=this.value)">
+    <input id="partial14" type="range" min="0" max="10" step=".01" oninput="updateIt(p=this.value)">
+    <input id="partial15" type="range" min="0" max="10" step=".01" oninput="updateIt(q=this.value)">
+    <input id="partial16" type="range" min="0" max="10" step=".01" oninput="updateIt(r=this.value)">
+    </div>
+    <div style="display:flex; flex-direction:column;width:140px">
+    <h2>filter</h2>
+    <input id="filter" type="range" min=".1" max="5000" step="1" oninput="updateIt(i=this.value)">
+    <h2>reverb amt</h2>
+    <input id="wet" type="range" min="0" max=".8" step=".01" oninput="updateIt(j=this.value)">
+    </div>
+    <div>
+        <p id="rcode"></p>
+        <p id="fcode"></p>
+        <p id="codepartials"></p>
+    </div>
+	<script type="text/javascript">
+        
+        const reverb = new Tone.Reverb({
+	    "wet": .6,
+	    "decay": 3.5,
+	    "preDelay": 0.01
+        }).toDestination();
+        
+        const filter = new Tone.Filter(2000, "lowpass").connect(reverb);
+		const synth = new Tone.Synth(
+            {
+                oscillator: {
+                    partials: [0,2,4,6,8,9,10,1]
+                }
+            }
+        )
+		.connect(filter);
+
+        synth.oscillator._oscillator.partialCount = 8
+            synth.oscillator._oscillator.type = "custom"
+            var a = parseFloat(document.getElementById('partial1').value)
+            var b = parseFloat(document.getElementById('partial2').value)
+            var c = parseFloat(document.getElementById('partial3').value)
+            var d = parseFloat(document.getElementById('partial4').value)
+            var e = parseFloat(document.getElementById('partial5').value)
+            var f = parseFloat(document.getElementById('partial6').value)
+            var g = parseFloat(document.getElementById('partial7').value)
+            var h = parseFloat(document.getElementById('partial8').value)
+            var k = parseFloat(document.getElementById('partial9').value)
+            var l = parseFloat(document.getElementById('partial10').value)
+            var m = parseFloat(document.getElementById('partial11').value)
+            var n = parseFloat(document.getElementById('partial12').value)
+            var o = parseFloat(document.getElementById('partial13').value)
+            var p = parseFloat(document.getElementById('partial14').value)
+            var q = parseFloat(document.getElementById('partial15').value)
+            var r = parseFloat(document.getElementById('partial16').value)
+            var i = parseFloat(document.getElementById('filter').value)
+            var j = parseFloat(document.getElementById('wet').value)
+            var s = parseFloat(document.getElementById('a').value)
+            var t = parseFloat(document.getElementById('d').value)
+            var u = parseFloat(document.getElementById('s').value)
+            var v = parseFloat(document.getElementById('r').value)
+            function startbuttonfunction() {
+		Tone.start();
+	}
+
+	function stopbuttonfunction() {
+		Tone.stop();
+	}
+
+        function updateIt(){
+            synth.envelope.attack = parseFloat(s);
+            synth.envelope.decay = parseFloat(t);
+            synth.envelope.sustain = parseFloat(u);
+            synth.envelope.release = parseFloat(v);
+            synth.oscillator.partials = [
+            parseFloat(a),parseFloat(b),parseFloat(c),parseFloat(d)
+            ,parseFloat(e),parseFloat(f),parseFloat(g),parseFloat(h)
+            ,parseFloat(k),parseFloat(l),parseFloat(m),parseFloat(n)
+            ,parseFloat(o),parseFloat(p),parseFloat(q),parseFloat(r)
+            ]
+            filter.frequency.value = parseFloat(i);
+            reverb.wet.value = parseFloat(j);
+            console.log(synth.oscillator.partials);
+            console.log(filter.frequency.value);
+            var rcode = document.getElementById('rcode');
+            var fcode = document.getElementById('fcode');
+            var code = document.getElementById('codepartials');
+            var name = document.getElementById('name').value;
+            rcode.innerHTML = "const "+name+ "reverb = new Tone.Reverb({<br>wet:"+j+","+"<br>decay: 6.5,<br>preDelay: 0.01}).toDestination();"
+            fcode.innerHTML="const "+name+"filter= new Tone.Filter("+i+","+"&quot;lowpass&quot;"+").connect("+name+"reverb);"
+            code.innerHTML = "const "
+            +name+' = new Tone.PolySynth(<br>Tone.Synth, {'
+            +"<br>envelope:{" 
+            +"<br>attack:"+s
+            +",<br>decay:"+t
+            +",<br>sustain:"+u
+            +",<br>release:"+s+"},"
+           +"<br>oscillators:{" 
+           +"<br> partials: ["+synth.oscillator.partials+
+           ']}});';
+
+        }   
+
+         function playing(){
+
+            synth.triggerAttackRelease("C4", '8n')
+            console.log(synth);
+         }
+	</script>
+</body>
+</html>
