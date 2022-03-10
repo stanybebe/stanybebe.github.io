@@ -1,5 +1,4 @@
-var canvasDiv = document.getElementById('myCanvas');
-var width = myCanvas.clientWidth;
+
 function preload() {
   // note that we are using two instances
   // of the same vertex and fragment shaders
