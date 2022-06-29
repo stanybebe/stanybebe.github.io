@@ -26,6 +26,12 @@ padding: 0px;
   padding-right: 20px;
 
 }
+.copy2 {
+  text-align: left;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-decoration: underline;
+}
 
 
 ul {
@@ -37,10 +43,19 @@ ul {
 
 }
 
+.grad {
+  background: rgb(9,209,122);
+  background: linear-gradient(0deg, rgba(9,209,122,1) 0%, rgba(31,62,74,1) 56%);
+
+}
+
+.grad2 {
+  background: rgb(0,0,0);
+  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(31,62,74,1) 69%); 
+}
 li {
   float: left;
 }
-
 li a {
   display: block;
   color: #09d17a;
@@ -50,7 +65,7 @@ li a {
 }
 
 li a:hover {
-  background-color: #1f3e4a;;
+  background-color: #2b4248;;
 }
 
 .button {

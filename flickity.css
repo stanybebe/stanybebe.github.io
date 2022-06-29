@@ -45,13 +45,13 @@ https://flickity.metafizzy.co
 
 .flickity-button {
   position: absolute;
-  background: hsla(0, 0%, 100%, 0.75);
+  background: #09d17a;
   border: none;
-  color: #333;
+  color: #ffffff;
 }
 
 .flickity-button:hover {
-  background: white;
+  background: black;
   cursor: pointer;
 }
 
@@ -80,8 +80,8 @@ https://flickity.metafizzy.co
 .flickity-prev-next-button {
   top: 50%;
   width: 44px;
-  height: 44px;
-  border-radius: 50%;
+  height: 54px;
+  border-radius: 20%;
   /* vertically center */
   transform: translateY(-50%);
 }
@@ -104,6 +104,12 @@ https://flickity.metafizzy.co
   top: 20%;
   width: 60%;
   height: 60%;
+  arrowShape: { 
+    x0: 10,
+    x1: 60, y1: 50,
+    x2: 60, y2: 0,
+    x3: 60
+  }
 }
 
 /* ---- page dots ---- */
@@ -154,6 +160,7 @@ body {  }
   }
 .carousel {
   background: #1026F4;
+
 }
 
 .carousel-cell {
