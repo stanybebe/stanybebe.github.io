@@ -7,12 +7,38 @@ var r2;
 var r3;
 var notes = ["C6","D5","E6","F5","G5","A5",];
 var notesb = ["B5","D6","E6","F5","G5","C5",];
-const beepreverb = new Tone.FeedbackDelay(0.4, 0.8).toMaster();
+
 let tex;
 let tex2;
 let ping;
  let ping2;
 
+
+function preload(){
+     myShader = loadShader("v.vert", "f.frag");
+  
+}
+
+function setup() {
+  createCanvas(400, 400);
+  tex = createGraphics(400, 400, WEBGL);
+  tex2 = createGraphics(400, 400);
+
+
+}
+
+function draw() {
+ if (isOn ==false){
+    Tone.stop;
+ }
+  document.querySelector('button')?.addEventListener('click', async () => {
+	await Tone.start()
+    isOn = true;
+
+  Tone.Transport.start();
+	console.log('audio is ready')
+})
+const beepreverb = new Tone.FeedbackDelay(0.4, 0.8).toMaster();
 const beepfilter= new Tone.Filter(1500.1,"lowpass").connect(beepreverb);
 
 const beep = new Tone.Synth({
@@ -60,31 +86,7 @@ const beepb = new Tone.Synth({
 		"modulationType": "sine"
 	}
 }).connect(beepfilter);
-
-function preload(){
-     myShader = loadShader("v.vert", "f.frag");
-  
-}
-
-function setup() {
-  createCanvas(400, 400);
-  tex = createGraphics(400, 400, WEBGL);
-  tex2 = createGraphics(400, 400);
-
-
-}
-
-function draw() {
- if (isOn ==false){
-    Tone.stop;
- }
-  document.querySelector('button')?.addEventListener('click', async () => {
-	await Tone.start()
-    isOn = true;
-
-  Tone.Transport.start();
-	console.log('audio is ready')
-})
+	
   var lpa = lerp(ping,ping,.1);
   var lpb = lerp(ping2,ping,.1);
     myShader.setUniform("u_time", frameCount * 0.01);
