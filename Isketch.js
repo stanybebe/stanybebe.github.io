@@ -72,18 +72,7 @@ function setup() {
 }
 
 function draw() {
- var isOn =false;
 
- if (isOn ==false){
-    Tone.stop;
- }
-  document.querySelector('button')?.addEventListener('click', async () => {
-	await Tone.start()
-    isOn = true;
-
-  Tone.Transport.start();
-	console.log('audio is ready')
-})
   var lpa = lerp(ping,ping,.1);
   var lpb = lerp(ping2,ping,.1);
     myShader.setUniform("u_time", frameCount * 0.01);
