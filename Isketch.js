@@ -1,33 +1,5 @@
 //code by Tristan Whitehill 2022 
  var isOn =false;
-
-
-var r;
-var r2;
-var r3;
-var notes = ["C6","D5","E6","F5","G5","A5",];
-var notesb = ["B5","D6","E6","F5","G5","C5",];
-
-let tex;
-let tex2;
-let ping;
- let ping2;
-
-
-function preload(){
-     myShader = loadShader("v.vert", "f.frag");
-  
-}
-
-function setup() {
-  createCanvas(400, 400);
-  tex = createGraphics(400, 400, WEBGL);
-  tex2 = createGraphics(400, 400);
-
-
-}
-
-function draw() {
  if (isOn ==false){
     Tone.stop;
  }
@@ -86,6 +58,34 @@ const beepb = new Tone.Synth({
 		"modulationType": "sine"
 	}
 }).connect(beepfilter);
+
+var r;
+var r2;
+var r3;
+var notes = ["C6","D5","E6","F5","G5","A5",];
+var notesb = ["B5","D6","E6","F5","G5","C5",];
+
+let tex;
+let tex2;
+let ping;
+ let ping2;
+
+
+function preload(){
+     myShader = loadShader("v.vert", "f.frag");
+  
+}
+
+function setup() {
+  createCanvas(400, 400);
+  tex = createGraphics(400, 400, WEBGL);
+  tex2 = createGraphics(400, 400);
+
+
+}
+
+function draw() {
+
 	
   var lpa = lerp(ping,ping,.1);
   var lpb = lerp(ping2,ping,.1);
