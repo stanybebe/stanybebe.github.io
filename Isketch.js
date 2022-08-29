@@ -1,4 +1,16 @@
 //code by Tristan Whitehill 2022 
+ var isOn =false;
+
+ if (isOn ==false){
+    Tone.stop;
+ }
+  document.querySelector('button')?.addEventListener('click', async () => {
+	await Tone.start()
+    isOn = true;
+
+  Tone.Transport.start();
+	console.log('audio is ready')
+})
 var r;
 var r2;
 var r3;
