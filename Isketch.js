@@ -1,16 +1,7 @@
 //code by Tristan Whitehill 2022 
  var isOn =false;
 
- if (isOn ==false){
-    Tone.stop;
- }
-  document.querySelector('button')?.addEventListener('click', async () => {
-	await Tone.start()
-    isOn = true;
 
-  Tone.Transport.start();
-	console.log('audio is ready')
-})
 var r;
 var r2;
 var r3;
@@ -84,7 +75,16 @@ function setup() {
 }
 
 function draw() {
+ if (isOn ==false){
+    Tone.stop;
+ }
+  document.querySelector('button')?.addEventListener('click', async () => {
+	await Tone.start()
+    isOn = true;
 
+  Tone.Transport.start();
+	console.log('audio is ready')
+})
   var lpa = lerp(ping,ping,.1);
   var lpb = lerp(ping2,ping,.1);
     myShader.setUniform("u_time", frameCount * 0.01);
