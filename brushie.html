@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8" />
+
+  </head>
+  <body>
+    <main>
+    </main>
+    <br>
+    <br>
+    <br>
+    <div >
+      <div id="color" style="width:100px">current color</div>
+    <button id="button" onclick="changeColor()">color</button>
+          <button id="button2" onclick="save()">save</button>
+        <button id="button3"  onclick="noiseimg()">noise</button>
+       <button id="button3"  onclick="shade()">riso</button>
+       <button id="button4"  >nextFrame</button>
+       <button id="button5"  >prevFrame</button>
+       <button id="button6"  onclick="setFrame()">setFrame</button>
+       <button id="button7"  onclick="setAllFrame()">setAll</button>
+       <button id="button8"  onclick="initFrame()">InitFrame</button>
+       <button id="button9"  onclick="loadFrame()">loadFrame</button>
+       <h1 id="frame"></h1>
+
+       <input type="checkbox" id="play">
+    </div>
+     
+     <input type="checkbox" id="type">
+  <input type="range" step=".001" min="0.005" max="1" value=".1" id="slider">
+          <input type="range" step=".01" min="0" max=".8" value=".03" id="slider2">
+              <input type="range" step="1" min="0" max="30" value="0" id="slider3">
+                  <input type="range" step=".5" min=".5" max="6" value="3" id="slider4">
+                  <input type="range" step=".01" min="0" max="3" value="0" id="slider5">
+    <script src="brushie.js"></script>
+  </body>
+</html>
