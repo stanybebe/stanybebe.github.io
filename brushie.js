@@ -13,7 +13,7 @@ let loadFlag=false;
 let initFlag=false;
 let fr,fg,fb;
 let count=12;
-
+let gifCount =false;
     class Frame {
         constructor(height, width) {
             this.width = width;
@@ -114,6 +114,8 @@ function setup() {
      frame.push(f);
      frame[index].update(get());
   }
+
+  gGif = createGraphics(600,600);
 }
 function save() {
   saveCanvas("Brushy_", "jpg");
@@ -339,8 +341,14 @@ function draw() {
 
   image(gr,0,0,600,600);
 
-  image(frame[cframe].graphics,600,0,600,600);
 
+
+  if(gifCount ==true){
+    image(frame[cframe].graphics,0,0,600,600);  
+  }else{
+  image(frame[cframe].graphics,600,0,600,600);
+  gGif = frame[cframe].graphics;
+  }
   } 
 
 
@@ -379,5 +387,21 @@ function initFrame(){
     initgr.noStroke();
     initgr.fill(fr,fg,fb);
     initgr.rect(0,0,width,height);
+
+}
+
+function keyPressed() {
+  // this will download the first 5 seconds of the animation!
+  if (key === 's') {
+  gifCount = true;
+  resizeCanvas(600, 600);
+  image(frame[cframe].graphics,0,0,600,600);
+  saveGif('brushieLoop', 5);
+
+  }
+  if (key === 'r'){
+    resizeCanvas(1200, 600);
+    gifCount = false;
+  }
 
 }
