@@ -23,6 +23,7 @@ function setup() {
         minWidth: 1920,
         minHeight: 1080
       }
+    }
  
   };
   createCapture(constraints);
