@@ -50,11 +50,12 @@ translate(-width/2,-height/2);
 
   
   tex.push();
-  // tex.tint(40);
+  // tex.tint(10);
+  // tex.rect(-width/2,-height/2,width,height);
   tex.background(0);
   tex.translate(-width/2,-height/2);
 
-  // tex.rect(0,0,width,height);
+
 
 
   if (pose) {
