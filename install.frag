@@ -42,9 +42,9 @@ void main() {
     
     vec2 r = vec2( gl_FragCoord.xy - 0.5*u_resolution.xy );
  
-    vec3 col1 = vec3 (0.3,0.6,.9);
-    vec3 col2 = vec3  (0.0,0.9,.0);
-    vec3 col3 = vec3(.9,.0,.3);
+    vec3 col1 = vec3 (0.95,0.35,.15);
+    vec3 col2 = vec3  (0.0,1.,.39);
+    vec3 col3 = vec3(.14,.04,.19);
     vec3 pixi;
      float f = noise(uv*.01);
      float n2 = noise(.4*r.xy);
@@ -60,9 +60,9 @@ void main() {
 
       }
 
-      else{pixi = col3;}
+      else{pixi = col2;}
 
-     vec3 t = vec3(ctex.x*col2.x,ctex.y*col2.y,ctex.z*col2.z);
+     vec3 t = vec3(ctex.x*col3.x,ctex.y*col3.y,ctex.z*col3.z);
     
-   gl_FragColor = vec4(pixi+t,1.);
+   gl_FragColor = vec4(pixi+(t*2.2),1.);
 }
