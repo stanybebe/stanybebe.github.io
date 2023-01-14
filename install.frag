@@ -64,5 +64,5 @@ void main() {
 
      vec3 t = vec3(ctex.x*col3.x,ctex.y*col3.y,ctex.z*col3.z);
     
-   gl_FragColor = vec4(pixi+(t*2.2),1.);
+   gl_FragColor = vec4(pixi+(t*5.2),1.);
 }
