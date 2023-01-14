@@ -27,7 +27,7 @@ function setup() {
  
   };
   createCapture(constraints);
-  video.hide();
+  
   let options ={
    
     flipHorizontal: true
