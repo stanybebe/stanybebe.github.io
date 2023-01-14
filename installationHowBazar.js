@@ -66,7 +66,7 @@ translate(-width/2,-height/2);
       let y = pose.keypoints[i].position.y;
       tex.fill(255);
       tex.noStroke()
-      tex.image(mySvg,x,y,186.5/2,300/2);
+      tex.image(mySvg,x,y,width/2,height/2);
     }
     
   //   for (let i = 0; i < skeleton.length; i++) {
