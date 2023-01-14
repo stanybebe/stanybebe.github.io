@@ -14,9 +14,9 @@ function preload(){
     mySvg = loadImage("hb-01.png");
 }
 function setup() {
-  createCanvas(640, 480, WEBGL);
-  tex = createGraphics(640, 480, WEBGL);
-  tex2 = createGraphics(640, 480, WEBGL);
+  createCanvas(1920, 1080, WEBGL);
+  tex = createGraphics(1920, 1080, WEBGL);
+  tex2 = createGraphics(1920, 1080, WEBGL);
   video = createCapture(VIDEO);
   video.hide();
   let options ={
