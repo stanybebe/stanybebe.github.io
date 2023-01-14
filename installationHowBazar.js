@@ -17,7 +17,15 @@ function setup() {
   createCanvas(1920, 1080, WEBGL);
   tex = createGraphics(1920, 1080, WEBGL);
   tex2 = createGraphics(1920, 1080, WEBGL);
-  video = createCapture(VIDEO);
+      let constraints = {
+    video: {
+      mandatory: {
+        minWidth: 1920,
+        minHeight: 1080
+      }
+ 
+  };
+  createCapture(constraints);
   video.hide();
   let options ={
    
