@@ -26,7 +26,7 @@ function setup() {
     }
  
   };
- video = createCapture(constraints);
+ video = createCapture(VIDEO);
   video.hide();
   let options ={
    
