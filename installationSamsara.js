@@ -25,9 +25,9 @@ function preload(){
     font = loadFont('f.otf');
 }
 function setup() {
-  createCanvas(700, 500, WEBGL);
-  tex = createGraphics(700, 500, WEBGL);
-  tex2 = createGraphics(700, 500, WEBGL);
+  createCanvas(1920, 1080, WEBGL);
+  tex = createGraphics(1920, 1080, WEBGL);
+  tex2 = createGraphics(1920, 1080, WEBGL);
 //   video = createCapture(VIDEO);
 //   video.hide();
 //   let options ={

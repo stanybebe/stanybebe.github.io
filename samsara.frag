@@ -50,7 +50,7 @@ void main() {
      float n2 = noise(.004*r.xy);
      float speed = .03;
      float sine = sin(r.y*speed+u_time)*.01;
-    vec4 ctex =texture2D(tex,(uv+sine)+n2/200.);
+    vec4 ctex =texture2D(tex,(uv+sine)+n2/500.);
     float n = noise(.004*r.xy)-f;
    
    float noiseh = n;  
