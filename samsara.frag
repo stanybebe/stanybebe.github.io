@@ -16,7 +16,7 @@ vec2 hash2( vec2 x )
 {
     const vec2 k = vec2( 0.3183099, 0.3678794 );
     x = x*k + k.yx;
-    return -1.0 + 2.0*fract(sin(u_time*.3)*5.+ 16.0 * k*fract( x.x*x.y*(x.x+x.y)) );
+    return -1.0 + 2.0*(sin(u_time*.3)*5.+ 16.0 * k*fract( x.x*x.y*(x.x+x.y)) );
 }
 
 float noise( in vec2 p )
@@ -50,7 +50,7 @@ void main() {
      float n2 = noise(.004*r.xy);
      float speed = .03;
      float sine = sin(r.y*speed+u_time)*.01;
-    vec4 ctex =texture2D(tex,(uv+sine));
+    vec4 ctex =texture2D(tex,(uv+sine)+n2/200.);
     float n = noise(.004*r.xy)-f;
    
    float noiseh = n;  
