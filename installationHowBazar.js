@@ -17,7 +17,9 @@ function setup() {
   createCanvas(1920, 1080, WEBGL);
   tex = createGraphics(1920, 1080, WEBGL);
   tex2 = createGraphics(1920, 1080, WEBGL);
-  video = createCapture(VIDEO);
+
+ video = createCapture(VIDEO);
+  video.size(1920, 1080);
   video.hide();
   let options ={
    
@@ -66,7 +68,7 @@ translate(-width/2,-height/2);
       let y = pose.keypoints[i].position.y;
       tex.fill(255);
       tex.noStroke()
-      tex.image(mySvg,x,y,186.5/2,300/2);
+      tex.image(mySvg,x,y,92,146);
     }
     
   //   for (let i = 0; i < skeleton.length; i++) {
