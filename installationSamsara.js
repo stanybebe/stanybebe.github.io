@@ -1,8 +1,3 @@
-// ml5.js: Pose Estimation with PoseNet
-// The Coding Train / Daniel Shiffman
-// https://thecodingtrain.com/Courses/ml5-beginners-guide/7.1-posenet.html
-// https://youtu.be/OIo-DIOkNVg
-// https://editor.p5js.org/codingtrain/sketches/ULA97pJXR
 
 let video;
 let poseNet;
@@ -21,7 +16,7 @@ let quotes = [
 ]
 function preload(){
     myShader = loadShader("samsara.vert", "samsara.frag");
-    mySvg = loadImage("hb-01.png");
+   
     font = loadFont('f.otf');
 }
 function setup() {
@@ -97,9 +92,9 @@ translate(-width/2,-height/2);
  myShader.setUniform("u_time", frameCount * 0.01);
 myShader.setUniform("u_resolution", [width, height]);
  myShader.setUniform("tex", tex);
-      myShader.setUniform('texelSize', [1.0/width, 1.0/height]);
+  myShader.setUniform('texelSize', [1.0/width, 1.0/height]);
  rect(0,0,width,height);
-//  image(tex,0,0,width, height)
+
 }
 
 function mousePressed() {
@@ -108,4 +103,3 @@ function mousePressed() {
     fullscreen(!fs);
   }
 }
-
