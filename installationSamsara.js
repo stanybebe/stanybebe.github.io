@@ -107,4 +107,5 @@ function mousePressed() {
     let fs = fullscreen();
     fullscreen(!fs);
   }
+}
 
