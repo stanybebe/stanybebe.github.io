@@ -97,6 +97,7 @@ translate(-width/2,-height/2);
  myShader.setUniform("u_time", frameCount * 0.01);
 myShader.setUniform("u_resolution", [width, height]);
  myShader.setUniform("tex", tex);
+      myShader.setUniform('texelSize', [1.0/width, 1.0/height]);
  rect(0,0,width,height);
 //  image(tex,0,0,width, height)
 }
