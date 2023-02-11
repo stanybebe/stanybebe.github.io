@@ -396,7 +396,7 @@ function keyPressed() {
   gifCount = true;
   resizeCanvas(600, 600);
   image(frame[cframe].graphics,0,0,600,600);
-  saveGif('brushieLoop', 5);
+  saveGif('brushieLoop', 4);
 
   }
   if (key === 'r'){
