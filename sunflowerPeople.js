@@ -219,7 +219,7 @@ function draw() {
       speedE = 30;
     }
     if(numFlowers>=6){
-      currDiv =35;
+      currDiv =3;
       speedE = 35;
     }
     if (win==1) {
