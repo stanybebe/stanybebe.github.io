@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>acidwork</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.sound.min.js"></script>
+    <script src="/components.js"></script>
+
+
+<body style="width: auto!important; overflow: hidden!important">
+    <div id="myCanvas" style="width: 100% !important;">
+
+
+
+        <script>
+
+
+
+            let clock = 0;
+            let click = 0;
+            let flag = false;
+            let step = [0, 0, 0, 0, 0, 0, 0, 0];
+            let st;
+            let gui;
+            let b1;
+
+            let seq;
+            let s;
+            let stepsBass = [];
+            let stepsKick = [];
+            let stepsSnare = [];
+            let stepsHat = [];
+            let currentStep = 0;
+            let d1;
+            let d2;
+            let d3;
+            let d4;
+            let actx;
+            let freq;
+            let amp;
+            let sr;
+            let drift;
+            let workletNode;
+            let filt;
+            let scale;
+            let transp;
+            let canvas;
+            let prevw;
+            let widthv;
+            let pt = 0;
+
+
+
+
+            function setup() {
+                actx = getAudioContext();
+
+                if (actx) {
+                    startTime = actx.currentTime; // Record the start time
+
+                    var canvasDiv = document.getElementById('myCanvas');
+                    widthv = myCanvas.offsetWidth;
+                    prevw = widthv;
+
+                    canvas = createCanvas(widthv, windowHeight, WEBGL);
+                    canvas.style('display', 'block');  // Removes extra margins
+                    canvas.parent("myCanvas");
+
+                    b1 = new tog((width / 4) * 2, height / 30, 20, 20, "#CD947A", "#71587E");
+
+                    getAudioContext().suspend();
+
+                    // <color name="Persian orange" hex="CD947A" r="205" g="148" b="122" />
+                    // <color name="Chinese Violet" hex="71587E" r="113" g="88" b="126" />
+                    // <color name="Timberwolf" hex="E0DDD6" r="224" g="221" b="214" />
+                    // <color name="Hunyadi yellow" hex="F0B650" r="240" g="182" b="80" />
+                    // <color name="Keppel" hex="67B5A0" r="103" g="181" b="160" />
+
+
+
+                    s = new slidey(width - ((width / 4) * 1.6), height / 16, width / 3, 30, 0, "#CD947A", "#71587E", 0);
+                    filter = new slidey(width / 4, height * .82, width / 2, 20, 0, "#CD947A", "#71587E", 0);
+                    for (var i = 0; i < 8; i++) {
+                        let stb = new stepUnit(width / 8 + (i * width / 10), height / 6, width / 24, 60, "#CD947A", "#71587E", 0);
+                        stepsBass.push(stb);
+                        let stk = new stepUnit(width / 8 + (i * width / 10), (height / 6) * 2, width / 24, 60, "#CD947A", "#71587E", 0);
+                        stepsKick.push(stk);
+                        let sts = new stepUnit(width / 8 + (i * width / 10), (height / 6) * 3, width / 24, 60, "#CD947A", "#71587E", 0);
+                        stepsSnare.push(sts);
+                        let sth = new stepUnit(width / 8 + (i * width / 10), (height / 6) * 4, width / 24, 60, "#CD947A", "#71587E", 0);
+                        stepsHat.push(sth);
+                    }
+                    d1 = new drumVoice('sine', 1, 0, 20, .002, .7);
+                    d2 = new drumVoice('sine', 60, 1, 30, .002, .7);
+                    d3 = new drumVoice('sine', 350, 2, 130, .0, .01);
+                    d4 = new drumVoice('sine', 350, 3, 130, .0, .01);
+                    d1.initVoice(actx);
+                    d2.initVoice(actx);
+                    d3.initVoice(actx);
+                    d4.initVoice(actx);
+                    for (st in stepsBass) {
+                    stepsBass[st].draw("#CD947A", "#71587E", 0);
+                    stepsKick[st].draw("#CD947A", "#71587E", 0);
+                    stepsSnare[st].draw("#CD947A", "#71587E", 0);
+                    stepsHat[st].draw("#CD947A", "#71587E", 0);
+
+                }
+
+                }
+
+            }
+
+            function draw() {
+                if (prevw != widthv) {
+                    canvas.width = myCanvas.offsetWidth;
+                }
+                translate(-width / 2, -height / 2)
+                background("#67B5A0");
+                // drawGui();
+               
+
+
+                for (st in stepsBass) {
+                    stepsBass[st].draw("#CD947A", "#71587E", 0);
+                    stepsKick[st].draw("#CD947A", "#71587E", 0);
+                    stepsSnare[st].draw("#CD947A", "#71587E", 0);
+                    stepsHat[st].draw("#CD947A", "#71587E", 0);
+
+                }
+
+
+                s.draw("#CD947A", "#71587E", 0);
+                b1.draw("#CD947A", "#71587E", 0);
+                filter.draw("#CD947A", "#71587E", 0);
+
+
+
+
+                let flv = filter.getValue(30, 2000, 0);
+                d4.filty(flv, 1);
+
+            }
+            function windowResized() {
+                resizeCanvas(widthv, height);
+            }
+
+
+
+            function playSequence() {
+
+                click = s.getValue(20, 1, 0);
+
+
+
+                if (clock > click) {
+                    clock = 0;
+
+
+                    currentStep = (currentStep + 1) % 8;
+
+                    if (stepsKick[currentStep].getTog() == true) {
+                        d1.trig();
+                    }
+
+                    if (stepsBass[currentStep].getTog() == true) {
+                        d4.trig();
+                        let randa = random(60, 300);
+                        let randb = random(0.0, 1);
+
+                        d4.pitchy(randa, randb);
+
+                    }
+                    if (stepsSnare[currentStep].getTog() == true) {
+                        d2.trig();
+                    }
+                    if (stepsHat[currentStep].getTog() == true) {
+                        d3.trig();
+                    }
+
+
+
+                }
+
+                push();
+                // text("bpm:" + floor(((60 / click) * 1000) / 64), (width/ 8)*7, 20);
+
+                pop();
+                if (b1.value) {
+                    let ct = (performance.now());
+
+
+                  
+                        clock = clock + 1;
+                 
+                    
+                    userStartAudio();
+
+
+                } else {
+                    flag = false;
+                    clock = 0;
+                    currentStep = 0;
+                }
+
+                if (currentStep == 7 && clock >= click) {
+                    flag = true;
+
+
+                }
+                else { flag = false; }
+
+
+
+                if (flag == true) {
+                    flag = false;
+
+
+                }
+
+            }
+            const interval = 1000 / 64; 
+            let lastTime = performance.now();
+
+            function tick() {
+                if(s){
+                playSequence();
+                }
+                const currentTime = performance.now();
+                const deltaTime = currentTime - lastTime;
+
+                if (deltaTime >= interval) {
+   
+
+                    lastTime = currentTime - (deltaTime % interval); // to handle drifting
+                }
+ 
+                requestAnimationFrame(tick);
+   
+            }
+
+            tick(); // Start the ticking process
+
+
+
+
+        </script>
+    </div>
+
+</body>
+
+</html>
