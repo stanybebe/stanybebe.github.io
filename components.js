@@ -148,7 +148,7 @@ class tog {
 }
 class stepUnit {
   constructor(x, y, w, h) {
-    this.togg = new tog(x, y, (w / 2), h);
+    this.togg = new tog(x+w/4, y, (w / 2), h);
     this.sldA = new slidey(x - w /2, y + h / 2, w*1.5, h / 3, 0);
     this.sldB = new slidey(x - w /2, y + h, w*1.5, h / 3, 0);
 
