@@ -162,8 +162,7 @@ class stepUnit {
   draw(ca, cb, cc) {
     this.cola = cc;
     this.togg.draw(ca, cb, this.cola);
-    this.sldA.draw(ca, cb, this.cola);
-    this.sldB.draw(ca, cb, this.cola);
+
   }
   setCol(c){
     this.cola = c;
@@ -331,9 +330,15 @@ class drumVoice {
   }
 
   pitchy(f, t) {
+    if(this.modType==3){
     this.bfreq = this.workletNodeSaw.parameters.get("frequency");
     this.bf = f;
     this.bfreq.exponentialRampToValueAtTime(f, actx.currentTime + t);
+    }else{
+    this.modulator.freq(f);
+    this.osc.freq(1);
+    this.env.setADSR(0.006, 0.02, t, 0.193);
+    }
   }
 
   filty(f, t) {
