@@ -7,6 +7,7 @@
     <title>acidwork</title>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/tone@14.8.33/build/Tone.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.sound.min.js"></script>
     <script src="/components.js"></script>
@@ -21,7 +22,8 @@
 
 
 
-            let clock = 0;
+            let clock;
+            
             let click = 0;
             let flag = false;
             let step = [0, 0, 0, 0, 0, 0, 0, 0];
@@ -63,7 +65,12 @@
             let alds = [0, 2, 4, 6, 7, 9, 10, 12];
             let augs = [0, 2, 4, 6, 8, 10, 12, 14];
             let dims = [0, 3, 6, 9, 12, 15, 18, 21]
-            const scales = [mj7s,mn7s,dm7s,hd7s,mj6s,mn6s,db9s,alds,augs,dims];
+            const scales = [mj7s, mn7s, dm7s, hd7s, mj6s, mn6s, db9s, alds, augs, dims];
+            let lastUpdateTime =0;
+            let interval;
+            let randb;
+            let randHold;
+            let rb = 0;
 
             const mtofarray = [
                 0, 8.661957, 9.177024, 9.722718, 10.3, 10.913383, 11.562325, 12.25, 12.978271, 13.75, 14.567617,
@@ -88,12 +95,18 @@
 
 
 
+
+
+
             function setup() {
                 actx = getAudioContext();
-
+                 
+                  
+            
                 if (actx) {
-                    startTime = actx.currentTime; // Record the start time
-
+                             
+                    
+                  
                     var canvasDiv = document.getElementById('myCanvas');
                     widthv = myCanvas.offsetWidth;
                     prevw = widthv;
@@ -125,8 +138,8 @@
                         stepsKick.push(stk);
                         let sts = new stepUnit(width / 8 + (i * width / 10), (height / 6) * 3, width / 24, 60, "#CD947A", "#71587E", 0);
                         stepsSnare.push(sts);
-                        let sth = new stepUnit(width / 8 + (i * width / 10), (height / 6) * 4, width / 24, 60, "#CD947A", "#71587E", 0);
-                        stepsHat.push(sth);
+                        // let sth = new stepUnit(width / 8 + (i * width / 10), (height / 6) * 4, width / 24, 60, "#CD947A", "#71587E", 0);
+                        // stepsHat.push(sth);
                     }
                     d1 = new drumVoice('sine', 1, 0, 20, .002, .7);
                     d2 = new drumVoice('sine', 60, 1, 30, .002, .7);
@@ -140,29 +153,67 @@
                         stepsBass[st].draw("#CD947A", "#71587E", 0);
                         stepsKick[st].draw("#CD947A", "#71587E", 0);
                         stepsSnare[st].draw("#CD947A", "#71587E", 0);
-                        stepsHat[st].draw("#CD947A", "#71587E", 0);
+
 
                     }
 
+                    // clock.start();
+                    start_timer();
+
+                       
                 }
 
+
+            }
+            function mousePressed(){
+               
+                userStartAudio();
+             
+          
             }
 
+
+
+
             function draw() {
+
+              continue_timer();
+
+               if(b1.value){
+                if (s) {
+                    interval = s.getValue(400, 200, 0);
+                    
+                }}
+
+
+              
+          
+             
+                   
+
+            
+            
+
+                     
+
+
+
+
+
                 if (prevw != widthv) {
                     canvas.width = myCanvas.offsetWidth;
                 }
                 translate(-width / 2, -height / 2)
                 background("#67B5A0");
                 // drawGui();
-
+                randb = random(0, 7);
 
 
                 for (st in stepsBass) {
                     stepsBass[st].draw("#CD947A", "#71587E", 0);
                     stepsKick[st].draw("#CD947A", "#71587E", 0);
                     stepsSnare[st].draw("#CD947A", "#71587E", 0);
-                    stepsHat[st].draw("#CD947A", "#71587E", 0);
+                    // stepsHat[st].draw("#CD947A", "#71587E", 0);
 
                 }
 
@@ -179,6 +230,7 @@
                 let flv = filter.getValue(30, 2000, 0);
                 d4.filty(flv, 1);
 
+
             }
             function windowResized() {
                 resizeCanvas(widthv, height);
@@ -188,55 +240,62 @@
 
             function playSequence() {
 
-                click = s.getValue(20, 1, 0);
+
+              
+               
+
+
+        
+
+                   
 
 
 
-                if (clock > click) {
-                    clock = 0;
-
-
-                    currentStep = (currentStep + 1) % 8;
 
                     if (stepsKick[currentStep].getTog() == true) {
                         d1.trig();
+                        // let knobka = stepsKick[currentStep].sldA.getValue(1, 120, 0)
+                        // let knobkb = stepsKick[currentStep].sldB.getValue(0, .5, 0)
+                        // d1.pitchy(knobka, knobkb)
                     }
 
                     if (stepsBass[currentStep].getTog() == true) {
                         d4.trig();
-
-                        let randb = random(0.0, 2);
-                        let knoba = stepsBass[currentStep].sldA.getValue(0,7,1)
-                        let knobb = stepsBass[currentStep].sldA.getValue(0,.5,0)
+                        rb = true;
                         
-                        d4.pitchy(parseFloat(mtofarray[transp.getValue(23,59,1)+scales[scale.getValue(0,9,1)][knoba]]), knobb);
+                        if(rb){
+                        randHold = Math.round(randb);
+                        rb = false;
+                        }
+                        
+                        // let knobba = stepsBass[currentStep].sldA.getValue(0, 7, 1)
+                        // let knobbb = stepsBass[currentStep].sldB.getValue(0, .5, 0)
+
+                        d4.pitchy(parseFloat(mtofarray[transp.getValue(23, 59, 1) + scales[scale.getValue(0, 9, 1)][randHold]]), .01);
                     }
                     if (stepsSnare[currentStep].getTog() == true) {
                         d2.trig();
+                        // let knobsa = stepsSnare[currentStep].sldA.getValue(100, 400, 0)
+                        // let knobsb = stepsSnare[currentStep].sldB.getValue(0, .5, 0)
+                        // d2.pitchy(knobsa, knobsb)
                     }
-                    if (stepsHat[currentStep].getTog() == true) {
-                        d3.trig();
-                    }
 
 
+                
 
-                }
 
-                push();
+            
                 // text("bpm:" + floor(((60 / click) * 1000) / 64), (width/ 8)*7, 20);
 
-                pop();
+            
+
+
                 if (b1.value) {
-                    let ct = floor(performance.now());
-
-
-          
-                    clock = clock + 1;
-              
 
 
 
-                    userStartAudio();
+
+                    
 
 
                 } else {
@@ -259,34 +318,65 @@
 
 
                 }
-
-            }
-            const interval = 1000 / 64;
-            let lastTime = performance.now();
-
-            function tick() {
-                if (s) {
-                    playSequence();
-                }
-                const currentTime = performance.now();
-                const deltaTime = currentTime - lastTime;
-
-                if (deltaTime >= interval) {
-
-
-                    lastTime = currentTime - (deltaTime % interval); // to handle drifting
-                }
-
-                requestAnimationFrame(tick);
-
             }
 
-            tick(); // Start the ticking process
 
 
+            
 
+var stop = false;
+var bpm=120;
+var steplength=(60/(bpm*4))*1000;
+var currentstep=0;
+var currenttimer=0;
+var swingstep=0;
+var swingpointer=0;
+var steplengths=[];
+
+function start_timer() {
+
+	timer();
+}
+
+function continue_timer() {
+
+	timer();
+}
+
+
+function timer() {
+	if (!stop) {
+	set_new_time();
+	}
+}
+
+function set_new_time() {
+
+
+	if (currenttimer==0) {
+	
+		currentStep++;
+		if (currentStep>7) {
+			currentStep=0;
+           
+		}
+        
+	}
+
+	currenttimer++;
+
+    if (currenttimer>=s.getValue(10,1,1)) {
+        playSequence();
+		currenttimer=0;
+    
+	}
+
+}
+
+ 
 
         </script>
+
     </div>
 
 </body>
