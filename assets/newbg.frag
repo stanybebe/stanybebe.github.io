@@ -1,66 +1,76 @@
 // Author:
 // Title:
-
 #ifdef GL_ES
 precision mediump float;
 #endif
-
 uniform vec2 u_resolution;
 uniform vec2 u_mouse;
 uniform float u_time;
 
+
+float random (vec2 st) {
+    return fract(sin(dot(st.xy,
+                         vec2(12.9898,78.233)))*
+        43758.5453123+sin(u_time*.3));
+}
+
 vec2 hash( vec2 x )
 {
-    const vec2 k = vec2( 0.5183099, 0.3678794 );
+    const vec2 k = vec2( 0.5583199, 0.36787994 );
     x = x*k + k.yx;
-    return -2.0 + 2.0*(cos(u_time*.04)*10.0 * k*fract( x.x*x.y*(x.x+x.y)) );
+    return -1.0 + 2.0*fract(cos(u_time*.4)*50.0 * k * fract( x.x*x.y*(x.x+x.y)) );
 }
 
-float noise( in vec2 p )
-{
-    vec2 i = floor( p );
-    vec2 f = fract( p );
-
-	vec2 u = f*f*(4.0-4.0*ceil(f));
-
-    return sin(floor(mix( mix( dot( hash( i + vec2(0.0,0.0) ), f - vec2(0.0,0.0) ),
-                     dot( hash( i + vec2(1.0,0.0) ), f - vec2(1.0,0.0) ), u.x),
-                mix( dot( hash( i + vec2(0.0,1.0) ), f - vec2(0.0,1.0) ),
-                     dot( hash( i + vec2(1.0,1.0) ), f - vec2(1.0,1.0) ), u.x), u.y)));
+float noise (in vec2 st) {
+    vec2 i = floor(st);
+    vec2 f = fract(st);
+    // Four corners in 2D of a tile
+    float a = random(i);
+    float b = random(i + vec2(1.0, 0.0));
+    float c = random(i + vec2(0.0, 1.0));
+    float d = random(i + vec2(1.0, 1.0));
+    vec2 u = f * f * (3.0 - 2.0 * f);
+    return mix(a, b, u.x) +
+            (c - a)* u.y * (1.0 - u.x) +
+            (d - b) * u.x * u.y;
 }
+
+#define OCTS 13
+float fbm (in vec2 st) {
+    // Initial values
+    float value = 0.0;
+    float amplitude = .5;
+    float frequency = 0.;
+    for (int i = 0; i < OCTS; i++) {
+        value += amplitude * noise(st);
+        st *= 5.;
+        amplitude *= .5;
+    }
+    return value;
+}
+
 void main() {
     vec2 st = gl_FragCoord.xy/u_resolution.xy;
-
     vec2 r = vec2( gl_FragCoord.xy - 0.5*u_resolution.xy );
+   
+    float n= (fbm(.005*r.xy));
+    float n2= length(fbm(.005*r.xy)*cos(n*u_time*0.003)*10.)*n;
+    r = r.xy / u_resolution.xy;
     
-    float n= noise(.005*r.xy);
-
-
-    float n2= noise(.0005*r.xy)*cos(n*u_time*0.03)*.005;
-	  r =  r.xy / u_resolution.xy;
-
-    float sn = smoothstep(n,n2,.5);
-    vec3 col2 = vec3 (0.4, .82, 0.48);
- 
-    vec3 col3 = vec3 (.12,0.24,0.29);
-     vec3 pixi;
-    float width = (sin(.03 * u_time)*0.5)*sn;
-    float width2 = (sin(cos(.03 * u_time)*sn));
-    float mody = mod(width-width2*(sn),(sin(r.x+u_time*.004)*8.));
-
-    if((cos(sin(.05* u_time)+sn)) < mody){
+    vec3 col1 = vec3(0.0, 0.0, 0.0); // Black
+    vec3 col2 = vec3(0.196, 0.588, 0.8); // Curious Blue #3296CC
+    vec3 col3 = vec3(0.867, 0.949, 0.247); // Starship #DDF23F
+    vec3 pixi;
+    float rr= (random(60.1*r.xy*n));
+    float width = fract(sin(.3 * u_time)*n2);
+    float width2 = cos(.3 * u_time)*n2;
+    float mody = mod(width-width2-n2,fract(cos(length(rr)+u_time*.04))*rr);
+    if(sin(cos(.5* u_time)*n2) < length(mody*n2*rr)){
         pixi = col3;
-    	}
+     }
     else {
         pixi =col2;
         }
-    if(sin(r.x+u_time)*sn < mody){
-        pixi = col3;
 
-  	}
-vec3 smooth = smoothstep(col2, col3, (vec3 (r.x-sn,r.x-sn,r.x-sn)*pixi));
- gl_FragColor = vec4(smooth*pixi,1.0);
-
-
-
+gl_FragColor = vec4(pixi,1.);
 }

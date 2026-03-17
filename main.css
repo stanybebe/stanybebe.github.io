@@ -1,152 +1,152 @@
 @font-face {
   font-family: 'vcr_osd_monoregular';
-  src: url('OfficeCodePro-Light.otf');
-  font-style: normal;
+src: url('jgs_Font.ttf');
+font-style: normal;
 }
-
+  
 body {
-  font-family: 'vcr_osd_monoregular';
+font-family: 'vcr_osd_monoregular';
 }
 a{
-  color: #09d17a;
+color: #DDF23F;
 }
-
+  
 a:visited{
-  color: #09d17a;
+color: #DDF23F;
 }
-
+  
 .para{
 padding: 0px;
 }
-
-
+  
+  
 .copy {
-  text-align: left;
-  padding-left: 20px;
-  padding-right: 20px;
-
+text-align: left;
+padding-left: 20px;
+padding-right: 20px;
+  
 }
 .copy2 {
-  text-align: left;
-  padding-left: 20px;
-  padding-right: 20px;
-  text-decoration: underline;
+text-align: left;
+padding-left: 20px;
+padding-right: 20px;
+text-decoration: underline;
 }
-
-
+  
+  
 ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #1f3e4a;
-
+list-style-type: none;
+margin: 0;
+padding: 0;
+overflow: hidden;
+background-color: #3296CC;
+  
 }
-
+  
 .grad {
-  background: rgb(9,209,122);
-  background: linear-gradient(0deg, rgba(9,209,122,1) 0%, rgba(31,62,74,1) 56%);
-
+background: rgb(221,242,63);
+background: linear-gradient(0deg, rgba(221,242,63,1) 0%, rgba(50,150,204,1) 56%);
+  
 }
-
+  
 .grad2 {
-  background: rgb(0,0,0);
-  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(31,62,74,1) 69%); 
+background: rgb(0,0,0);
+background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(50,150,204,1) 69%);
 }
 li {
-  float: left;
+float: left;
 }
 li a {
-  display: block;
-  color: #09d17a;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+display: block;
+color: #DDF23F;
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
 }
-
+  
 li a:hover {
-  background-color: #2b4248;;
+background-color: #2680B3;
 }
-
+  
 .button {
-  border: none;
-  color:#1026F4;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
+border: none;
+color:#1026F4;
+padding: 15px 32px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 4px 2px;
+cursor: pointer;
 }
 .pad {
-  font-size: 30px;
-  padding-left: 20px;
-  padding-right: 20px;
-
+font-size: 30px;
+padding-left: 20px;
+padding-right: 20px;
+  
 }
-.button1 {background-color:  #09d17a;}
-
+.button1 {background-color: #DDF23F;}
+  
 * {
-  box-sizing: border-box;
+box-sizing: border-box;
 }
-
+  
 /* Create two equal columns that floats next to each other */
 .column {
-  float:left;
-  width: 50%;
-  padding: 20px;
-
+float:left;
+width: 50%;
+padding: 20px;
+  
 }
-
+  
 /* Clear floats after the columns */
 .row:after {
-  content: "";
-  display: table;
-  clear: both;
+content: "";
+display: table;
+clear: both;
 }
 .center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 40%;
+display: block;
+margin-left: auto;
+margin-right: auto;
+width: 40%;
 }
-
+  
 #ani1{
- fill:#09d17a;
- animation: rotating 2s linear infinite;
-
+fill:#DDF23F;
+animation: rotating 2s linear infinite;
+  
 }
-@keyframes rotating { 100% {transform: :rotate(360deg);}}
-
+@keyframes rotating { 100% {transform: rotate(360deg);}}
+  
 @media screen and (max-width: 900px) {
-    a {text-align: center;}
-    p { text-align: center;}
-    .column{width: 100%;}
-    iframe{width: 100%;height: 100%; }
+a {text-align: center;}
+p { text-align: center;}
+.column{width: 100%;}
+iframe{width: 100%;height: 100%; }
 }
-
-
-
+  
+  
+  
 .myButton {
-  font-family: 'vcr_osd_monoregular';
-	background:linear-gradient(to bottom, #09d17a 5%, #5cbf2a 100%);
-	background-color:#09d17a;
-	border-radius:28px;
-	border:1px solid #ffffff;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-size:17px;
-	padding:16px 31px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #2f6627;
+font-family: 'vcr_osd_monoregular';
+background:linear-gradient(to bottom, #DDF23F 5%, #C5D636 100%);
+background-color:#DDF23F;
+border-radius:28px;
+border:1px solid #ffffff;
+display:inline-block;
+cursor:pointer;
+color:#3296CC;
+font-size:17px;
+padding:16px 31px;
+text-decoration:none;
+text-shadow:0px 1px 0px #B8C932;
 }
 .myButton:hover {
-	background:linear-gradient(to bottom, #5cbf2a 5%, #44c767 100%);
-	background-color:#5cbf2a;
+background:linear-gradient(to bottom, #C5D636 5%, #DDF23F 100%);
+background-color:#C5D636;
 }
 .myButton:active {
-	position:relative;
-	top:1px;
+position:relative;
+top:1px;
 }

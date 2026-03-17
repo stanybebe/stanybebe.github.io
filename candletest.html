@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hidden {
+          display: none;
+        }
+      </style>
+</head>
+<body>
+    <form id="timerForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+    
+        <label for="type">Type:</label>
+        <select id="type" name="type" onchange="toggleFields()">
+          <option value="alarm">Alarm</option>
+          <option value="candle">Candle</option>
+          <option value="note">Note</option>
+        </select><br>
+    
+        <div id="alarmFields" class="hidden">
+          <label for="alarmTime">Alarm Set Time:</label>
+          <input type="time" id="alarmTime" name="alarmTime"><br>
+        </div>
+    
+        <div id="candleFields" class="hidden">
+          <label for="interval">Interval:</label>
+          <input type="number" id="interval" name="interval"><br>
+    
+          <label for="delay">Delay:</label>
+          <input type="number" id="delay" name="delay"><br>
+        </div>
+    
+        <div id="noteFields" class="hidden">
+          <label for="note">Note:</label>
+          <textarea id="note" name="note"></textarea><br>
+        </div>
+    
+        <button type="submit">Submit</button>
+      </form>
+    
+      <script>
+        function toggleFields() {
+          const type = document.getElementById("type").value;
+          const alarmFields = document.getElementById("alarmFields");
+          const candleFields = document.getElementById("candleFields");
+          const noteFields = document.getElementById("noteFields");
+    
+          // Hide all fields first
+          alarmFields.classList.add("hidden");
+          candleFields.classList.add("hidden");
+          noteFields.classList.add("hidden");
+    
+          // Show fields based on selected type
+          if (type === "alarm") {
+            alarmFields.classList.remove("hidden");
+          } else if (type === "candle") {
+            candleFields.classList.remove("hidden");
+          } else if (type === "note") {
+            noteFields.classList.remove("hidden");
+          }
+        }
+    
+        document.getElementById("timerForm").addEventListener("submit", function(event) {
+          event.preventDefault();
+    
+          // Gather form data
+          const formData = new FormData(event.target);
+          const data = {};
+          for (const [key, value] of formData.entries()) {
+            data[key] = value;
+          }
+    
+          // Set null values for non-displayed fields based on type
+          const type = data.type;
+          if (type === "alarm") {
+            data.interval = null;
+            data.delay = null;
+            data.note = null;
+          } else if (type === "candle") {
+            data.alarmTime = null;
+            data.note = null;
+          } else if (type === "note") {
+            data.alarmTime = null;
+            data.interval = null;
+            data.delay = null;
+          }
+    
+          // Submit data (for demonstration, logging to console)
+          console.log("Submitted data:", data);
+    
+          // Reset the form
+          event.target.reset();
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+    // Set the default type to "alarm"
+    alarmFields.classList.remove("hidden");
+});
+      </script>
+ <canvas id="myCanvas" width="400" height="400"></canvas>
+      
+    <script>
+      var mapRange = function(from, to, s) {
+  return to[0] + (s - from[0]) * (to[1] - to[0]) / (from[1] - from[0]);
+};
+
+     
+
+      function clock(){
+        let candleclock = new Date();
+        const secondsclock = candleclock.getSeconds();
+        count = mapRange([0,60],[-1.5708,-7.85399],secondsclock);
+        chart(count);
+        console.log(count)
+
+      }
+      function candle(){
+        
+        let candleNow = new Date();
+        const minutes = candleNow.getMinutes();
+        const seconds = candleNow.getSeconds();
+
+
+
+        if (seconds == 45 && minutes % 1 == 0) {
+            console.log(`Timer went off at ${candleNow.toLocaleTimeString()}`);
+        } 
+
+    }
+
+    setInterval(() => {
+     clock();
+    }, 1000);
+    //  candle();
+
+    
+
+
+// Get the canvas element and its context
+function chart(count){
+
+const canvas = document.getElementById('myCanvas');
+const ctx = canvas.getContext('2d');
+ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+// Set the circle's center coordinates
+const centerX = canvas.width / 2;
+const centerY = canvas.height / 2;
+
+// Set the radius of the circle
+const radius = 150;
+
+// Set the number of points on the circumference
+const numPoints = 36; // Adjust this for the desired resolution
+
+// Draw the circle radially
+
+   // Assuming count ranges from 0 to 100
+
+    // Draw the sectors
+    ctx.beginPath();
+    ctx.moveTo(centerX, centerY);
+    ctx.arc(centerX, centerY, radius, -Math.PI /2 ,-Math.PI  -count);
+    ctx.closePath();
+     ctx.fill()}
+    </script>
+    
+</body>
+</html>

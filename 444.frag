@@ -115,7 +115,7 @@ void main() {
      float n2 = noisee(.004*r.xy);
      float speed = .003;
      float sine = mod(sin(r.x*speed+u_time)*.1,n2/n1);
-  vec4 texi = texture2D(tex, (uv+sine)+n2/600.); // middle middle -- the actual texel / pixel
+  vec4 texi = texture2D(tex, (uv+sine)+n2/600.); 
 
 
     vec4 ctex =texture2D(tex,(uv+sine));

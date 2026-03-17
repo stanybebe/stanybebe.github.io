@@ -16,7 +16,7 @@ var width = myCanvas.offsetWidth;
 function draw() {
   shader(redGreen);
   redGreen.setUniform("u_resolution", [width, height]);
-  redGreen.setUniform("u_time", frameCount *.05);
+  redGreen.setUniform("u_time", frameCount *.005);
   rect(0,0,width, height);
 
 }
